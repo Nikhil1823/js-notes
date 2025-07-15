@@ -13,7 +13,27 @@ Evrything inside js happen inside the execution context
         in creating the execution context  ,
                         the first step is the memory creation phase in which js allocate memory to each and every variables in js
                         initially each varibale is stored with a value of undefined and for funvtions there entire definition will be stored or copied there
+                        
+                        in second phase js starts to assign values to the variable that we created, for each function invocation , js will create new execution context and add it at the top of the call stack and once the functon execution is complete the control comes back to the place where the function is invoked and that newly created execution context will be removed from the call stack
+                        for recursion 
+                            there will be nested execution context inside the global execution context
+        
+        what is call stack ?
+                call stack is a stack ds that is used by js  to store the order of execution context , once the function invocation is completed the function will be removed form the call stack
 
+        what is hoisting in js ?
+                it is the feature of js that enable us to acces the variable (that are declared using var keyword) or function even before defining it .
+                function are fully hoisted means we can call the function way before initialisation and it works just fine 
+                     but for variable , name is only hoisted , means it value cannot be obtained it will be undefined , 
+                     the variable that are declared using let and const are also hoisted but there are in temporal dead zone and accessing them before initialisation through the refernece error
+                like for function we can invoke the funtion way before it definition but it only work with proper function using normal synatax like this function <name>(){}
+                for arrow function it initially create a variable in the memory context and its value will be undefined if i try to call the function before definition and since it is arrow function defnition, is stored in a variable
+                so it will throw an error saying that variable can't be called 
+        how function works in js ?
+                remember one thing each function has its own execution context. variable decalred inside the function will not affect the global variable even though both may have the same name , beacsue js create diff memory for these two beacsue it has diff execution context
+                and the execution context will removed once the function execution is completed
+
+        
 
 
 
@@ -29,7 +49,7 @@ SOme Important array  methods
               eg:   let phones=['samsung','apple','redmi','vivo']
                     const bigPhones=phones.filter((phone)=>{
                         return phone.length>5
-                    })
+                    }) 
                     this will only contain phones thats length is bigger than 5
     2.Map() methods :
         map methods are used to transform values of an array by appling a callback function and return a new array
@@ -105,9 +125,10 @@ SOme Important array  methods
                     test[0].cost=15
                     console.log(phones);
                     console.log(test);
-
+ 
                     here value inside phones also changes
-                    
+
+
 
 
 some array oprations
