@@ -32,14 +32,118 @@ Evrything inside js happen inside the execution context
         how function works in js ?
                 remember one thing each function has its own execution context. variable decalred inside the function will not affect the global variable even though both may have the same name , beacsue js create diff memory for these two beacsue it has diff execution context
                 and the execution context will removed once the function execution is completed
+        Dot notation vs Bracket notation in object 
 
+            see the code
+                
+                function getProp(item,value){
+                    console.log('value',item[value]);
+                    
+                    return item[value]?item.value:-1
+                }
+                console.log(getProp({a:42},'a')); here  by logic this will also need to print 42 but instead it prints undefined 
+                    beacuse for dot notaion js expect static value like while using dot notaion we must need to call the object with its exact name like here item.a will work but using that dynamice variable wont works
+                    but while using that bracket notation we can call that property of the object using static variable but in that case we need to pass it as string like this item['a'] or we can store that value in some varible and pass that variable instead that will also works like this item[atext]
         
+        what is window object and this keyword in js
+            window object is a global object that is created by the js along with the global execution context at the start of the execution of the program eventhough we have an empty js file . this windows object will be created automatically by the js engine at the start ,
+            all the global variable are stored in this windows object and can be obtained using window.variableName.
+
+            and during the creation of the window object variable js automatically create a 'this' variable and at global level it will point to the window object . 
+
+            these global object and execution context will be created by all the js engines in browser that global object is window and in node js it is called "global"
+            the global varibale that are declared using var will be attached to the window object by js and the global variable that are decalred using let or const wont be added 
+
+        undefined vs not defined
+            undefined means the variable is defined and it has its own memory in the memory context but it is not assigned a value yet so by default js assign  its value to be undefined kinda like a placeholder
+            in other hand not defined means that varibale is not defined or it is absent in the memory context
+        
+        Scope chain in js
+
+            whenever an execution context is created a local memory (where the variable inside that code or function will be stored ,that memory address) and a lexical enviroment is created
+            by saying lexical environment it means that a refernce to the parent's lexical environment , for the outer most or the global execution context this lexical enviroment point to null
+
+            so when we try to access a varible js first try to search it inside the local scope then its lexical env and if it is not there it will move it further up its parents lexical env and up until it find the element or get null(value of the global lexical env)
+
+            by simply scop means the area or the places where we can access a variabel or funtion inside a js program
+
+
+
+        are let and const variables are hoisted or not
+
+            yes byt they live in a place called dead temoral zone 
+
+        what is dead temporal zone in js
+            it is the time period from when a let or const variable is hoisted to when it is assigned a value. that time period or time gap is called a temporal dead zone
+            and when we try to accesss a variable inside a temporal dead zone it gives us referenceError.
+   
+
+        var vs let and const
+            variable that are declared using var can be redeclared within in the same scope 
+            but cant do with let or const variables
+
+
+        what is a block in js ?
+            simply -> it is the set of statement that are written inside a pair of {}
+            block is used to combine multiple statement together and to use it where js except only one .
+            block scope : means what all the functions and variables that we can access within a block.
+            variables declared using let and const are block scoped and are only accessible within a block
+
+        what is shadowing in js ?
+
+            when we redeclare a variable that is decared using var keyword the previous value of the varibale will be replaced with this new value adn this is known as shadowing.
+            happens when a variable declared in inner scope has  same name as a variable has the same name as in the outer scope then the inner one shadows the outer one 
+
+            fake shadowing : is when we try to redeclare a block variable using a var keyword within the block elemenet scope
+            happens when we try to declare the a block varibale and redeclare them using var keyword in the same or inner scope
+
+        what is closure ?
+
+            closure means a function bundles with it lexical parent or lexicals scope 
+            here 
+                function a(){
+                    let x=10;
+                    function b(){
+                        console.log(x)
+                    }
+                    return b;
+                }
+                let y=a(); here we get teh function b as it was returned by the function a
+
+                // some lines of code
+                y(); but here when we try to invoke the funtion b using y , we know that the function a is already out of the execution context 
+                so since it is not out of the context we assume b to print notdefined error but that where closure comes into play , even though a() is out of the stack b still got it closure that means b() still got all the refernce of its parents function so even though a() is out b still has its varibale reference stored in its closure
+
+                closure are created every time a function is declared inside another function and returned or used later
+
+        some use cases of closure 
+            closure are used in
+                module design pattern
+                currying => used to break function with n arguments into n  unitary funtion or n  function sthta takes single arguments each
+                function like once => those are function that are desiged to run only once
+                memoization => to imporve performance by caching the result 
+                maintiaining state in async world
+                iteration
+                set timeouts
+
+        how setTimeout Works ?
+            in setTimeout the callback is taken out and get attched that timer and it will be placed somehere other than callstack and rest of the code will continue execution and when this timer exceeds the setTimeout will take that callback function and append it to the call stack
 
 
 
 
 
-SOme Important array  methods
+
+
+
+
+
+
+
+
+
+
+Some Important array  methods
     1.filter() methods 
          these are used to filter an array of elements based on a callback functions and will return the results as a new array 
              return =>the callback function is executed once for each element , that call back function will return true or false and that element is included in the new array based on it return value
