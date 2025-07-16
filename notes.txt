@@ -1,7 +1,7 @@
 Evrything inside js happen inside the execution context
 
     execution context has 2 portion
-        memory/varible environment : where the variables and functions are stored as a key value pairs
+        memory/variable  environment : where the variables and functions are stored as a key value pairs
         code / thread of execution : where each line is executed one at a time
 
         js is a single threaded synchronous programing language , means it executes only one line of code at a time
@@ -12,7 +12,7 @@ Evrything inside js happen inside the execution context
 
         in creating the execution context  ,
                         the first step is the memory creation phase in which js allocate memory to each and every variables in js
-                        initially each varibale is stored with a value of undefined and for funvtions there entire definition will be stored or copied there
+                        initially each variable is stored with a value of undefined and for funvtions there entire definition will be stored or copied there 
                         
                         in second phase js starts to assign values to the variable that we created, for each function invocation , js will create new execution context and add it at the top of the call stack and once the functon execution is complete the control comes back to the place where the function is invoked and that newly created execution context will be removed from the call stack
                         for recursion 
@@ -43,7 +43,7 @@ Evrything inside js happen inside the execution context
                 }
                 console.log(getProp({a:42},'a')); here  by logic this will also need to print 42 but instead it prints undefined 
                     beacuse for dot notaion js expect static value like while using dot notaion we must need to call the object with its exact name like here item.a will work but using that dynamice variable wont works
-                    but while using that bracket notation we can call that property of the object using static variable but in that case we need to pass it as string like this item['a'] or we can store that value in some varible and pass that variable instead that will also works like this item[atext]
+                    but while using that bracket notation we can call that property of the object using static variable but in that case we need to pass it as string like this item['a'] or we can store that value in some variable  and pass that variable instead that will also works like this item[atext]
         
         what is window object and this keyword in js
             window object is a global object that is created by the js along with the global execution context at the start of the execution of the program eventhough we have an empty js file . this windows object will be created automatically by the js engine at the start ,
@@ -52,20 +52,20 @@ Evrything inside js happen inside the execution context
             and during the creation of the window object variable js automatically create a 'this' variable and at global level it will point to the window object . 
 
             these global object and execution context will be created by all the js engines in browser that global object is window and in node js it is called "global"
-            the global varibale that are declared using var will be attached to the window object by js and the global variable that are decalred using let or const wont be added 
+            the global variable that are declared using var will be attached to the window object by js and the global variable that are decalred using let or const wont be added  
 
         undefined vs not defined
             undefined means the variable is defined and it has its own memory in the memory context but it is not assigned a value yet so by default js assign  its value to be undefined kinda like a placeholder
-            in other hand not defined means that varibale is not defined or it is absent in the memory context
+            in other hand not defined means that variable is not defined or it is absent in the memory context 
         
         Scope chain in js
 
             whenever an execution context is created a local memory (where the variable inside that code or function will be stored ,that memory address) and a lexical enviroment is created
             by saying lexical environment it means that a refernce to the parent's lexical environment , for the outer most or the global execution context this lexical enviroment point to null
 
-            so when we try to access a varible js first try to search it inside the local scope then its lexical env and if it is not there it will move it further up its parents lexical env and up until it find the element or get null(value of the global lexical env)
+            so when we try to access a variable  js first try to search it inside the local scope then its lexical env and if it is not there it will move it further up its parents lexical env and up until it find the element or get null(value of the global lexical env)
 
-            by simply scop means the area or the places where we can access a variabel or funtion inside a js program
+            by simply scop means the area or the places where we can access a variable variable  or funtion inside a js program
 
 
 
@@ -91,11 +91,11 @@ Evrything inside js happen inside the execution context
 
         what is shadowing in js ?
 
-            when we redeclare a variable that is decared using var keyword the previous value of the varibale will be replaced with this new value adn this is known as shadowing.
+            when we redeclare a variable that is decared using var keyword the previous value of the variable will be replaced with this new value adn this is known as shadowing. 
             happens when a variable declared in inner scope has  same name as a variable has the same name as in the outer scope then the inner one shadows the outer one 
 
             fake shadowing : is when we try to redeclare a block variable using a var keyword within the block elemenet scope
-            happens when we try to declare the a block varibale and redeclare them using var keyword in the same or inner scope
+            happens when we try to declare the a block variable and redeclare them using var keyword in the same or inner scope 
 
         what is closure ?
 
@@ -112,7 +112,7 @@ Evrything inside js happen inside the execution context
 
                 // some lines of code
                 y(); but here when we try to invoke the funtion b using y , we know that the function a is already out of the execution context 
-                so since it is not out of the context we assume b to print notdefined error but that where closure comes into play , even though a() is out of the stack b still got it closure that means b() still got all the refernce of its parents function so even though a() is out b still has its varibale reference stored in its closure
+                so since it is not out of the context we assume b to print notdefined error but that where closure comes into play , even though a() is out of the stack b still got it closure that means b() still got all the refernce of its parents function so even though a() is out b still has its variable reference stored in its closure 
 
                 closure are created every time a function is declared inside another function and returned or used later
 
@@ -125,11 +125,99 @@ Evrything inside js happen inside the execution context
                 maintiaining state in async world
                 iteration
                 set timeouts
+                data encapsulation and hiding - 
+                                                Closures allow you to hide variables and functions from the outside world, providing a way to encapsulate data and create private state.
+
+                                                This is more powerful than block scope, because closures let you:
+
+                                                Keep data alive across function calls (unlike block scope).
+
+                                                Make variables inaccessible from outside, but still usable internally. 
+
+                                                    function counter() {
+                                                            let count = 0; // private variable
+
+                                                            return {
+                                                                increment() {
+                                                                count++;
+                                                                console.log(count);
+                                                                },
+                                                                decrement() {
+                                                                count--;
+                                                                console.log(count);
+                                                                }
+                                                            };
+                                                            }
+
+                                                            const c = counter();
+                                                            c.increment(); // 1
+                                                            c.increment(); // 2
+                                                            c.decrement(); // 1
+
+                                                            console.log(c.count); // ❌ undefined — can't access private variable
+
+        disadvantage of closure
+                every time a closure is formed it consumes a lot of memory and some time the closed variables are not garbage collected
+                closure consume memory since it retain the refernce of the outer variables
 
         how setTimeout Works ?
-            in setTimeout the callback is taken out and get attched that timer and it will be placed somehere other than callstack and rest of the code will continue execution and when this timer exceeds the setTimeout will take that callback function and append it to the call stack
+            in setTimeout the callback is taken out and get attched that timer and it will be placed somehere other than callstack ( placed in web API or timer queue) and rest of the code will continue execution and when this timer exceeds the setTimeout will take that callback function and append it to the call stack
+
+        setTimeout and closure / printing numbers from 1 to 10 after each second using setTImeout  ?
+
+            for (var i = 0; i < 5; i++) {
+  
+                setTimeout(() => {
+                console.log(i);
+                 }, i * 1000);
+  
+            }
+            here what we expect is it to print 0 to 4 after every second but it is not what actually happended here beacuse since the variable is declared using var and since that function execute very fast and the latest value of the variable i will be 5 and the function will use that laetst value beacause of the scope of that variable 
+            and that why we got 4 five times instead of numbers from 0 to 4
+
+            so to avoid this we can use a block scoped variable instead of a global scoped variable  like this
+
+            for(let i=0;i<5;i++){
+                setTimeout(()=>{
+                    console.log(i)
+                },i*1000)
+            }
+
+            this one work as we expected and it does beacuse now i is the v=block scoped variable and for each iteration we get a unique variable i with itsown memory and refernce so each settimeout funtin is getting its own variable and will be able to orint diff values or like it has to work
 
 
+            so how to solve this even without using a block scoped variable 
+
+            for(var i=0;i<5;i++){
+                function inner(x){
+                    setTimeout(()=>{
+                        console.log(x)
+                    },x*1000)
+                }
+                inner(i)
+            }
+
+            here this one will also print numbers from 0 to 4 , even though  the variable is global scoped when we pass it to that function it recieve its own individual variable and it print that variable instead to referencing tha global variable
+        what is garbage collector in js means ?
+            grabage collectors are programs in js engine or the browser that help us to free memory by removing unused variable from the program
+            since js is a high level program, garbage collection is doen by the engine itself but for programs like c , programers has the duty to allocate and disallocate memory
+
+ 
+        how closures and garbage collector are related ?
+            when we a function form a closure with its outer funtion, all the variables of the outer function will be wrapped or get closured in the inner function so the garbage collector cannot release those spaces since it is in closure with the inner function so if we make more closure memory management will be difficult
+
+            in some modern js engines like chrome's V8 it uses smart garbage collector which release the spaces of the variables those are in closure but not actually used by the inner functions like this
+
+            function a(){
+                let x=10;
+                let y=12;
+                function b(){
+                    console.log(x)
+                }
+            }
+
+            here even though we are not using the variable inside the b() it still wrap the variable in the closure of b()
+            but the smart garbage collector will only wrap the variable x into the funtion b() since y is not using
 
 
 
