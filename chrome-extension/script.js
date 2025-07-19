@@ -10,7 +10,7 @@ const tabButton=document.querySelector('.save-tab')
 
 const populateDom = (myList) => {
   const list = myList.reduce((acc, item) => {
-    return (acc += `<li class='item'><a> ${item} </a></li>`);
+    return (acc += `<li class='item'><a href=${item} target="_blank"> ${item} </a></li>`);
   }, "");
   clearButton.style.display = "inline-block";
 
