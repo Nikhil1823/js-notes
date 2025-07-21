@@ -1,1 +1,148 @@
-l
+   how to create a react app
+        npx vite@latest react-app-name
+        cd react-app-name
+        npm i 
+        npm run dev
+   
+    diff types of compoennts in react ?
+        1.stateless functional compoennts
+            these are just js function sthat returns jsx 
+
+        2.stateful class compoennts
+            A stateful class component is a component that:
+
+            Is written as a class
+
+            Extends React.Component
+
+            Has its own internal state
+
+            Can use lifecycle methods like componentDidMount, componentDidUpdate, etc.
+
+
+        func comp vs class comp
+            functional 
+                -> simple 
+                use func compoennts as much as possible 
+                absence of this keyword
+                functional compoentns are also stateful with the help of react hooks
+                mainly reposible for using
+                dumb/presentational
+
+            class
+                more feature rich
+                maintain their own state-private data
+                complex ui logic
+                provide lifecyle hook
+
+    types of export in jsx ?
+
+        export default or the defult export => here we can  this function with any name we wanted there is no issue there
+
+        named export => export cont greet=()=>return <h1>Hi</hi>
+        in named exports we just exactly specify the name of the component
+
+
+    notes : modul.exports={} is available only in common js and es moduole syntax
+    and react follows es module syntax
+    
+    whats is jsx ?
+        jsx => javascript xml   
+
+    props vs state
+
+        props: props get passed through attribute of component
+        it is a fumction parameters 
+        props are immutable
+        inside function props are accesible by props.nameor props.valeu or so
+        inside class props are accessible through this.props.valeu
+
+
+
+        state : state is managed within the component
+            these are variable declared in function body
+            state can be changed 
+
+            infunctional component => useState hooks
+            in class components we use this.state
+
+    setState in react class component
+
+        inorder to modify teh state of a variable in react we use useState() that help us to modify the state of the varibale and thereby upadting the dom,
+        the useState method expect an object to update the state and it callback as second arguemnt (optional) which will be called once the state is updated 
+        useState is a async operation  the call back will be called once that dom updation is completed
+        setState are async so inorder to call a function or log something after the setState use that callback in the secind arguemnt
+
+        pass to update the state based on the previous valeu pass  a callback instead
+        that update the state based on the previus state value.
+        it taeks curetn state as argument to the prev state and return an updated object as the resultant
+         eg:
+             incrementOnClick = () => {
+                this.setState((prevState) => {
+                return { count: prevState.count + 1 };
+                });
+            };   
+
+        destructering props is a es6 feature
+        in class based component props are destructed inside the render 
+        always use arrow function inside class component to handle the 'this' keyword issue
+
+        passing a method as a props to the child component from tha parent component
+
+            we can pass the methods of the parent component to tha child as a attrubute to the child .
+        conditional rendering in react
+            4 diff methods are available
+
+                1.if else statements 
+                    return multiple jsx files based on diff condition 
+                
+                2.terinary operator 
+                    you know what it Is
+
+                3.element varibales
+                    stores the content on a variable and updatung that variable conditionally
+
+                4.short circuting  operator
+                    syntax:
+
+                        condition && TheTHingWeWantToReturn
+        keys in react elements 
+
+            in react key property of an element are used  to identify the list element  uniquely by react . it help react to find out which elements are changed and which one needs to be changed 
+            when are the paced where we can use index as the list key 
+                when we list item wont change 
+                when the items in our list dont have a uniwue id 
+                when we dont reorder or filters the list
+        how to apply style sheets to a react component ?
+
+            we can add it at the top of the component and just add the class names to the components like we do normally in html and css 
+        diff methods to apply a css stylesheets
+
+            1.inline
+            2.adding a seperate css module (local scoped)
+                it have compoent level scope and wont afect css class name conflict
+                it just like creatinf each css files for each  component and appendinf them to each of the components
+
+
+            3.regular css (global scoped )
+                create a plain css file and import it globally and it will afect the compoennts and elements based on the our style rules
+                it like writting the css classes in the global style sheet index.css
+
+
+        in react
+            re-render happens only if the state of any of the components chanegs or its props changes
+        lifecycle methods of class componensts in react 
+            there are mainly four lifecylce methods in class components they are
+
+                1.mounting
+                    called when an instance of a compomemt is being created and inserted into the dom
+
+                2.upadting
+                    called when a component is being re rendered as result of chnege either its prop or state
+
+                3.unmounting
+
+                4.error handling
+
+
+
