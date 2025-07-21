@@ -19,6 +19,13 @@
 
             Can use lifecycle methods like componentDidMount, componentDidUpdate, etc.
 
+        3.higher order components 
+            same as higher order function but components instead
+
+        4.pure components
+            special type of class component that automatically implement shouldComponentUpdate() with a shallow comparison of props and states.
+            this optimization helps to prevent re-renders improve performance
+
 
         func comp vs class comp
             functional 
@@ -82,7 +89,7 @@
                 return { count: prevState.count + 1 };
                 });
             };   
-
+ 
         destructering props is a es6 feature
         in class based component props are destructed inside the render 
         always use arrow function inside class component to handle the 'this' keyword issue
@@ -90,6 +97,7 @@
         passing a method as a props to the child component from tha parent component
 
             we can pass the methods of the parent component to tha child as a attrubute to the child .
+
         conditional rendering in react
             4 diff methods are available
 
@@ -102,7 +110,7 @@
                 3.element varibales
                     stores the content on a variable and updatung that variable conditionally
 
-                4.short circuting  operator
+                4.short circuting operator
                     syntax:
 
                         condition && TheTHingWeWantToReturn
@@ -130,19 +138,81 @@
 
 
         in react
-            re-render happens only if the state of any of the components chanegs or its props changes
+            re-render happens only if the state of any of the components chanegs or its props changes 
         lifecycle methods of class componensts in react 
             there are mainly four lifecylce methods in class components they are
 
                 1.mounting
                     called when an instance of a compomemt is being created and inserted into the dom
+                    methods available :{
+                        constructor, static getDerivedStateFromProps,render componentDidMount
+                    }
 
-                2.upadting
+                2.updating
                     called when a component is being re rendered as result of chnege either its prop or state
+                    methods available :{
+                        static  getDerivedStateFromProps,shouldComponentUpdate,render,getSnapshotBeforeUpdate and componentDidUpdate
+                    }
 
                 3.unmounting
+                    called when a compoent is removed from the dom
+                    available methods :{
+                        componentWillUnmount
+                    }
 
                 4.error handling
+                    called when there is an error during rendering , in  LIFECYLE method or in the constructor of any child comoponent
+                    available method :{
+                        static getDerivedStateFromError and componentDidCatch
+                    }
+
+        Mounting life cycle methods
+
+            1.constructor(props):
+                a special function that will get called whenever a new component is created 
+                used for initialising state ,binding the event handlers
+
+                where it should not be used are : where it cause a side effects like( http requests)
+                this si the place where we directly override the state variables without using setState() method  
+
+                2.static getDerivedStateFromProps(props,state) :
+                    it is a static method so it doesnt have 'this' keyword inside it
+                    it is used when state of the compoentn depend completely on the pros which chanegs over time
+                    used to set state
+                    not used where it causes a side effect 
+                    it should either return null or the updated state of the component 
+                
+                3.render():
+                     it is the only required method inside a class component
+                     it is used to read props and state and return a jsx file
+                     will not used to update the state variables or ajax calls
+                     once the render method is called the children components lifecycle methods are also called 
+
+                4.componentDidMount():
+                    This methosd is invoked after a component and all its children components have been rendered to DOM
+                    perfect place to perform side effects like ajax calls dom updation 
 
 
+            and thier order of execution is like this
+                1.constructor()
+                2.getStateDerivedFromProps() 
+                3.Render()
+                4.componentDidMount() will be called only after all of it child components are rendered sucessfully
 
+        Updating life cycle methods
+             total five methods but 3 of them are commonly used  
+
+            1.static getDerivedStateFromProps(props, state) {
+
+                    state.email=props.name
+                    console.log("getderived state from props");   
+                }
+
+
+                same as before
+
+            2.shouldComponentUpdate(nextProp,nextState):  
+                this component will check whether to re render the component once there  is a change in the state or the props
+
+                 
+ 
