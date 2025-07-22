@@ -1,20 +1,21 @@
-import { useState } from 'react'
 
-import './App.css'
-import Welcome from './WelcomeClass'
-import styles from "./WelcomeClass.module.css";
+
+import { Component } from "react";
+
+import ParentComp from "./ParentComp";
+import FocusParent from "./Components/FocusParent";
+
 function App() {
-  const [count, setCount] = useState(0)
-  const greetMe=(name)=>{
-    alert(`Hello ${name}`)
-  }
+  // const [count, setCount] = useState(0)
+  const greetMe = (name) => {
+    alert(`Hello ${name}`);
+  };
 
   return (
     <>
-   <Welcome name="manu" greetHandler={greetMe}/>
-
+      <FocusParent />
     </>
-  )
+  );
 }
 
-export default App
+export default App;
