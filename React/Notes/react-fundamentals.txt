@@ -484,4 +484,10 @@
                     You must use class components — doesn't work in function components.
                     For functional components we need to use useContext() hook
 
+            
+            react and http request 
+
+                in react we do the external web request using axios library
+                you know how 
+        
              
