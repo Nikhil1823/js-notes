@@ -1,0 +1,24 @@
+    what is react hooks ?
+        these are new feat added to react to amke the functional components stateful 
+        it allow to use react feat without writting a class 
+        hooks only works inside a functions
+
+    why hooks ?
+        to reduce the reliance on this keywords
+
+        to handle sideeffects => useEffect hook will run on component mount,component unmount and component update so this single hook does the job of the 3 lifecyle methods (componentDidUpdate,compoentDidMount,componentWillUnmount)
+        
+        makes the code cleaner and more managable
+
+        reuse logic easily 
+
+        easier to test
+
+    Rules for Hooks 
+        
+        dont call hooks inside loops , conditions and in the nested functions 
+        always call hooks from react functional component and not just regular functions in js 
+        only call hooks at the top level 
+
+
+        appending content to an array using useState
