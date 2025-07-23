@@ -1,6 +1,7 @@
 import { Component, Fragment } from "react";
-import Hero from "./Components/Hero";
-import FuncPure from "./FuncPure";
+import hocWrapper from "./Utils/ClickerHOC";
+import HoverComp from "./Components/HoverComp";
+import ClickerComp from "./Components/ClickerComp";
 import ErrorHandler from "./Utils/ErrorHandler";
 function App() {
   // const [count, setCount] = useState(0)
@@ -10,15 +11,8 @@ function App() {
 
   return (
     <div onClick={() => console.log("app got clicked")}>
-      <ErrorHandler>
-        <Hero name="Superman" />
-      </ErrorHandler>
-      <ErrorHandler>
-        <Hero name="Batman" />
-      </ErrorHandler>
-      <ErrorHandler>
-        <FuncPure name="sugumar" />
-      </ErrorHandler>
+      <ErrorHandler><ClickerComp name="Nikhil:"/></ErrorHandler>
+      <ErrorHandler><HoverComp /></ErrorHandler>
     </div>
   );
 }
