@@ -1,10 +1,7 @@
-
-
-import { Component } from "react";
-
-import ParentComp from "./ParentComp";
-import FocusParent from "./Components/FocusParent";
-import PortalComp from "./Components/PortalComp";
+import { Component, Fragment } from "react";
+import Hero from "./Components/Hero";
+import FuncPure from "./FuncPure";
+import ErrorHandler from "./Utils/ErrorHandler";
 function App() {
   // const [count, setCount] = useState(0)
   const greetMe = (name) => {
@@ -12,10 +9,17 @@ function App() {
   };
 
   return (
-    <>
-    <ParentComp/>
-    <PortalComp/>
-    </>
+    <div onClick={() => console.log("app got clicked")}>
+      <ErrorHandler>
+        <Hero name="Superman" />
+      </ErrorHandler>
+      <ErrorHandler>
+        <Hero name="Batman" />
+      </ErrorHandler>
+      <ErrorHandler>
+        <FuncPure name="sugumar" />
+      </ErrorHandler>
+    </div>
   );
 }
 
