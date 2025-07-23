@@ -425,4 +425,63 @@
                 </div>
                  
         in render props instead of passing the whole component jsut like how we do in the hoc here we just need to call the function instead so this gives us more control over the component 
-        
+
+    what are context api in react ?
+
+        context provides a way to pass data through the component tree without having to pass propss down  manually at every level 
+        it is used to aviod prop drilling 
+
+        steps im creating a context 
+            1.creating a context
+                it involes creating a context using createContext method inside react 
+                create a provider and consumer varible also by adding the providrer and consumer attribute od the createContext method 
+                like this   
+                            import { createContext } from "react";
+
+                            const UserContext = createContext();
+                            const UserProvider = UserContext.Provider;
+                            const UserConsumer = UserContext.Consumer;
+
+                            return { UserProvider, UserConsumer };
+
+            2.provide a context value 
+                by sayng proving the context we just need to pass the component inside the UserProvider element by specifying the value we need to prop down 
+                and all the compoents inside this provider component will have the access to the props 
+                    like this 
+                    <ErrorHandler>
+                        <UserProvider value="Batman">
+                            <ComponentA />
+                        </UserProvider>
+                    </ErrorHandler>
+
+            3.consume the context value 
+                the context consume method uses the render props methods 
+                eg :
+                    <div>
+                        <UserConsumer>{(val) => <h1>Hello {val}</h1>}</UserConsumer>
+                    </div>
+                You're using a Consumer component from a React Context.
+                You're passing a function (render prop) to UserConsumer.
+                That function receives the context value (val), and returns JSX that uses it.
+
+                UserConsumer finds the nearest UserProvider above it.
+
+                It gets the value from the provider.s
+
+                It calls your function, passing  val.
+
+                It renders whatever your function returns.
+
+            the UserProvider is the onw who holds the value and the UserConsumer just consume the vallue it get from the nearest UserProvider i only consider the nearest provider only 
+
+            default values to the context 
+                default values can be provisded by the time we will create the context and if we dont use context provider element then this default values will be used 
+                and if we forget add the contextProvider but still using the contextConsumer the default value will be used in the consumer in that case
+            context type 
+                In React, contextType is a special property used in class components to consume a Context object. It lets you access context directly via this.context without needing a <Consumer> wrapper.
+                its disadv 
+                    It only works with one context at a time.
+                    You must use class components — doesn't work in function components.
+                    For functional components we need to use useContext() hook
+
+             
