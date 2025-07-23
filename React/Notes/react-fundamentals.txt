@@ -168,28 +168,28 @@
 
         Mounting life cycle methods
 
-            1.constructor(props):
+            1.constructor(props): 
                 a special function that will get called whenever a new component is created 
                 used for initialising state ,binding the event handlers
 
                 where it should not be used are : where it cause a side effects like( http requests)
                 this si the place where we directly override the state variables without using setState() method  
 
-                2.static getDerivedStateFromProps(props,state) :
+            2.static getDerivedStateFromProps(props,state) :
                     it is a static method so it doesnt have 'this' keyword inside it
                     it is used when state of the compoentn depend completely on the pros which chanegs over time
                     used to set state
                     not used where it causes a side effect 
                     it should either return null or the updated state of the component 
                 
-                3.render():
+             3.render():
                      it is the only required method inside a class component
                      it is used to read props and state and return a jsx file
                      will not used to update the state variables or ajax calls
                      once the render method is called the children components lifecycle methods are also called 
 
-                4.componentDidMount():
-                    This methosd is invoked after a component and all its children components have been rendered to DOM
+            4.componentDidMount():
+                    This method is invoked after a component and all its children components have been rendered to DOM
                     perfect place to perform side effects like ajax calls dom updation 
 
 
@@ -199,10 +199,10 @@
                 3.Render()
                 4.componentDidMount() will be called only after all of it child components are rendered sucessfully
 
-        Updating life cycle methods
+            Updating life cycle methods
              total five methods but 3 of them are commonly used  
 
-            1.static getDerivedStateFromProps(props, state) {
+            1.static getDerivedStateFromProps(props, state) rarely used {
 
                     state.email=props.name
                     console.log("getderived state from props");   
@@ -211,8 +211,218 @@
 
                 same as before
 
-            2.shouldComponentUpdate(nextProp,nextState):  
-                this component will check whether to re render the component once there  is a change in the state or the props
+            2.shouldComponentUpdate(nextProp,nextState):   rarely used
+                this component will check whether to re render the component once there  is a change in the state or the props 
+                by default all the components will re render on the chnage of state or  props but this method can be used to prevent this behaviour by returning False
 
-                 
+                it checks the current props and states values with the new values and return whether they are same or not and based on the return value the dome will rendered or not 
+
+                used for performance optimization 
+
+                do not use for side effects and dont use setstate methods inside this
+
+            3.render () commonly used
+                same  as above
+
+            4.getSnapshotBeforeUpdate(prevProp,prevState) rarely used
+                called right before the changes from the virtual dom  are to be reflected in the dom 
+                capture some imformation from the dom
+                methods will either return null or return a value 
+                returned va;ue will be passed as the third argumetn to next method 
+
+
+            5.componentDidUpdate(props,state,snapshot) commonly used
+
+                can be used for causing side effects before doing that we need to compare between the previous props eith the current props then only we need to make those side effects
+                called after the render is finished in the re render cycle
+                this method will be called once
+                it takes snapshot of the getSnapshotBeforeUpdate method as the third argument
+
+        order of execution 
+                getDerivedStateFromProps
+                shouldComponentUpdate
+                render
+                getSnapshotBeforeUpdate =>of children then parent
+                componentDidUpdate =>child then parent
+
+
+        Unmounting life cycle methods:
+
+            1.componentWillUnmount :
+                method is invoked immediately before a component is unmounted and destroyed
+                used for clean up task like :   
+                cancelling any network req, removing event handlers cancelling any subscription and also inavlidating timers 
+                do not call setState method beacsue thsi component never re-render since it is unmounted 
+
+
+        Error handling life cycle methods:
+
+            1. Static getDerivedStateFromError(error)
  
+
+            2. componentDidCatch(err,info)
+
+            these 2 methods are called when there is a error during rendering in a lifecyle method or in the constructor of any child components
+
+               
+        what are react fragments
+
+              react fragments are used to wrap or group list of child elements without adding an extra node to the dom
+                there are 2 ways to do it
+                    1. <React.Fragment>
+                        <Welcome name="manu" greetHandler={greetMe} />
+                        </React.Fragment>
+
+                    2. <>
+                     </>                                                                  
+
+        Pure Component  
+
+            Pure component are components that implements shouldComponentUpdate method by default i mean it make a shallow comparison with the curr props and states to prev props and states and only update if there is a diff but this is absent in normal component . in normal component when there is a change in any one of the props or the state the component will re render by default 
+        pure comp vs normal comp    
+ 
+            normal :
+                a regular comp wont implement shouldComponentUpdate by default instead it just return true for re render 
+
+
+            Pure :
+                implement shouldComponentUpdate  by default and perfom a shallow props and state comparison     
+                so here by avoiding unnecesssary rendering it will give u performance improvements
+                can create a pure compoment by extending the pure component class
+                ensure that all the chid of the pure components are pure to avoid unexpected behaviour 
+                Only works with class based components by extending the pureCOmponent class 
+                For functional based components we need to use the memo method in the react object 
+
+        what is shallow comparison 
+
+            a shallow comparison between 2 varibale or any thing eill return true only if they have the same value and are of same type (for primitivr data types)
+                eg : a="apple"
+                     b="apple"
+                     a shallow comparison with b will return true
+                     a=1 b="1"
+                     wont be same 
+                    
+            for complex datatypes like object and arrays 
+            shallow comparison will return true only if the a and b refernces to same object 
+                eg : a=[1,2,3]
+                    b=[1,2,3]
+                    c=a
+                    but a shallow comparison with b is not same
+                    but a shallowCOmparison with c will be true  
+
+        memo in react   
+            Inorder to make a function component pure we just need to wrap the component in react.memo() method it will automatically convert our component into pure.
+            memo is a higher order component because it takes one component as an argument and return a modified component  
+        
+        Refs in react
+            used to access dom nodes directly within react 
+
+            steps to attach a refs to elements 
+                 in class component we need to create a reference using React.creatRef() method and attach that ref to an element using the ref property of the elements and once it is attached we can access the element property with this ref 
+                 this ref has only a single property and that is it 'current' and the element will be attached at the current property of that ref
+                 and can be accessed using like say
+                 inputRef.current.textContent => to get the textContent of that element
+
+                 by attaching ref to an element we can access all the properties anf methods defined inside that element
+
+            by using reference we can access the child class properties and methods directly from the parent class without passsinf anything 
+                by just simply attaching ref to children in children class to that same children from the parent class
+
+            Forward ref in react ?
+
+                in functional component the parent component cant access the child properties anf methods just like what we did with class component so in that case we need to use forward referencing techniques to solve the issue
+
+                    done by using the method called react.forwardRef() and we need to define our child class compoent inside this higher order function and this higher order function can have 2 parameters 
+                        1.props
+                        2.ref from parent 
+                    in this way we can access the properties of the elements in that we are referencing and not the methods the forward ref wont expose the methods inside the child components and this forward ref wont allow to the access the clear() property in the input elememt but focus().
+
+        what is portals in react ?
+
+            react portals allow us to render a component or elements outside the normal dom heirarchy like everything inside react app comes under the app component and this app component is rendered into the dom through the div with id root and inorder to override this we use portal where the expected element will be rendered outside the app component and even outside the root div
+
+             React Portals let you render a component outside the main DOM hierarchy of your React app — while still keeping it connected to React's internal tree (so props, state, context still work).
+                    when to use portals 
+                        Modals / Dialogs
+                        Tooltips
+                        Dropdowns
+                        Toast notifications
+                        Portals are like normal child to react components can cause event bubling
+                steps to Create a portal 
+
+                    1.create a target div in html
+
+                    2.create a compomemt we want to render outside the normal root div and define it inside the reactDOM.createPortal() method and pass our component as a callback method in which it can have 2 paraneters 
+                        1.props 
+                        2.ref 
+                    and the second argument we pass to this methodis the elekemtn we want to insert into 
+                    so the 2nd argument will be 
+                    'document.getElementById("portal-root")'
+
+                    3.use this inside our app component 
+
+
+        Event bubling with portals 
+            it preserves event bubling through the react tree not the dom tree it means 
+            same the child event will be bubbled up to the parent component only if they both have the same event binded  
+            eventhought the new component is outside the app component the event will be bubbled upto the app component
+
+    Error handling methods or what is react error boundaries
+
+        a class component that implement either one or both of the lifecycle methods getDerivedStateFromError or componentDidCatch becomes an error boundary
+
+        the static method getDerivedStateFromError method is used tp render a fallback ui after an error is thrown and the componentDidCatch method is used to log the error information
+
+        by default the run time error will put or app into a broken state , react just simply unmount the whole react component tree 
+
+
+        currently when we have an error inm any one of the  component , even in the nested component inside app ,react will simply remove the entire app component
+
+        by using getDerivedStatefrom Error method we can just wrap the component so that the error in compoentn inside this wont result in crashing the entire app
+
+        the best practice is to wrap each child individually with the error handler 
+
+    ComponentDidCatch :
+        used to log error to the comsole  but in development react will by default log all the error into the console by deafault so logging through this method feels redundent 
+        this methods takes 2 arguments error and the info object 
+
+    imp: error boundary can be used to catch error in a component while rendering to main tree and not be able to catch error in the event handlers so for that we need to use try catch block
+
+    Higher order components (HOC)
+         higher components are used to share the functionality across diff components 
+         defnition is same as that of the higher order function 
+
+         the component that takes another compoent as their childern or props are not considering as higher order component 
+         higher order components are function that takes a component as input and returns a new component 
+
+      if we wrap multiple component using same hoc each wrapped component gets its own isolated state and props 
+      hoc allows us to reuse the code instead of repeating ourself 
+
+    passing down props in HOC and passing down parameters in hoc
+        we can pass parameter to the hoc at the time we wrap the component and can be accepted in that wrapper hoc function .
+
+        for props that are passed to the component inside the hoc will be removed since the inside the hoc er only we may dont specify that ptopss so to aviod this isue we just need to spread the remaining props inside the hocwrapper component to avoid unexpected error
+
+        And when passing props to a component inside the HOC, you need to spread {...this.props} when rendering the wrapped component to avoid losing them
+
+
+        
+    Render props pattern    
+        it refers to a technique for sharing code between react component using a props whose value is a function 
+        A render prop is a pattern in which a component accepts a function as a prop, and calls that function to determine what to render.
+
+        It’s a way to share logic between components using composition instead of inheritance or higher-order components.
+
+        the conventional name for that render props are " render ".
+        
+        eg :
+        <Home name={(isLoggedIn)=>isLoggedIn?"Welcome":"Please Login" }/>
+        here we are passing a function as a prop value so inorder to get the actaul value we need to call the function 
+
+            in that component 
+                <div>
+                {this.props.name(true)}
+                </div>
+                 
+        in render props instead of passing the whole component jsut like how we do in the hoc here we just need to call the function instead so this gives us more control over the component 
+        
