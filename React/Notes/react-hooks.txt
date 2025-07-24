@@ -51,4 +51,73 @@
             THE creation steps of usecontext hook  is the same as with the createCOntext api in class component
             but the difference is how we going to consume the usecontext in order to consume the data we just need to pass the created Context to the useContext hook it will return us the value we want to pass
 
+        UseReducer hook
+            it is used for state managment it is actually an alternative for useState hook 
+            the useState hook is built using useReducer hook 
+             
+
+        UseReducer Hook vs Array.prototype.reduce()
+            reduce funvtion is related to js 
+            it takes  a reducer funtion and initial value
+                syntax: array.reduce(reducerFun,initialVal)
+            and it return a single value based on the calculation
+
+
+            useReducer hook is related to react 
+
+            it takes up 2 arguments recuder funcrtion adn a initial state
+                syntax : reducer(currentState,action)
+            it returns a pair of values [newState , dispatch=> method]
+
+        it is more difficult than useState() 
+        useReducer is more useful for complex components and not actually good for small component 
+
+            it is more powerful that the useState hook , here one useReducer hook can monitor multple statws at the same time
+
+           the useReducer hook will takes 2 arguments one is a reducer function  which update the state variable . the second argument to this funvtions is an object(best practice) that represent the intial state of the state variable 
+           and
+            we need to specify that reducer function which updates the state variable based on the type we pass 
+            in the reducer function
+                    it again takes 2 arguments 
+                        1.prevState
+                        2.action : based on this we update the state and return
             
+            return type of useReducer hook 
+                it return 2 things 
+                    1.a variable representing the current state
+                    2.a function that upadtes the values of thee state and when we call thsi function we need to pass a value as the argument ans based on that values the reducer function will works 
+
+            eg :
+                const reducer = (prevState, action) => {
+                switch (action.type) {
+                    case ACTION.ADD:
+                    return { prevTask: [...prevState.prevTask, action.payload] };
+
+                    case ACTION.REMOVE:
+                    return {
+                        prevTask: prevState.prevTask.filter((item) => item != action.payload),
+                    };
+                }
+                };
+
+                const [tasks, dispatch] = useReducer(reducer, { prevTask: [], type: "" });
+
+
+
+        if we want to monitor or manage multiple states  variables that have the same state transitions it is good to use useReducer()  
+
+        we can combine useReducer with useContext to maintain a global state management in this case same instnce of the variable and methods will be shared across all the nested child components 
+
+
+        useReducer in fetching external data    
+                
+        
+                        
+        
+            
+         
+        
+
+         
+
+           

@@ -1,0 +1,62 @@
+* {
+    box-sizing: border-box;
+}
+
+button {
+    color: red;
+    font-size: 16px;
+    padding: 4px;
+
+    margin: 3px 0;
+}
+
+.add {
+    margin-right: 3px;
+    color: green;
+}
+
+.minus {
+    color: orange;
+}
+
+.minus,
+.add {
+    width: 50%;
+
+}
+
+.button-wrapper {
+    white-space: nowrap;
+}
+
+
+
+span.quan {
+    text-align: center;
+    display: inline-block;
+    margin-left: 15px;
+    color: orange;
+    font-size: 18px;
+    margin-bottom: 10px;
+
+}
+
+button.remove {
+    /* display: block; */
+    /* width: 100%; */
+    align-self: center;
+    height: fit-content;
+
+}
+
+p {
+    color: green;
+    font-size: 28px;
+    text-transform: capitalize;
+    margin: 5px 0;
+}
+
+li {
+    display: flex;
+    justify-content: space-between;
+}

@@ -37,7 +37,7 @@ const PassDataComp = () => {
       return alert("please complete the required fields");
     }
     passData({ id, title, body })
-      .then((res) => alert("Data send successfully"))
+      .then((_) => alert("Data send successfully"))
       .catch((e) => setError(e));
     setTitle("");
     setBody("");
