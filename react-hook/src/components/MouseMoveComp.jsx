@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import CounterComp from "./CounterComp";
 
 const MouseMoveComp = () => {
   const [mousePos, setMousePos] = useState({ x: 0, y: 0 });
@@ -9,9 +10,9 @@ const MouseMoveComp = () => {
     );
     return () => {
       console.log("component unmounting");
-      window.removeEventListener("mousemove",(e) =>
-      setMousePos({ x: e.clientX, y: e.clientY })
-    );
+      window.removeEventListener("mousemove", (e) =>
+        setMousePos({ x: e.clientX, y: e.clientY })
+      );
     };
   }, []);
 
@@ -20,6 +21,7 @@ const MouseMoveComp = () => {
       <h3>Mouse Positions : </h3>
       <span> x: {mousePos.x}</span>
       <span> y: {mousePos.y}</span>
+      <CounterComp />
     </div>
   );
 };

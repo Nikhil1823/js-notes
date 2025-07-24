@@ -1,7 +1,10 @@
 import React, { useEffect, useState } from "react";
+import MouseMoveComp from "./MouseMoveComp";
+const kazhap = React.createContext();
 
 const IntervalComp = () => {
   const [count, setCount] = useState(0);
+
   useEffect(() => {
     const timeInterval = setInterval(() => {
       setCount((prev) => prev + 1);
@@ -15,9 +18,12 @@ const IntervalComp = () => {
 
   return (
     <div>
-      <p>{count}</p>
+      <kazhap.Provider value={count}>
+        <MouseMoveComp />
+      </kazhap.Provider>
     </div>
   );
 };
 
 export default IntervalComp;
+export { kazhap };

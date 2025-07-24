@@ -2,7 +2,7 @@ import "./App.css";
 
 // import IntervalComp from "./components/IntervalComp";
 // import DataFetchComp from "./components/DataFetchComp";
-import PassDataComp from "./components/PassDataComp";
+// import PassDataComp from "./components/PassDataComp";
 
 // import {useState} from'react'
 function App() {
@@ -11,11 +11,12 @@ function App() {
     <>
       <h1>App Component</h1>
       {/* <DataFetchComp /> */}
-      <PassDataComp />
+      {/* <PassDataComp /> */}
+
       {/* <CounterComp /> */}
       {/* <button onClick={() => setVisibility(false)}>remove the event</button>
       {visibility && <MouseMoveComp />} */}
-      {/* <IntervalComp/> */}
+      {/* <IntervalComp /> */}
       {/* <ListComp/> */}
     </>
   );

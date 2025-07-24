@@ -41,5 +41,14 @@
             when we try ot invoke a function inside the useEffect try to define that function inside useEffect hooks in tat case it is much more readable and always keep an eye on how to cleanup a function  
 
     Imp :Do not use template literal inside jsx components 
-    
+
+
+        useContext in react functional components
+        normal method is what er learned in the beginer series 
+        useContext hook will help us to consume porps from any parent component more easily      
+
+        usage of use context api
+            THE creation steps of usecontext hook  is the same as with the createCOntext api in class component
+            but the difference is how we going to consume the usecontext in order to consume the data we just need to pass the created Context to the useContext hook it will return us the value we want to pass
+
             
