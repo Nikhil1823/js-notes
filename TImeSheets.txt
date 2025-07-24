@@ -1,0 +1,108 @@
+From June 10
+coed time 467 main
+from 11
+ct 522 min
+from 12
+ ct 386
+
+ from 13
+ ct 491
+
+from 16
+ct 441
+
+from 17
+ct 608 min
+
+from 18
+ct 551 
+from 19
+ct 508
+from 20
+ct 530
+from 21
+ct 587 min
+from 23
+ct 457
+from 24 code time had issue
+ct 372
+from 25 code time had issue ct(5hr 48)
+ct 378
+from 26
+ct  590
+from 27
+ct 582
+from 28
+ct 486
+ from 30
+ ct 439
+
+from jul 1
+ct 485
+from jul 2 code time not worked
+ct 1min
+from jul 3
+ct 477
+from jul 4
+ct 442
+from jul 5
+ct 342
+from jul 7 wakatime
+ct 487
+from jul 8
+ct 547
+from jul 9
+ct 583
+from jul 10
+ct 402 
+from jul 11
+ct 572
+from jul 14 half day leave
+ct 342
+from jul 15 code time had issue
+ct 237 
+from jul 16 wakatime from now on 
+ct 575
+from jul 17
+ct 632
+from jul 18 
+ct 636
+from jul 19
+ct 422
+from jul 21
+ct 546
+
+total 268.7 hrs 
+total days worked 32.5 (half day leave * 1)
+toatl NOC work hours 4*2 = 8hrs
+total daily avg is 8.268 hrs without addign the NOC work time
+
+with including noc work time
+daily avg code time :8.514hrs
+
+
+from week jun 9 to jun 15
+ct 2465 days 5
+jun 16 to jun 22 
+ct 3243 days 6
+from 23 to 29
+ct 2820
+from 30 to jul 6
+ ct 2095 days 5 one day not worked
+
+total hours 295.97 =17759 min
+toal days 33.5 days
+
+
+from jul 22
+ct 497
+total 18256
+code day 34.5
+
+
+from 23
+ ct 489
+ total 18736
+ total 312 hr 16 min
+ code days 35.5
+ 

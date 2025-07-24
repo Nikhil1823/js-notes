@@ -1,18 +1,21 @@
 import "./App.css";
-import CounterComp from "./components/CounterComp";
-import ListComp from "./components/ListComp";
-import MouseMoveComp from "./components/MouseMoveComp";
-import IntervalComp from "./components/IntervalComp";
-import {useState} from'react'
+
+// import IntervalComp from "./components/IntervalComp";
+// import DataFetchComp from "./components/DataFetchComp";
+import PassDataComp from "./components/PassDataComp";
+
+// import {useState} from'react'
 function App() {
-  const [visibility,setVisibility]=useState(true)
+  // const [visibility,setVisibility]=useState(true)
   return (
     <>
       <h1>App Component</h1>
+      {/* <DataFetchComp /> */}
+      <PassDataComp />
       {/* <CounterComp /> */}
       {/* <button onClick={() => setVisibility(false)}>remove the event</button>
       {visibility && <MouseMoveComp />} */}
-<IntervalComp/>
+      {/* <IntervalComp/> */}
       {/* <ListComp/> */}
     </>
   );

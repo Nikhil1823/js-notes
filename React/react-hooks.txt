@@ -21,4 +21,25 @@
         only call hooks at the top level 
 
 
-        appending content to an array using useState
+        useEffect() method in perfectly useful for doing side effects  in func components
+
+        it is close replacememt for componentDidMOunt,componentDidUpdate and componentWillUnmount
+        useEffect runs after render, and its behavior depends on the second argument
+        it can be cutomisable in 3 ways 
+            1.if we dont pass any thing or an empty array that useEfect hook eill render only omce that is when the compoenent will mount (initial)
+
+            2.if we pass an array of element as the second arguement it will called everytime that variable changes (initial + updates to that depednency variable)
+
+            3.if we dont pass anything it will call for each render(initial +update)
+             
+        useEffect with cleanup
+            it is better to cleanup the useEffect hooks 
+            by saying cleanup function , it is the funvtion that returns from the useEffect hook
+            the fucntion we pass to use effect can return a function and that function is called as the cleanup function in useEffect 
+
+        mistakes with useEffect ()
+            when we try ot invoke a function inside the useEffect try to define that function inside useEffect hooks in tat case it is much more readable and always keep an eye on how to cleanup a function  
+
+    Imp :Do not use template literal inside jsx components 
+    
+            
