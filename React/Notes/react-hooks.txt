@@ -122,6 +122,39 @@
              useReducer has global state so when we pass a useReducer variable or function to the nested compoennt we can use that same value to update our thing from other component just like what we are doiing using useContext hook it happen only because it has global scope 
 
              useState has local scope 
+
+
+        useRef Hook:
+            UseRef is a React Hook that gives you a mutable object which persists across re-renders. It's commonly used for two main purposes:
+
+                Accessing DOM elements directly
+
+                Storing values that don’t cause re-renders when changed
+
+            if we create counter using this hook the counter value will increase on each like our logic but it wont  be  visible in the dom since this once wont cause a re render so the acutal value wont be displayed 
+            this hook help us to directly access the dom nodes from the within a functional components 
+
+                hwo to use this useRef only have a attribute in it object which it retuen and it is called as current when we connect this hook to a dom this current will be pointing to that dome element and after that we can simply access that dome element properties throught this props 
+                    like this 
+                        for h1 tags or similar onw the text content can be extractes like this 
+
+                            h1Ref.current.textContext
+
+                            we can append this ref to any element by connecting it to the ref attribute of the element
+                    useRef is commonly used in places where we need to clear thw interval value set by setinterval api 
+
+
+
+
+
+
+
+
+
+
+
+
+
     Performance improvement hooks and methods :
         react.memo()  method 
             this is used to optmise the performance of the react components  like by default when one of the componet change react will re render all the component in the dom so this behaviour can causr a lot of performance issue so inorder to aviod this we can just simply wrap the component usinf react.memo () mthod so that so that it only re render only if ther is a change 
@@ -242,4 +275,6 @@
 
                             If changed: it re-runs the function and updates the stored value
 
+
+            
            
