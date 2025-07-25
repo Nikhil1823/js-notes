@@ -142,19 +142,14 @@
 
                             we can append this ref to any element by connecting it to the ref attribute of the element
                     useRef is commonly used in places where we need to clear thw interval value set by setinterval api 
+            Why useRef doesn't cause a re-render
+                React’s rendering system only tracks state and props.
 
+                useRef is just a regular object { current: value }.
 
+                When you change ref.current, React doesn’t know (or care), because it's not linked to the render cycle.
 
-
-
-
-
-
-
-
-
-
-
+        
     Performance improvement hooks and methods :
         react.memo()  method 
             this is used to optmise the performance of the react components  like by default when one of the componet change react will re render all the component in the dom so this behaviour can causr a lot of performance issue so inorder to aviod this we can just simply wrap the component usinf react.memo () mthod so that so that it only re render only if ther is a change 
@@ -277,4 +272,11 @@
 
 
             
-           
+    custom hooks in react :
+        it is basically a js funtion whosw name starts with 'use'
+        a custom hook can call other hooks if needed
+        custom hook are  just a function that have 'use' at the start of their name
+        it is really easy to create cusotm hooks and it helps to improve readability and modularity of the code 
+
+
+

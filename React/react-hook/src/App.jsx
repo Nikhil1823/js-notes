@@ -3,11 +3,13 @@ import "./App.css";
 // import CounterRefComp from "./components/CounterRefComp";
 // import TodoReducerComp from "./components/TodoReducerComp";
 // import ShoppingCartComp from "./components/useReducer practise/ShoppingCartComp";
-import CounterMemoComp from "./components/useMemo/CounterMemoComp";
+// import CounterMemoComp from "./components/useMemo/CounterMemoComp";
+// import TitleUpdateComp from "./components/custom Hooks/TitleUpdateComp";
+// import CounterUpdateComp from "./components/custom Hooks/CounterUpdateComp";
 // import IntervalComp from "./components/IntervalComp";
 // import DataFetchComp from "./components/DataFetchComp";
 // import PassDataComp from "./components/PassDataComp";
-
+import UserInputComp from "./components/custom Hooks/UserInputComp";
 // import {useState} from'react'
 function App() {
   // const [visibility,setVisibility]=useState(true)
@@ -25,7 +27,10 @@ function App() {
       {/* <IntervalComp /> */}
       {/* <ListComp/> */}
       {/* <SimpleComp /> */}
-      <CounterMemoComp />
+      {/* <CounterMemoComp /> */}
+      {/* <TitleUpdateComp />  */}
+      {/* <CounterUpdateComp /> */}
+      <UserInputComp />
     </>
   );
 }
