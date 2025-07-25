@@ -276,7 +276,31 @@
         it is basically a js funtion whosw name starts with 'use'
         a custom hook can call other hooks if needed
         custom hook are  just a function that have 'use' at the start of their name
-        it is really easy to create cusotm hooks and it helps to improve readability and modularity of the code 
 
 
 
+    some interview Questions
+
+        what are the significance of key in rendering a list of elements ?
+                    the key prop in react hwlp to trackw which element has added , which one is changed or which one is removed 
+                    it help react to efficiently update and re render only what has changed not the entire list 
+
+                problem of using array index as key 
+
+                    the UI may appear to work fine, but keys are about helping React optimize rendering and avoid future bugs, especially when:
+                    Items are added/removed/reordered.
+                    Components have internal state (e.g., inputs, animations).
+                    React needs to decide which DOM element to update vs. create from scratch.
+                    Without a unique key, React may:
+                    Reuse or misassociate elements incorrectly.
+                    Re-render unnecessary components.
+                    Cause issues like wrong text in inputs, flickering, or stale data.
+
+
+                    order of invocation of class life cycle methods,life cylc methods in class components 
+                redux is very important  
+                        redux is a state management library that help us to aviod the problem of prop drilling
+
+                        when to use redux and use context hook 
+                            if it is a large project redux with its developer tools will be really helpful
+                    

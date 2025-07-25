@@ -1,9 +1,19 @@
-import React from "react";
+import React, { useState } from "react";
 import useInput from "./hooks/useInput";
 const UserInputComp = () => {
   const [bindName, name, resetName] = useInput();
   const [bindAge, age, resetAge] = useInput();
-
+  const [fruits, setFruits] = useState([
+    "apple",
+    "orange",
+    "mango",
+    "bmw",
+    "audi",
+    "banaana",
+  ]);
+  const updateList = (i) => {
+    setFruits((prevFruit) => prevFruit.filter((_, index) => index != i));
+  };
   return (
     <div>
       <div className="input">
@@ -29,6 +39,12 @@ const UserInputComp = () => {
       >
         Clear
       </button>
+      <ul>
+        {console.log(fruits)}
+        {fruits.map((item, i) => {
+          return <li onClick={() => updateList(i)}>{item}</li>;
+        })}
+      </ul>
     </div>
   );
 };
