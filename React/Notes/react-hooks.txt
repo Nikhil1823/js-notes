@@ -144,7 +144,7 @@
 
                 And if useCallback has changing deps ([count]), then it's intentionally rebuilt every time that value changes.
         
-        useCallback hook
+       1. useCallback hook
 
              In functional components, functions are redefined on every render unless you memoize them with useCallback.
              useCallback is a hook that will return a memoized version of the callback function that only changes if one of the dependencies has changed
@@ -174,11 +174,72 @@
                     2.when the funvtion is used inside the useEfect or useMemo hook
 
             IMP : use useCallback hook only when we are passing that function to a memoized child component as a props and it will prevent the unnecessary re renders
+
+
+            if we need to cache the funtion we need to use the useCallback hook and when we need to cache the result we need to use the useMemo hook
+
+
+    2.useMemo() Hook
+            counter variables  
+
+            when to use memo hook 
+                    Imagine your React component includes a very expensive calculation — like one that takes 2 minutes to compute (e.g., large data processing or a heavy loop).
+
+                    Every time the component re-renders, React will recreate everything inside the component, including that slow calculation, unless you prevent it.
+
+                    If this expensive calculation is not memoized, the entire component — and possibly other parts of your app — may feel slow or laggy.
+
+                    ❌ useCallback won't help here
+                    useCallback only memoizes functions.
+
+                    It’s only useful when you're passing functions to memoized child components (React.memo) to prevent unnecessary re-renders.
+
+                    But it does NOT cache the result of a function call. It only memoizes the function reference.
+
+                    ✅ useMemo is what you need
+                    useMemo memoizes the result of a computation.
+
+                    So if you wrap your expensive logic in useMemo, React caches the result, and only re-executes the computation if the dependencies change.
+
+                    This avoids unnecessary recalculations on every re-render, improving performance.
+
+                    ✨ Summary
+                    Use useCallback when you're passing a function to memoized children.
+
+                    Use useMemo when you're caching the result of a heavy or slow calculation.
+
+                    Both are optimization tools, but they solve different problems.
         
             
          
         
+                     <div>
+                        <span>{count1}</span> <span>{isEven() ? "Even" : "Odd"}</span>
+                        <br />
+                        <button onClick={() => setCount1((prev) => prev + 1)}>Increase</button>
+                        <p>{count2}</p>
+                        <button onClick={() => setCount2((prev) => prev + 1)}>Increase</button>
+                     </div>
+                     here eventhough the button 2 only updates the conunt 2 it will still wait fir that time it it beacause everytime this state count 2 changes the whole component re render and that time the even() funcrion inside the return statement also get called and at it recalculate its value everytime and that is the one that causes the issue so if we memo that function it doent need ot recall it since its dependecy variable (count1) wont changed when i click the count2 button 
+                        It will only re-run the function if any of the dependencies in the array change.
+                        if i pass the empty array as the dependecy array then the funciton will be called once
 
-         
+                    Here's how React internally tracks things:
+
+                        On first render:
+
+                            React runs the function inside useMemo
+
+                            Stores the returned value
+
+                            Tracks the dependencies
+
+                        On subsequent renders:
+
+                            React compares the current dependencies to the previous ones
+
+                            If no change: it skips running the function and returns the stored result
+
+                            If changed: it re-runs the function and updates the stored value
 
            

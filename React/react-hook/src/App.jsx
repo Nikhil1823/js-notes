@@ -1,9 +1,9 @@
 import "./App.css";
-import SimpleComp from "./components/useCallBack/SimpleComp";
+// import SimpleComp from "./components/useCallBack/SimpleComp";
 // import CounterRefComp from "./components/CounterRefComp";
 // import TodoReducerComp from "./components/TodoReducerComp";
 // import ShoppingCartComp from "./components/useReducer practise/ShoppingCartComp";
-
+import CounterMemoComp from "./components/useMemo/CounterMemoComp";
 // import IntervalComp from "./components/IntervalComp";
 // import DataFetchComp from "./components/DataFetchComp";
 // import PassDataComp from "./components/PassDataComp";
@@ -24,7 +24,8 @@ function App() {
       {visibility && <MouseMoveComp />} */}
       {/* <IntervalComp /> */}
       {/* <ListComp/> */}
-      <SimpleComp />
+      {/* <SimpleComp /> */}
+      <CounterMemoComp />
     </>
   );
 }
