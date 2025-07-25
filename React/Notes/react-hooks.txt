@@ -109,10 +109,71 @@
         we can combine useReducer with useContext to maintain a global state management in this case same instnce of the variable and methods will be shared across all the nested child components 
 
 
-        useReducer in fetching external data    
-                
         
-                        
+        useReducer vs useState 
+             for primitive dara types useState is better and for non primitive datatype like object and all those things useReducer is used 
+
+             based on number ofstate transitions choose one wisely like for a state variable with only one or two states using useState is good but for statw variable with more number of states it is good to use useReducer hook
+
+             useReducer is used all the state variable are realted like for an api call scenario we need to updatw 3 variable like data,isLoading,hasError  and for that we need to manage 3 state variables using useState since they are related we can use a single useReducer hook to combine all thesee variables  
+
+             useReducer is more readable and maintainable at complex datas
+
+             useReducer has global state so when we pass a useReducer variable or function to the nested compoennt we can use that same value to update our thing from other component just like what we are doiing using useContext hook it happen only because it has global scope 
+
+             useState has local scope 
+    Performance improvement hooks and methods :
+        react.memo()  method 
+            this is used to optmise the performance of the react components  like by default when one of the componet change react will re render all the component in the dom so this behaviour can causr a lot of performance issue so inorder to aviod this we can just simply wrap the component usinf react.memo () mthod so that so that it only re render only if ther is a change 
+
+            by default whenever theer is a change in anyone of the chid component react will render whole the compomnent again and that cause alot of performance issue so to cope up with this we can use react.memo() to take care of this
+
+
+            react.memo() is a higher compoennt that prevent  the functional  compoentn from re rendering if it state or props dont change
+
+
+            If the parent re-renders, then all its child components also re-render by default, unless memoized.
+
+            If a child component uses React.memo, it will still re-render if its props change by reference, including functions (which are new every render unless memoized)
+                React memoization (React.memo, useCallback) is based on reference equality, not deep comparison
+                    const a = () => {};
+                    const b = () => {};
+                    a === b; // false
+
+                Every render creates a new function unless you wrap it with useCallback.
+
+                And if useCallback has changing deps ([count]), then it's intentionally rebuilt every time that value changes.
+        
+        useCallback hook
+
+             In functional components, functions are redefined on every render unless you memoize them with useCallback.
+             useCallback is a hook that will return a memoized version of the callback function that only changes if one of the dependencies has changed
+
+            it is useful when passing callbacks to optimized child component that rely on reference equality to prevent unnecessary renders 
+
+            what is the diff between 
+                 const increment = useCallback(() => {
+                        setCount(count + 1);
+                    }, [count]);  here the current value of the 
+                     and 
+
+                 const increment = useCallback(() => {
+                        setCount((prev) => prev + 1);
+                    }, []);
+
+                    the diff is the first callback method depends on the count varibale so everytime that state variable chanegs the the fundtion is re created causing the component that depend on this funvtion as propt ot re render which is not actually what we wanted 
+                    so here comes the secomd one in that case the useCallback is not depended on any variable os it just create the funtion only at the start and removal of the component so it is better for performance 
+
+
+
+            if useCallback hook can improve performance then why are we not using it everywhere 
+
+                it adds memory and cpu cost to memoize
+                it only work when 
+                    1.the funtion is passed as a porp to a memoized chil (k=just like here) 
+                    2.when the funvtion is used inside the useEfect or useMemo hook
+
+            IMP : use useCallback hook only when we are passing that function to a memoized child component as a props and it will prevent the unnecessary re renders
         
             
          
