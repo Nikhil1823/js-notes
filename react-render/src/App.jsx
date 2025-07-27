@@ -1,10 +1,10 @@
-import LoginComp from "./component/LoginComp";
+// import LoginComp from "./component/LoginComp";
 import "./App.css";
-
+import TimerComp from "./component/TimerComp";
 function App() {
   return (
     <>
-      <LoginComp />
+      <TimerComp />
     </>
   );
 }
