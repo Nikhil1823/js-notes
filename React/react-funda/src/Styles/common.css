@@ -1,0 +1,16 @@
+li{
+    color: red;
+    list-style-type: none;
+    border: 1px solid yellowgreen;
+    border-radius: 12px;
+    padding: 6px;
+    white-space: nowrap;
+    text-wrap: wrap;
+    
+}
+ul{
+    margin: 10px;
+}
+button{
+    margin: 20px 0;
+}
