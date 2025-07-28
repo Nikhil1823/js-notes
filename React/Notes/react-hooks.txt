@@ -1,0 +1,306 @@
+    what is react hooks ?
+        these are new feat added to react to amke the functional components stateful 
+        it allow to use react feat without writting a class 
+        hooks only works inside a functions
+
+    why hooks ?
+        to reduce the reliance on this keywords
+
+        to handle sideeffects => useEffect hook will run on component mount,component unmount and component update so this single hook does the job of the 3 lifecyle methods (componentDidUpdate,compoentDidMount,componentWillUnmount)
+        
+        makes the code cleaner and more managable
+
+        reuse logic easily 
+
+        easier to test
+
+    Rules for Hooks 
+        
+        dont call hooks inside loops , conditions and in the nested functions 
+        always call hooks from react functional component and not just regular functions in js 
+        only call hooks at the top level 
+
+
+        useEffect() method in perfectly useful for doing side effects  in func components
+
+        it is close replacememt for componentDidMOunt,componentDidUpdate and componentWillUnmount
+        useEffect runs after render, and its behavior depends on the second argument
+        it can be cutomisable in 3 ways 
+            1.if we dont pass any thing or an empty array that useEfect hook eill render only omce that is when the compoenent will mount (initial)
+
+            2.if we pass an array of element as the second arguement it will called everytime that variable changes (initial + updates to that depednency variable)
+
+            3.if we dont pass anything it will call for each render(initial +update)
+             
+        useEffect with cleanup
+            it is better to cleanup the useEffect hooks 
+            by saying cleanup function , it is the funvtion that returns from the useEffect hook
+            the fucntion we pass to use effect can return a function and that function is called as the cleanup function in useEffect 
+
+        mistakes with useEffect ()
+            when we try ot invoke a function inside the useEffect try to define that function inside useEffect hooks in tat case it is much more readable and always keep an eye on how to cleanup a function  
+
+    Imp :Do not use template literal inside jsx components 
+
+
+        useContext in react functional components
+        normal method is what er learned in the beginer series 
+        useContext hook will help us to consume porps from any parent component more easily      
+
+        usage of use context api
+            THE creation steps of usecontext hook  is the same as with the createCOntext api in class component
+            but the difference is how we going to consume the usecontext in order to consume the data we just need to pass the created Context to the useContext hook it will return us the value we want to pass
+
+        UseReducer hook
+            it is used for state managment it is actually an alternative for useState hook 
+            the useState hook is built using useReducer hook 
+             
+
+        UseReducer Hook vs Array.prototype.reduce()
+            reduce funvtion is related to js 
+            it takes  a reducer funtion and initial value
+                syntax: array.reduce(reducerFun,initialVal)
+            and it return a single value based on the calculation
+
+
+            useReducer hook is related to react 
+
+            it takes up 2 arguments recuder funcrtion adn a initial state
+                syntax : reducer(currentState,action)
+            it returns a pair of values [newState , dispatch=> method]
+
+        it is more difficult than useState() 
+        useReducer is more useful for complex components and not actually good for small component 
+
+            it is more powerful that the useState hook , here one useReducer hook can monitor multple statws at the same time
+
+           the useReducer hook will takes 2 arguments one is a reducer function  which update the state variable . the second argument to this funvtions is an object(best practice) that represent the intial state of the state variable 
+           and
+            we need to specify that reducer function which updates the state variable based on the type we pass 
+            in the reducer function
+                    it again takes 2 arguments 
+                        1.prevState
+                        2.action : based on this we update the state and return
+            
+            return type of useReducer hook 
+                it return 2 things 
+                    1.a variable representing the current state
+                    2.a function that upadtes the values of thee state and when we call thsi function we need to pass a value as the argument ans based on that values the reducer function will works 
+
+            eg :
+                const reducer = (prevState, action) => {
+                switch (action.type) {
+                    case ACTION.ADD:
+                    return { prevTask: [...prevState.prevTask, action.payload] };
+
+                    case ACTION.REMOVE:
+                    return {
+                        prevTask: prevState.prevTask.filter((item) => item != action.payload),
+                    };
+                }
+                };
+
+                const [tasks, dispatch] = useReducer(reducer, { prevTask: [], type: "" });
+
+
+
+        if we want to monitor or manage multiple states  variables that have the same state transitions it is good to use useReducer()  
+
+        we can combine useReducer with useContext to maintain a global state management in this case same instnce of the variable and methods will be shared across all the nested child components 
+
+
+        
+        useReducer vs useState 
+             for primitive dara types useState is better and for non primitive datatype like object and all those things useReducer is used 
+
+             based on number ofstate transitions choose one wisely like for a state variable with only one or two states using useState is good but for statw variable with more number of states it is good to use useReducer hook
+
+             useReducer is used all the state variable are realted like for an api call scenario we need to updatw 3 variable like data,isLoading,hasError  and for that we need to manage 3 state variables using useState since they are related we can use a single useReducer hook to combine all thesee variables  
+
+             useReducer is more readable and maintainable at complex datas
+
+             useReducer has global state so when we pass a useReducer variable or function to the nested compoennt we can use that same value to update our thing from other component just like what we are doiing using useContext hook it happen only because it has global scope 
+
+             useState has local scope 
+
+
+        useRef Hook:
+            UseRef is a React Hook that gives you a mutable object which persists across re-renders. It's commonly used for two main purposes:
+
+                Accessing DOM elements directly
+
+                Storing values that don’t cause re-renders when changed
+
+            if we create counter using this hook the counter value will increase on each like our logic but it wont  be  visible in the dom since this once wont cause a re render so the acutal value wont be displayed 
+            this hook help us to directly access the dom nodes from the within a functional components 
+
+                hwo to use this useRef only have a attribute in it object which it retuen and it is called as current when we connect this hook to a dom this current will be pointing to that dome element and after that we can simply access that dome element properties throught this props 
+                    like this 
+                        for h1 tags or similar onw the text content can be extractes like this 
+
+                            h1Ref.current.textContext
+
+                            we can append this ref to any element by connecting it to the ref attribute of the element
+                    useRef is commonly used in places where we need to clear thw interval value set by setinterval api 
+            Why useRef doesn't cause a re-render
+                React’s rendering system only tracks state and props.
+
+                useRef is just a regular object { current: value }.
+
+                When you change ref.current, React doesn’t know (or care), because it's not linked to the render cycle.
+
+        
+    Performance improvement hooks and methods :
+        react.memo()  method 
+            this is used to optmise the performance of the react components  like by default when one of the componet change react will re render all the component in the dom so this behaviour can causr a lot of performance issue so inorder to aviod this we can just simply wrap the component usinf react.memo () mthod so that so that it only re render only if ther is a change 
+
+            by default whenever theer is a change in anyone of the chid component react will render whole the compomnent again and that cause alot of performance issue so to cope up with this we can use react.memo() to take care of this
+
+
+            react.memo() is a higher compoennt that prevent  the functional  compoentn from re rendering if it state or props dont change
+
+
+            If the parent re-renders, then all its child components also re-render by default, unless memoized.
+
+            If a child component uses React.memo, it will still re-render if its props change by reference, including functions (which are new every render unless memoized)
+                React memoization (React.memo, useCallback) is based on reference equality, not deep comparison
+                    const a = () => {};
+                    const b = () => {};
+                    a === b; // false
+
+                Every render creates a new function unless you wrap it with useCallback.
+
+                And if useCallback has changing deps ([count]), then it's intentionally rebuilt every time that value changes.
+        
+       1. useCallback hook
+
+             In functional components, functions are redefined on every render unless you memoize them with useCallback.
+             useCallback is a hook that will return a memoized version of the callback function that only changes if one of the dependencies has changed
+
+            it is useful when passing callbacks to optimized child component that rely on reference equality to prevent unnecessary renders 
+
+            what is the diff between 
+                 const increment = useCallback(() => {
+                        setCount(count + 1);
+                    }, [count]);  here the current value of the 
+                     and 
+
+                 const increment = useCallback(() => {
+                        setCount((prev) => prev + 1);
+                    }, []);
+
+                    the diff is the first callback method depends on the count varibale so everytime that state variable chanegs the the fundtion is re created causing the component that depend on this funvtion as propt ot re render which is not actually what we wanted 
+                    so here comes the secomd one in that case the useCallback is not depended on any variable os it just create the funtion only at the start and removal of the component so it is better for performance 
+
+
+
+            if useCallback hook can improve performance then why are we not using it everywhere 
+
+                it adds memory and cpu cost to memoize
+                it only work when 
+                    1.the funtion is passed as a porp to a memoized chil (k=just like here) 
+                    2.when the funvtion is used inside the useEfect or useMemo hook
+
+            IMP : use useCallback hook only when we are passing that function to a memoized child component as a props and it will prevent the unnecessary re renders
+
+
+            if we need to cache the funtion we need to use the useCallback hook and when we need to cache the result we need to use the useMemo hook
+
+
+    2.useMemo() Hook
+            counter variables  
+
+            when to use memo hook 
+                    Imagine your React component includes a very expensive calculation — like one that takes 2 minutes to compute (e.g., large data processing or a heavy loop).
+
+                    Every time the component re-renders, React will recreate everything inside the component, including that slow calculation, unless you prevent it.
+
+                    If this expensive calculation is not memoized, the entire component — and possibly other parts of your app — may feel slow or laggy.
+
+                    ❌ useCallback won't help here
+                    useCallback only memoizes functions.
+
+                    It’s only useful when you're passing functions to memoized child components (React.memo) to prevent unnecessary re-renders.
+
+                    But it does NOT cache the result of a function call. It only memoizes the function reference.
+
+                    ✅ useMemo is what you need
+                    useMemo memoizes the result of a computation.
+
+                    So if you wrap your expensive logic in useMemo, React caches the result, and only re-executes the computation if the dependencies change.
+
+                    This avoids unnecessary recalculations on every re-render, improving performance.
+
+                    ✨ Summary
+                    Use useCallback when you're passing a function to memoized children.
+
+                    Use useMemo when you're caching the result of a heavy or slow calculation.
+
+                    Both are optimization tools, but they solve different problems.
+        
+            
+         
+        
+                     <div>
+                        <span>{count1}</span> <span>{isEven() ? "Even" : "Odd"}</span>
+                        <br />
+                        <button onClick={() => setCount1((prev) => prev + 1)}>Increase</button>
+                        <p>{count2}</p>
+                        <button onClick={() => setCount2((prev) => prev + 1)}>Increase</button>
+                     </div>
+                     here eventhough the button 2 only updates the conunt 2 it will still wait fir that time it it beacause everytime this state count 2 changes the whole component re render and that time the even() funcrion inside the return statement also get called and at it recalculate its value everytime and that is the one that causes the issue so if we memo that function it doent need ot recall it since its dependecy variable (count1) wont changed when i click the count2 button 
+                        It will only re-run the function if any of the dependencies in the array change.
+                        if i pass the empty array as the dependecy array then the funciton will be called once
+
+                    Here's how React internally tracks things:
+
+                        On first render:
+
+                            React runs the function inside useMemo
+
+                            Stores the returned value
+
+                            Tracks the dependencies
+
+                        On subsequent renders:
+
+                            React compares the current dependencies to the previous ones
+
+                            If no change: it skips running the function and returns the stored result
+
+                            If changed: it re-runs the function and updates the stored value
+
+
+            
+    custom hooks in react :
+        it is basically a js funtion whosw name starts with 'use'
+        a custom hook can call other hooks if needed
+        custom hook are  just a function that have 'use' at the start of their name
+
+
+
+    some interview Questions
+
+        what are the significance of key in rendering a list of elements ?
+                    the key prop in react hwlp to trackw which element has added , which one is changed or which one is removed 
+                    it help react to efficiently update and re render only what has changed not the entire list 
+
+                problem of using array index as key 
+
+                    the UI may appear to work fine, but keys are about helping React optimize rendering and avoid future bugs, especially when:
+                    Items are added/removed/reordered.
+                    Components have internal state (e.g., inputs, animations).
+                    React needs to decide which DOM element to update vs. create from scratch.
+                    Without a unique key, React may:
+                    Reuse or misassociate elements incorrectly.
+                    Re-render unnecessary components.
+                    Cause issues like wrong text in inputs, flickering, or stale data.
+
+
+                    order of invocation of class life cycle methods,life cylc methods in class components 
+                redux is very important  
+                        redux is a state management library that help us to aviod the problem of prop drilling
+
+                        when to use redux and use context hook 
+                            if it is a large project redux with its developer tools will be really helpful
+                    
