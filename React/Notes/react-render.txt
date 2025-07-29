@@ -222,4 +222,7 @@ React render mainly happens in 2 phasses
 
             2.when we are passing object or function as the props 
 
-        
+
+        further optimisation using useCallback Hook ()
+                in order to solve the 2nd issue of the memo method we can use useMemo Hook(for objects) and useCallback hooks (for functions).
+           

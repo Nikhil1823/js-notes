@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useMemo, useState } from "react";
 import Child from "./Child";
 
 const Parent = () => {
@@ -19,7 +19,13 @@ const Parent = () => {
       <button onClick={() => setCount(0)}>reset </button>
       <button onClick={() => setCount(5)}>go to 5 </button>
 
-      <Child name={{ count: childValue }}></Child>
+      <Child
+        name={useMemo(() => {
+          return {
+            count: childValue,
+          };
+        }, [childValue])}
+      ></Child>
     </div>
   );
 };
