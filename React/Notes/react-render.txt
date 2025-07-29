@@ -132,3 +132,28 @@ React render mainly happens in 2 phasses
             case "increment":
                 return { count: state.count + 1 };
 
+
+
+    Parent and child component in react :
+        in react if a parent component is rendered all of it child componnet are recursively rendered also.
+
+            normally whenever the parent component render the child compoinnet also render eventhough there is no change 
+            here the child compomemt went throught the render phase but not the commit phase this is called 
+            "unnecesssary render "
+
+            but a change in child component wont cause the parent components to re render 
+
+            2 cases of re render in child-parent componnet
+
+                1.if the state or the prop value of the parent componnet changes 
+                    the child component also re renders 
+                2.if the state changes but their values are the same 
+                    a. same value after inital render ? 
+                        in this case the both that child and parent componnet wont re render 
+
+                    b.same value after re render ? 
+                        in this case the parent render but not update the dom anf the child wont be updated or rendered
+
+
+
+            
