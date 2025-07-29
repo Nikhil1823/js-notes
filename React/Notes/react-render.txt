@@ -53,7 +53,6 @@ React render mainly happens in 2 phasses
 
         the commit phase is usually very fast but rendering can be slow 
 
-
     Rendering behaviour of useState hook 
 
         whwnever the state of the component changes as a result of the useState hook 
@@ -118,7 +117,6 @@ React render mainly happens in 2 phasses
                         setPerson((prev) => [...prev, "Clark", "Kent"]);
         Imp : the array refernce and the object refernce wont changes int hese situations thats why it is not re rendering
 
-
         This issue also persit in the useReducer hook also 
 
             like if we update the object varible and return it instead of cretinga a new one react will thing the both are the same because of the same refernce  and skips the updates 
@@ -131,7 +129,6 @@ React render mainly happens in 2 phasses
 
             case "increment":
                 return { count: state.count + 1 };
-
 
 
     Parent and child component in react :
@@ -156,4 +153,73 @@ React render mainly happens in 2 phasses
 
 
 
-            
+    🧠 Optimization to Avoid Unnecessary Re-renders in Child Components
+        How you import or structure components has no impact on rendering behavior in React. What truly matters is how React treats references and props during re-renders.
+
+    🔄 Understanding React Rendering
+        A component can change its own state, but it cannot change its props.
+
+        When a child component is passed as a stable prop (with the same reference each time), React may optimize and skip re-rendering.
+
+        Wrapping a child component with React.memo() improves performance by memoizing it.
+
+        It performs a shallow comparison of previous and current props.
+
+        Re-rendering only happens if props have changed.
+
+    ⚙️ When to Use What?
+        1️⃣ Same Element Reference Strategy
+            Use this when:
+
+                The parent re-renders due to its own state change.
+
+                The child does not depend on that changing state.
+
+                You maintain the same reference to the child component.
+
+                ❌ This approach won’t work if the parent re-renders due to a change in its props, as React will re-evaluate everything regardless of child stability.
+
+        2️⃣ React Memo Strategy
+            Use React.memo() when:
+
+                The child component is re-rendering unnecessarily due to parent’s state changes.
+
+                The child receives props that don’t actually change across renders.
+
+                ⚠️ Keep in mind:
+
+                React.memo() uses memory based on the number of props (O(propCount)).
+
+                It's more flexible than the first strategy because it allows prop-passing while still controlling re-renders.
+
+        🧩 Special Case: children Prop and Memoization
+                    If you pass complex JSX or HTML elements as children, memoization won’t prevent re-renders, as these are treated as new references each time.
+
+                    If you pass plain text as children, React handles it as a primitive prop, and memoization works effectively.
+
+    ✅ Summary
+        Prefer stable references for child components where possible.
+
+        Use React.memo() when child components receive props but shouldn’t re-render unnecessarily.
+
+        Avoid passing freshly created JSX in props or children if re-render avoidance is a goal.
+
+        Plain text children are safe and don’t break memoization.
+
+        Usage of memo is not a good option if we are considering a impure component (
+                        Depends on randomness (Math.random(), Date.now(), etc.)
+
+                        Relies on external state or side effects
+
+                        Has non-deterministic output (e.g., renders differently even with same props)
+
+                        Depends on props deeply (like objects/functions that change on every render) 
+                        )
+
+        Places where React.memo() cant help 
+
+            1.In the place of impure Components
+
+            2.when we are passing object or function as the props 
+
+        
