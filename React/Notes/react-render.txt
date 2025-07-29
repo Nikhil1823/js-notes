@@ -1,0 +1,134 @@
+react render meaning converting our jsx componnet and injecting them in to the dom tree 
+
+React render mainly happens in 2 phasses 
+    (behaviour for initial render )
+    1.render phasse
+    2.commit phase 
+
+        1.render phase 
+            in the intial phase react will traverse from the root node to the child component and cinvert each component jsx into react elememt and these react element are nothing but js objects that represesnt the ui of the component once all the component are converted into react elements then it is passsed down to the commit phase 
+            During this phase, React does not touch the real DOM.
+
+            This is a "pure" phase – React just builds a virtual description of the UI.
+        
+        2.commit phase 
+            in this it juse simply inject all the react component and it passed doen to this phase into the dom using react dom package 
+            This involves calling ReactDOM.createRoot().render() (initially), and React injects the actual DOM nodes
+            Side effects (like useEffect) are run in this phase.
+
+
+    rerender behaviour of react component :( re rendering happens when ther is a update in the state or props of the component or if any of the nestes componnets changes or if the value inside the useContect hook changes)
+
+        1.render phase : 
+                in this phase react wi;; first look to all the component which are flagged as needing updates starting from the root 
+
+                a component can flag themself for update by simply caling useStatw setter function or the useReducer dispatch function 
+
+                for each flagges componnet react will create the react elememt by using the react.createElement 
+
+                so once the react elememt convertion is done for all the flagged component anf the comoponent affected by this flagged componnet then react will compare the previous render elememt to the newly created component 
+
+
+                A List is made up marking all the new changes and diff and pass this to the commit phase to update the dom 
+
+        2.commit phase 
+                in this phase the changes are just injected to the dom using react dom package
+                This phase is generally fast, because it’s just updating the browser’s DOM API.
+
+    Render means building a virtual dom and commit means updating the real dom 
+
+    virtual dom : in memory representation of the ui 
+
+    reconciliation : it is a react process where it update the dom based on the diff 
+
+    Render vs updating
+
+        a component can be render without any visible chanegs in the dom . like a compomet can be render again but since there is no visible change in the dom it may not be updating the dom sine ther is no diff in the previous anf the current renders 
+
+        update(kinda means like commit phase ) means rendering the changed  values of  component or state in to the dom 
+
+        it is always rendering is the slow phase and not the dom updates
+
+        react batch all the upadtes together anf apply at once for better performance update
+
+        the commit phase is usually very fast but rendering can be slow 
+
+
+    Rendering behaviour of useState hook 
+
+        whwnever the state of the component changes as a result of the useState hook 
+        the react will flag this componnet and it convert all the market components into jsx elements and pass it to the commit phase and in this phase it checks for the react concilation and updatw the dom if necessary
+
+        if there is a state value is updated but it is same with the original or the previous value then the react will aviod that update and just render only and not cause a dom update 
+
+        more detailed expl : always the useState methods needs the a new refernce as the return of the updater function and when the component is marked to update react eill first check the return value for the useState hook if it returns the same refernece them the react eill simply ignore 
+            that ignorance happens in 2 types 
+                    1. if the component is just had the inital render alone then react simply ignore this and wont re render 
+
+                    2.if the component already render multiple times  before then the react simply go for the usual rendering step the new created jsx element will be discarded at the commit phase
+
+                    that is ::
+                             same value after inital render ? componet will not re-render
+
+                             same value after re renders ? react will render that specific componnet one more time and then bails out from any subsequent renders 
+                            
+    rendering in useReducer hook
+        the normal re-rendering with changes  is same as that of the previosu ones 
+        useReducer will rerender even thought the new value are the sam with the previous ones
+        the dispatch method re renders eventhoug there is no change in the state .
+
+        dispatch always cause a render phase 
+
+        react skips the commit phase  if    
+                the new state is strictly equal to the previous state
+                the new virtual dom matches previous virtual dom 
+
+        so even if state doesnt changes your componnet may still re render and it will be removed from the updating thr dom by the commit phase 
+
+
+    issues with re render and useState  :
+        Objects :
+                for object as the state and when we update the object using useState hook the actual value of the object will change but it wont cause a re render it it because react uses the is comparison operator and since the updating object is the same react will simply neglect the update . in that the newly updateded state wont reflect in the dom
+
+            eg : const [name,setName]=useState({lname:'Brice',lname:'Mathew'})
+
+
+            handlCLick=()=>{
+                name.lname="Wayne"
+                setName(name)
+            }
+                even thought the logic is correct this cahnge wont be happwnning in the dom eventhouht the value of the name is changed but it wont trigger a re render it id becuse we are trying to mutate a object and after updating the value when react check the  refernce previous value both of them will appears the same so it aviod the rerender
+
+                so to aviod these mistakes use updater function instead of manual updates  
+                but using a updager function like this will  create extra renders even though the value are same because it create new arrays or object so there is always a refernce change
+                    setName((prev) => ({ ...prev, lname: "Wayne" }));
+
+            Arrays :
+                Similar thing happens with arrays also even though we have updated the value of the name variable or the use state variable and pass it to the setter funtion the refernce that is returned by the useState is the same so it skips the re render 
+
+
+                so solve the issue use updater function instead 
+
+                i mean instead of doing like this 
+                        persons.push("Clark");
+                        persons.push("Kent");
+                        setPerson(persons);
+
+                use this 
+                        setPerson((prev) => [...prev, "Clark", "Kent"]);
+        Imp : the array refernce and the object refernce wont changes int hese situations thats why it is not re rendering
+
+
+        This issue also persit in the useReducer hook also 
+
+            like if we update the object varible and return it instead of cretinga a new one react will thing the both are the same because of the same refernce  and skips the updates 
+
+            case "increment":
+                state.count++;
+                return state;
+
+            no  updates will happens here so avoid this remember to return a new object instead 
+
+            case "increment":
+                return { count: state.count + 1 };
+

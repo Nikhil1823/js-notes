@@ -1,5 +1,6 @@
    how to create a react app
         npx vite@latest react-app-name
+        or npm create react-app
         cd react-app-name
         npm i 
         npm run dev
@@ -11,7 +12,7 @@
         2.stateful class compoennts
             A stateful class component is a component that:
 
-            Is written as a class
+            Is written as a class or functions with hooks
 
             Extends React.Component
 
@@ -50,7 +51,7 @@
         in named exports we just exactly specify the name of the component
 
 
-    notes : modul.exports={} is available only in common js and es moduole syntax
+    notes : modul.exports={} is available only in common js and not in es moduole syntax
     and react follows es module syntax
     
     whats is jsx ?
