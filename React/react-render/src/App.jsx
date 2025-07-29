@@ -9,12 +9,14 @@ import "./App.css";
 // import UseReducerComp from "./UseReducer/UseReducerComp";
 // import UseStateComp from "./UseState/UseStateComp";
 // import ChildOne from "./Optimization/ChildOne";
-import Parent from "./Incorrect Optimization/Parent";
+// import Parent from "./Incorrect Optimization/Parent";
+import ContextParent from "./UseContext and UseMemo/ContextParent";
 // import Child from "./Incorrect Optimization/Child";
 function App() {
   return (
     <>
-      <Parent />
+      {/* <Parent /> */}
+      <ContextParent />
       {/* <Child />
       </Parent> */}
     </>

@@ -1,5 +1,12 @@
 react render meaning converting our jsx componnet and injecting them in to the dom tree 
 
+    when are react re-render it components 
+
+        1.if its state or props changes 
+        2.if its parent renders and the component is not memoized
+        3.if the content inside the useContext changes
+        4.When Forced Manually , when parent re-renderes because of it state chsnge but child also changes because it is not memoized
+
 React render mainly happens in 2 phasses 
     (behaviour for initial render )
     1.render phasse
@@ -218,11 +225,17 @@ React render mainly happens in 2 phasses
 
         Places where React.memo() cant help 
 
-            1.In the place of impure Components
+            1.In the place of impure Components or component that takes child componnets 
 
             2.when we are passing object or function as the props 
 
 
         further optimisation using useCallback Hook ()
                 in order to solve the 2nd issue of the memo method we can use useMemo Hook(for objects) and useCallback hooks (for functions).
-           
+        
+
+        how the context api causes the re-renders ?
+            whenever we create a context inside a component the react will mark that componnet as flaged or something that needed a re-render . and since we pass a value at the context provider react will goes down the react tree to mark the child components as flagges also and does the usual routine of rendering the marked componnents
+
+            and this is how context api trigger re-renders
+                                                                                
