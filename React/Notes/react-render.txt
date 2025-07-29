@@ -238,4 +238,7 @@ React render mainly happens in 2 phasses
             whenever we create a context inside a component the react will mark that componnet as flaged or something that needed a re-render . and since we pass a value at the context provider react will goes down the react tree to mark the child components as flagges also and does the usual routine of rendering the marked componnents
 
             and this is how context api trigger re-renders
+
+
+            wrapping the nested childrens inside the memo can further optimise the render behaviour of the react 
                                                                                 
