@@ -1,6 +1,6 @@
    how to create a react app
         npx vite@latest react-app-name
-        or npm create react-app
+        or npm create vite@latest react-app
         cd react-app-name
         npm i 
         npm run dev

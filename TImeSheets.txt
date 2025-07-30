@@ -115,3 +115,13 @@ from 25
 ct 11h 05 min
 total 337hr 40 min 
 code days 37.5
+
+
+
+
+
+
+from 26
+ct 7h 43 min 
+total 383 23 min 
+code days 38.5

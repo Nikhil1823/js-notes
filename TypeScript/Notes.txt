@@ -1,0 +1,56 @@
+  
+    what is ts?
+         it is a typed superset of js . and it it developed and maintained by microsoft
+         the ts is complied to js and run using a js engine      
+          
+
+how to run a ts file ?
+    ts is converted into js before executing it 
+
+    create a ts file and run the commands 
+        tsc fileName --watch 
+        this will create a corresponding js file to our ts 
+        then the js file using browser or node 
+    
+
+    In ts there is only global scope and function scope and not block scope 
+    that is
+
+    unknown is a type-safe counterpart of any — you cannot access properties on it unless you narrow its type.
+
+    !!obj : 	Converts any value to boolean: false for null, undefined, 0, ""; true for others
+
+
+    ts will try to assign variable type at the time we define the value to it and it is called type inference
+
+    union of type : 
+        in ts we can assign a union of types to variable in that case the variable can take any one of the type 
+    optional parameter :
+        we can make a parameter optional by adding a question mark to it , like this 
+        function some(val?:number)
+
+
+    interfaces in ts : 
+            interface in ts i sued to define the shape of an object in ts 
+
+            interface is somehow similar to type 
+
+            interface can combine multiple interface by extends keyword while type can do this by union
+
+                interface Animal {
+                    name: string;
+                    }
+
+                interface Dog extends Animal {
+                    breed: string;
+                    }
+
+                type A = { name: string };
+
+                type B = A & { age: number };
+            a class can use a interface by using the implements keyword
+
+            class are same as that of js or java 
+
+            access modifier are also the same in java
+
