@@ -7,6 +7,7 @@ import "./App.css";
 // import UseReducerComp from "./components/UseReducerComp";
 import UseContextComp from "./components/UseContextComp";
 import UseContextConsumer from "./components/UseContextConsumer";
+import TimerUseRef from "./components/TimerUseRef";
 
 function App() {
   const [count, setCount] = useState(0);
@@ -27,6 +28,7 @@ function App() {
       <UseContextComp>
         <UseContextConsumer />
       </UseContextComp>
+      <TimerUseRef />
     </>
   );
 }
