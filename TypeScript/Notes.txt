@@ -101,5 +101,22 @@ how to run a ts file ?
                 }
             
 
- 
-                   
+    template literal and exclude
+                we can combine multiple type usig template literals and even remove any of them in the combinartion using 
+                    Exclude 
+                        this exclude takes 2 argumrnt but it is written inside a angle bracket 
+                            first one is the template literal combining the diff types 
+                            second one is the list of thing we want to remove  from this combination we can remove multiple item from that combination by seperating them with a '|'
+
+                            eg : 
+                                 type HorizontalPosition = "left" | "center" | "right";
+                                 type VerticalPosition = "top" | "center" | "bottom";
+                                 type ToastProp = {
+                                 position:
+                                    | "center"
+                                    | Exclude<
+                                        `${HorizontalPosition}-${VerticalPosition}`,
+                                        "center-center" | "center-bottom"
+                                        >;
+                                    };
+   
