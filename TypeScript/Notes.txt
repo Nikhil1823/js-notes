@@ -37,6 +37,9 @@ how to run a ts file ?
 
             interface can combine multiple interface by extends keyword while type can do this by union
 
+            use type when dealing with applications and use interface when dealing with libraries
+            it means use type everywhere
+
                 interface Animal {
                     name: string;
                     }
@@ -54,3 +57,10 @@ how to run a ts file ?
 
             access modifier are also the same in java
 
+
+    Enums :
+        In TypeScript, enum (short for enumeration) is used to define a set of named constants—either numeric or string-based.
+                                   
+    type for react children elements are 
+                                        React.ReactNode
+                                                                         

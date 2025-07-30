@@ -1,6 +1,7 @@
 import { useState } from "react";
 import "./App.css";
-import FetchData from "./components/FetchData";
+// import FetchData from "./components/FetchData";
+import Status from "./components/Status";
 
 function App() {
   const [count, setCount] = useState(0);
@@ -11,7 +12,8 @@ function App() {
 
       <button onClick={() => setCount((prev) => prev + 1)}>Increment</button>
 
-      <FetchData />
+      {/* <FetchData /> */}
+      <Status status="success" />
     </>
   );
 }

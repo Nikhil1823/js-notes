@@ -43,3 +43,11 @@ var emp1 = new Employee("manu");
 emp1.greet();
 var man1 = new Manager("soman");
 man1.greet();
+var direction;
+(function (direction) {
+    direction["north"] = "up";
+    direction["south"] = "down";
+    direction["east"] = "right";
+    direction["west"] = "left";
+})(direction || (direction = {}));
+console.log(direction.north);

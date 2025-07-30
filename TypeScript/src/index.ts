@@ -28,3 +28,12 @@ emp1.greet();
 
 const man1 = new Manager("soman");
 man1.greet();
+
+enum direction {
+  north = "up",
+  south = "down",
+  east = "right",
+  west = "left",
+}
+
+console.log(direction.north);
