@@ -70,11 +70,12 @@ how to run a ts file ?
             eg :
             type authUser={
                 name:string,
-                age:number
+                age:number 
             }
 
             const [user,setUser]=useState(null)
             here we can manually set the value of the user to null since it inital value is null but imagine if we dont want that we only want it to be null only at the start . so what we can do is that set it value to that type 
 
-            const [user,setUser]=useState<authUser>({}as authUser)
+            const [user,setUser]=useState<authUser>({}as authUser)  
+            but this is not a good practice
                                                                          

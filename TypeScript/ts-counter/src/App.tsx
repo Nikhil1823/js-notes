@@ -4,7 +4,9 @@ import "./App.css";
 // import Status from "./components/Status";
 // import StyleComp from "./components/StyleComp";
 // import LoginComp from "./components/LoginComp";
-import UseReducerComp from "./components/UseReducerComp";
+// import UseReducerComp from "./components/UseReducerComp";
+import UseContextComp from "./components/UseContextComp";
+import UseContextConsumer from "./components/UseContextConsumer";
 
 function App() {
   const [count, setCount] = useState(0);
@@ -22,7 +24,9 @@ function App() {
       {/* <Status status="success" />
       <StyleComp style={{ backgroundColor: "red" }} /> */}
       {/* <LoginComp /> */}
-      <UseReducerComp />
+      <UseContextComp>
+        <UseContextConsumer />
+      </UseContextComp>
     </>
   );
 }
