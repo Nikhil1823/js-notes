@@ -3,7 +3,8 @@ import "./App.css";
 // import FetchData from "./components/FetchData";
 // import Status from "./components/Status";
 // import StyleComp from "./components/StyleComp";
-import LoginComp from "./components/LoginComp";
+// import LoginComp from "./components/LoginComp";
+import UseReducerComp from "./components/UseReducerComp";
 
 function App() {
   const [count, setCount] = useState(0);
@@ -20,7 +21,8 @@ function App() {
       {/* <FetchData /> */}
       {/* <Status status="success" />
       <StyleComp style={{ backgroundColor: "red" }} /> */}
-      <LoginComp />
+      {/* <LoginComp /> */}
+      <UseReducerComp />
     </>
   );
 }
