@@ -72,10 +72,23 @@ how to run a ts file ?
                 name:string,
                 age:number 
             }
-
+                
             const [user,setUser]=useState(null)
             here we can manually set the value of the user to null since it inital value is null but imagine if we dont want that we only want it to be null only at the start . so what we can do is that set it value to that type 
 
             const [user,setUser]=useState<authUser>({}as authUser)  
             but this is not a good practice
                                                                          
+                 when dealing with classes components and inorder to specify thr type of props and state we can do ti likt this
+                    export class ClassComp extends Component<{}, stateProp>{}
+
+
+                this first value in that type must be a prop and the 2nd one must be state and the order really matters
+
+            in order to pass a component as a prop in react we can swt the type of that from 
+                ReactNode to React.ComponentType 
+            and if that component accept a prop we can configure that too 
+                React.ComponetType<{name:string}>
+                    
+ 
+                   

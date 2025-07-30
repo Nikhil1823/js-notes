@@ -5,12 +5,16 @@ import "./App.css";
 // import StyleComp from "./components/StyleComp";
 // import LoginComp from "./components/LoginComp";
 // import UseReducerComp from "./components/UseReducerComp";
-import UseContextComp from "./components/UseContextComp";
-import UseContextConsumer from "./components/UseContextConsumer";
-import TimerUseRef from "./components/TimerUseRef";
+// import UseContextComp from "./components/UseContextComp";
+// import UseContextConsumer from "./components/UseContextConsumer";
+// import TimerUseRef from "./components/TimerUseRef";
+// import ClassComp from "./components/ClassComp";
+import ListComp from "./components/ListComp";
 
 function App() {
   const [count, setCount] = useState(0);
+
+  const ListItem = [1, 2, 3, "apple"];
 
   return (
     <>
@@ -25,10 +29,12 @@ function App() {
       {/* <Status status="success" />
       <StyleComp style={{ backgroundColor: "red" }} /> */}
       {/* <LoginComp /> */}
-      <UseContextComp>
+      {/* <UseContextComp>
         <UseContextConsumer />
-      </UseContextComp>
-      <TimerUseRef />
+      </UseContextComp> */}
+      {/* <TimerUseRef /> */}
+      {/* <ClassComp /> */}
+      <ListComp item={ListItem} />
     </>
   );
 }
