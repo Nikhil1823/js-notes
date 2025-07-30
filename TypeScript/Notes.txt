@@ -63,4 +63,18 @@ how to run a ts file ?
                                    
     type for react children elements are 
                                         React.ReactNode
+
+    type assertion using ts
+        if we knoe the value of somthing that it will never be null after its initialisation then we can use type assertion to mark the value wont change back to null 
+
+            eg :
+            type authUser={
+                name:string,
+                age:number
+            }
+
+            const [user,setUser]=useState(null)
+            here we can manually set the value of the user to null since it inital value is null but imagine if we dont want that we only want it to be null only at the start . so what we can do is that set it value to that type 
+
+            const [user,setUser]=useState<authUser>({}as authUser)
                                                                          
