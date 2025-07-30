@@ -90,5 +90,16 @@ how to run a ts file ?
             and if that component accept a prop we can configure that too 
                 React.ComponetType<{name:string}>
                     
+            never type 
+
+                imagine there are multiple prop to a component and we only want one prop to have a same value like if any of the prop have any value we want other prop to have no value oe simple dont want to accpet any other prop we can set their type to never 
+
+
+                type NegativeType={
+                    isPositive:never;
+                    isNegative:boolean;
+                }
+            
+
  
                    

@@ -10,6 +10,7 @@ import "./App.css";
 // import TimerUseRef from "./components/TimerUseRef";
 // import ClassComp from "./components/ClassComp";
 import ListComp from "./components/ListComp";
+import RestrictingPropComp from "./components/RestrictingPropComp";
 
 function App() {
   const [count, setCount] = useState(0);
@@ -35,6 +36,7 @@ function App() {
       {/* <TimerUseRef /> */}
       {/* <ClassComp /> */}
       <ListComp item={ListItem} />
+      <RestrictingPropComp value={"10"} isPositive />
     </>
   );
 }
