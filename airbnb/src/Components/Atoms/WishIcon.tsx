@@ -1,6 +1,8 @@
 // import React from 'react'
 // import clsx from "clsx";
-const WishIcon = () => {
+const WishIcon = ({ type }: { type: string }) => {
+  console.log(type);
+
   return (
     <div className="flex">
       <div className="-mt-[4px] -mr-[4px] justify-center items-center  break-all font-[600] flex w-[32px] h-[32px] ">

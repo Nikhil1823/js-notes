@@ -1,18 +1,24 @@
-const CardDetails = () => {
+import type { productType } from "../../utils/Data";
+type CardDetailsType = {
+  details: productType;
+};
+const CardDetails = ({ details }: CardDetailsType) => {
+  const price = details.offer.split("for")[0];
+  const time = details.offer.split("for")[1];
   return (
     // <div className="text-content mx-1 grid gap-0.5 grid-cols-[minmax(0,1fr)_minmax(0, 1fr)_max-content] relative">
     <>
       <div className="mx-1 gap-0.5 flex flex-col">
         <span className="text-[13px]/[16px] font-medium overflow-clip overflow-ellipsis line-clamp-3 text-pretty">
-          Apartment in Bangalore Urban
+          {details.name}
         </span>
         <div className="flex text-[12px]/[16px] relative">
           <div className="text-[0.75rem]/[1rem] flex-wrap text-[#6A6A6A] flex items-baseline flex-row relative w-fit">
             <div>
-              <span className="font-[400] inline-block">₹6,504</span>&nbsp;
+              <span className="font-[400] inline-block">{price}</span>&nbsp;
             </div>
             <div>
-              <span className=" font-[400]">for 2 nights</span>
+              <span className=" font-[400]">{time}</span>
             </div>
 
             {/* <span>buyhouse</span> */}
@@ -43,7 +49,7 @@ const CardDetails = () => {
                 ></path>
               </svg>
             </span>
-            <span>4.99</span>
+            <span>{details.rating}</span>
           </div>
         </div>
       </div>

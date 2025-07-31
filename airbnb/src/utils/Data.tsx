@@ -5,12 +5,12 @@ type HomeDataType = {
   items: productCarouselType[];
 };
 
-type productCarouselType = {
+export type productCarouselType = {
   title: string;
   products: productType[];
 };
 
-type productType = {
+export type productType = {
   isGuestFav: string;
   buttonType?: "like" | "share";
   name: string;

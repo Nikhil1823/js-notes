@@ -3,27 +3,38 @@
 import CardDetails from "../Atoms/CardDetails";
 import FavoriteLabel from "../Atoms/FavoriteLabel";
 import WishIcon from "../Atoms/WishIcon";
-
-const ProductCard = () => {
+import type { productType } from "../../utils/Data";
+type ProductCardType = {
+  product: productType;
+};
+const ProductCard = ({ product }: ProductCardType) => {
   return (
     <>
       <div className="container flex flex-col gap-2 grow shrink-0 basis-full text-[0.875rem]/[1.43]">
         <div className="image-div relative rounded-[20px] inline-block">
           <div className="aspect-[20/19] rounded-[20px] overflow-clip relative">
             <img
-              className="object-center object-cover align-bottom relative h-full"
-              src="https://a0.muscache.com/im/pictures/hosting/Hosting-1118422882348724135/original/a40a9fc3-9bee-46fc-bc33-61dd649cd6a8.jpeg?im_w=480"
+              className="object-center object-cover w-full align-bottom relative h-full"
+              src={product.image}
               alt=""
             />
             <div className="p-3 pb-0 absolute  inset-0 ">
               <div className="flex justify-between">
-                <FavoriteLabel />
-                <WishIcon />
+                {product.isGuestFav?.length > 0 ? (
+                  <FavoriteLabel label={product.isGuestFav} />
+                ) : (
+                  ""
+                )}
+                <WishIcon
+                  type={
+                    product.buttonType?.length ? product.buttonType : "like"
+                  }
+                />
               </div>
             </div>
           </div>
         </div>
-        <CardDetails />
+        <CardDetails details={product} />
       </div>
     </>
   );

@@ -2,37 +2,28 @@
 
 import CardHeading from "../Atoms/CardHeading";
 import ProductCard from "../Molecules/ProductCard";
-// import ProductCards2 from "../Molecules/ProductCards2";
+import type { productCarouselType } from "../../utils/Data";
+type ProductCarouselType = {
+  items: productCarouselType[];
+};
 
-const ProductCarousel = () => {
+const ProductCarousel = ({ items }: ProductCarouselType) => {
   return (
     <>
-      {/* <CardHeading />
-      <div className="px-[48px]  -mb-[8px] -mt-[4px]">
-        <div className="inner pt-1 pb-2 justify-start grid grid-flow-col gap-x-[11px] gap-y-[16px]  auto-cols-[calc(14.2857%_-_9.42857px)] overflow-x-auto overflow-y-hidden ">
-          <ProductCards2 />
-          <ProductCards2 />
-          <ProductCards2 />
-          <ProductCards2 />
-          <ProductCards2 />
-          <ProductCards2 />
-          <ProductCards2 />
-          <ProductCards2 />
-        </div>
-      </div> */}
-      <CardHeading />
-      <div className="px-[48px]  -mb-[8px] -mt-[4px]">
-        <div className="inner pt-1 pb-2 justify-start grid grid-flow-col gap-x-[11px] gap-y-[16px]  auto-cols-[calc(14.2857%_-_9.42857px)] overflow-x-auto overflow-y-hidden ">
-          <ProductCard />
-          <ProductCard />
-          <ProductCard />
-          <ProductCard />
-          <ProductCard />
-          <ProductCard />
-          <ProductCard />
-          <ProductCard />
-        </div>
-      </div>
+      {items.map((item) => {
+        return (
+          <>
+            <CardHeading title={item.title} />
+            <div className="px-[48px]  -mb-[8px] -mt-[4px]">
+              <div className="inner pt-1 pb-2 justify-start grid grid-flow-col gap-x-[11px] gap-y-[16px]  auto-cols-[calc(14.2857%_-_9.42857px)] overflow-x-auto overflow-y-hidden ">
+                {item.products.map((product) => {
+                  return <ProductCard product={product} />;
+                })}
+              </div>
+            </div>
+          </>
+        );
+      })}
     </>
   );
 };

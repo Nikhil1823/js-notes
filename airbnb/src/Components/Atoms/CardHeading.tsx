@@ -1,10 +1,13 @@
-const CardHeading = () => {
+type headingType = {
+  title: string;
+};
+const CardHeading = ({ title }: headingType) => {
   return (
     <div className="flex">
       <div className="mx-12 mt-8 mb-3.5 text-[14px]/[20.2px]">
         <div className=" font-[400]  pr-[12px]">
           <span className=" text-[20px]/[24px] -tracking-[0.18px] font-[600]">
-            Popular homes in Bengaluru{" "}
+            {title}
           </span>
           <span className="ml-[2px] self-center">
             <svg
