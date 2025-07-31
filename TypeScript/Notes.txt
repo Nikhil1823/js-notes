@@ -119,4 +119,14 @@ how to run a ts file ?
                                         "center-center" | "center-bottom"
                                         >;
                                     };
+        extracting props from components 
+            we can extract a prop type from the compinent using 
+                (Props:React.ComponentProps<typeof componentName>)
+
+         What is a Polymorphic Component in TypeScript?
+            A polymorphic component is a flexible React component that can render different HTML elements or custom components, depending on a prop like as.
+
+            It's called “polymorphic” because it changes its rendering type — similar to how polymorphism works in OOP, where the same interface can represent different types.
+                             
    
+           

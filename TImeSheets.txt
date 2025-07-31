@@ -121,7 +121,13 @@ code days 37.5
 
 
 
-from 26
+from 29
 ct 7h 43 min 
 total 383 23 min 
 code days 38.5
+
+
+from 30 
+ct 8hr 42 min
+total 392 hr 5 min
+code days 39.5

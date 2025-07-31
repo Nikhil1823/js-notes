@@ -11,6 +11,7 @@ import "./App.css";
 // import ClassComp from "./components/ClassComp";
 import ListComp from "./components/ListComp";
 import RestrictingPropComp from "./components/RestrictingPropComp";
+import PolyMorphicComp from "./components/PolyMorphicComp";
 
 function App() {
   const [count, setCount] = useState(0);
@@ -37,6 +38,12 @@ function App() {
       {/* <ClassComp /> */}
       <ListComp item={ListItem} />
       <RestrictingPropComp value={"10"} isPositive />
+      <PolyMorphicComp as="div">
+        <h1>hello</h1>
+      </PolyMorphicComp>
+      <PolyMorphicComp as="label" htmlFor="someThinf">
+        <h1>hello</h1>
+      </PolyMorphicComp>
     </>
   );
 }
