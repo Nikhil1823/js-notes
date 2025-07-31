@@ -1,2 +1,2 @@
-./React/react-render/node_modules/*
-./TypeScript/ts-counter/node_modules/*
+React/react-render/node_modules/
+TypeScript/ts-counter/node_modules/
