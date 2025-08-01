@@ -19,7 +19,7 @@ const ProductCard = ({ product }: ProductCardType) => {
               alt=""
             />
             <div className="p-3 pb-0 absolute  inset-0 ">
-              <div className="flex justify-between">
+              <div className="flex justify-between ">
                 {product.isGuestFav?.length > 0 ? (
                   <FavoriteLabel label={product.isGuestFav} />
                 ) : (

@@ -12,13 +12,13 @@ const CardDetails = ({ details }: CardDetailsType) => {
         <span className="text-[13px]/[16px] font-medium overflow-clip overflow-ellipsis line-clamp-3 text-pretty">
           {details.name}
         </span>
-        <div className="flex text-[12px]/[16px] relative">
+        <div className="flex text-[12px]/[16px] relative translate-y-[1px]">
           <div className="text-[0.75rem]/[1rem] flex-wrap text-[#6A6A6A] flex items-baseline flex-row relative w-fit">
             <div>
               <span className="font-[400] inline-block">{price}</span>&nbsp;
             </div>
             <div>
-              <span className=" font-[400]">{time}</span>
+              <span className=" font-[400]">for {time}</span>
             </div>
 
             {/* <span>buyhouse</span> */}
