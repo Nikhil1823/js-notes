@@ -32,7 +32,7 @@ const data: HomeDataType[] = [
         products: [
           {
             isGuestFav: "Guest favourite",
-            name: "Apartment in Narayanpur",
+            name: "Apartment in Bangalore Urban",
             offer: "₹3,878 for 2 nights",
             rating: "4.99",
             image:

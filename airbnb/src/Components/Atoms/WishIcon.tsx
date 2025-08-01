@@ -1,10 +1,10 @@
 // import React from 'react'
 // import clsx from "clsx";
 const WishIcon = ({ type }: { type: string }) => {
-  console.log(type);
+  // console.log(type);
 
   return (
-    <div className="flex">
+    <div className="flex ml-auto">
       <div className="-mt-[4px] -mr-[4px] justify-center items-center  break-all font-[600] flex w-[32px] h-[32px] ">
         <button className="outline-none bg-transparent pt-[2px] -mt-[2px] text-base leading-5 justify-center items-center border-none rounded-[50%] w-[32px] h-[32px] inline-flex">
           <span className="inline-block text-[1rem]/[1.25rem] font-medium">
@@ -31,6 +31,7 @@ const WishIcon = ({ type }: { type: string }) => {
       </div>
     </div>
   );
+  console.log(type);
 };
 
 export default WishIcon;
