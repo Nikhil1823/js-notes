@@ -109,3 +109,8 @@ from 23
 from 24 
 ct 14 hr 19 min
 total 326 hr 35 min
+
+
+from 1
+ct 7h 47 min
+total 399h 52m
