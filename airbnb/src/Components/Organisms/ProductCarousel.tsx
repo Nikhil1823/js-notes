@@ -9,21 +9,19 @@ const ProductCarousel: React.FC<ProductCarouselProps> = ({ items }) => {
     <>
       {items.map((item) => {
         return (
-          <>
-            <div className="mx-auto my-0 max-w-[1440px]">
-              <CardHeading title={item.title} />
-              <div className="px-[48px]  -mb-[8px] -mt-[4px]  ">
-                <div
-                  id="inner-div"
-                  className=" pt-1 pb-2 justify-start grid grid-flow-col gap-x-[11px] gap-y-[16px]  auto-cols-[calc(14.2857%_-_9.42857px)] overflow-x-auto overflow-y-hidden "
-                >
-                  {item.products.map((product) => {
-                    return <ProductCard product={product} />;
-                  })}
-                </div>
+          <div className="mx-auto my-0 max-w-[1440px]">
+            <CardHeading title={item.title} />
+            <div className="px-[48px]  -mb-[8px] -mt-[4px]  ">
+              <div
+                id="inner-div"
+                className=" pt-1 pb-2 justify-start grid grid-flow-col gap-x-[11px] gap-y-[16px]  auto-cols-[calc(14.2857%_-_9.42857px)] overflow-x-auto overflow-y-hidden "
+              >
+                {item.products.map((product) => {
+                  return <ProductCard product={product} />;
+                })}
               </div>
             </div>
-          </>
+          </div>
         );
         console.log(
           "media query for inner div :  lg:auto-cols-[calc(20%_-_8.8px)]"

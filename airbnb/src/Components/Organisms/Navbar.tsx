@@ -2,55 +2,59 @@
 
 const Navbar = () => {
   return (
-    <div className="px-12 pt-2 flex justify-between">
+    <div className="px-12 pt-2 flex justify-between h-25.5">
       <NavLeft />
 
-      <div id="middle" className="flex items-center h-20 w-125 ">
+      <div id="middle" className="flex items-center h-20 w-125  ">
         <div className="mt-5.5 mb-6 w-full h-auto">
-          <div className="mt-2 flex  gap-x-8.75">
-            <div id="home" className="flex items-center">
-              <span className="h-9 w-9 inline-block">
-                <video
-                  src="https://a0.muscache.com/videos/search-bar-icons/webm/house-twirl-selected.webm"
-                  className="w-full h-full scale-200"
-                ></video>
-              </span>
-              <span
-                id="text"
-                className="ml-4  font-semibold text-[14px]/[18px]"
-              >
-                Homes
-              </span>
+          <span className="flex justify-center">
+            <div className="mt-1.25 flex  gap-x-8.75 ">
+              <div id="home" className="flex items-center relative">
+                <span className="h-9 w-9 inline-block">
+                  <video
+                    autoPlay
+                    src="https://a0.muscache.com/videos/search-bar-icons/webm/house-twirl-selected.webm"
+                    className="w-full h-full scale-200"
+                  ></video>
+                </span>
+                <span
+                  id="text"
+                  className="ml-4  font-semibold text-[14px]/[18px] -translate-y-0.5"
+                >
+                  Homes
+                </span>
+                <span className="w-26 bg-black h-0.75 absolute -bottom-3 -left-1 rounded-2xl border-b-4"></span>
+              </div>
+              <div id="experience" className="flex items-center">
+                <span className="h-9 w-9 inline-block">
+                  <video
+                    src="https://a0.muscache.com/videos/search-bar-icons/webm/balloon-twirl.webm"
+                    className="w-full h-full scale-200"
+                  ></video>
+                </span>
+                <span
+                  id="text"
+                  className="ml-2  font-semibold text-[14px]/[18px] -translate-y-0.5"
+                >
+                  Experiences
+                </span>
+              </div>
+              <div id="service" className="flex items-center">
+                <span className="inline-block h-9 w-9">
+                  <video
+                    src="https://a0.muscache.com/videos/search-bar-icons/webm/consierge-twirl.webm"
+                    className="w-full h-full scale-200"
+                  ></video>
+                </span>
+                <span
+                  id="text"
+                  className="ml-3  font-semibold text-[14px]/[18px] -translate-y-0.5"
+                >
+                  Services
+                </span>
+              </div>
             </div>
-            <div id="experience" className="flex items-center">
-              <span className="h-9 w-9 inline-block">
-                <video
-                  src="https://a0.muscache.com/videos/search-bar-icons/webm/balloon-twirl.webm"
-                  className="w-full h-full scale-200"
-                ></video>
-              </span>
-              <span
-                id="text"
-                className="ml-2  font-semibold text-[14px]/[18px]"
-              >
-                Experiences
-              </span>
-            </div>
-            <div id="service" className="flex items-center">
-              <span className="inline-block h-9 w-9">
-                <video
-                  src="https://a0.muscache.com/videos/search-bar-icons/webm/consierge-twirl.webm"
-                  className="w-full h-full scale-200"
-                ></video>
-              </span>
-              <span
-                id="text"
-                className="ml-3  font-semibold text-[14px]/[18px]"
-              >
-                Services
-              </span>
-            </div>
-          </div>
+          </span>
         </div>
       </div>
       <NavRight />
@@ -80,7 +84,7 @@ const NavLeft = () => {
 
 const NavRight = () => {
   return (
-    <div id="right" className="flex items-center justify-end">
+    <div id="right" className="flex items-center justify-end h-20">
       <div
         id="right-wrapper"
         className="flex items-center justify-end flex-auto mr-3 gap-x-3"
