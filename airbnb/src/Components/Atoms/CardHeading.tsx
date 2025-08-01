@@ -6,7 +6,7 @@ const CardHeading = ({ title }: headingType) => {
     <div className="flex">
       <div className="mx-12 mt-8 mb-3.5 text-[14px]/[20.2px]">
         <div className=" font-[400]  pr-[12px]">
-          <span className=" text-[20px]/[24px] -tracking-[0.18px] font-[600]">
+          <span className=" text-[20px]/[24px] -tracking-[0.18px] font-[600] text-[#222222]">
             {title}
           </span>
           <span className="ml-[2px] self-center">
@@ -24,6 +24,7 @@ const CardHeading = ({ title }: headingType) => {
                 stroke: "currentcolor",
                 strokeWidth: 5.33333,
                 overflow: "visible",
+                marginTop: "-2px",
               }}
             >
               <path
@@ -33,8 +34,8 @@ const CardHeading = ({ title }: headingType) => {
             </svg>
           </span>
         </div>
-        <div></div>
       </div>
+      <div className="ml-auto items-center">hello</div>
     </div>
   );
 };
