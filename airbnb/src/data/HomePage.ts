@@ -3,6 +3,11 @@ export type HomeDataType = {
   videoUrl: string;
   isNew: boolean;
   items: productCarouselType[];
+  searchBar: SearchBarType[];
+};
+type SearchBarType = {
+  title: string;
+  sub: string;
 };
 
 export type productCarouselType = {
@@ -23,6 +28,15 @@ export type productType = {
 const data: HomeDataType[] = [
   {
     heading: "Homes",
+    searchBar: [
+      { title: "Where", sub: "Search destinations" },
+      { title: "Check in", sub: "Add dates" },
+      { title: "Check out", sub: "Add dates" },
+      {
+        title: "Who",
+        sub: "Add guests",
+      },
+    ],
     videoUrl:
       "https://a0.muscache.com/videos/search-bar-icons/webm/house-twirl.webm",
     isNew: false,
@@ -732,7 +746,12 @@ const data: HomeDataType[] = [
     ],
   },
   {
-    heading: "Experiencies",
+    heading: "Experiences",
+    searchBar: [
+      { title: "Where", sub: "Search destinations" },
+      { title: "Date", sub: "Add dates" },
+      { title: "Who", sub: "Add guests" },
+    ],
     isNew: true,
     videoUrl:
       "https://a0.muscache.com/videos/search-bar-icons/webm/balloon-twirl-selected.webm",
@@ -756,7 +775,7 @@ const data: HomeDataType[] = [
             offer: "From ₹19,725 / guest",
             loc: "Chicago, United States",
             image:
-              "https://a0.muscache.com/im/pictures/Mt/MtTemplate-6276539/original/a6ecba10-aed8-481c-bd0d-91744ebf3228.jpeg?im_w=480",
+              "https://a0.muscache.com/im/pictures/Mt/MtTemplate-5946904/original/3fc78212-954c-4e94-8464-1513c5a8cd91.jpeg?im_w=480",
           },
           {
             isGuestFav: "Original",
@@ -765,7 +784,7 @@ const data: HomeDataType[] = [
             offer: "From ₹8,974 / guest",
             loc: "Rio de Janeiro, Brazil",
             image:
-              "https://a0.muscache.com/im/pictures/Mt/MtTemplate-6276539/original/a6ecba10-aed8-481c-bd0d-91744ebf3228.jpeg?im_w=480",
+              "https://a0.muscache.com/im/pictures/Mt/MtTemplate-5946904/original/3fc78212-954c-4e94-8464-1513c5a8cd91.jpeg?im_w=480",
           },
           {
             isGuestFav: "Original",
@@ -774,7 +793,7 @@ const data: HomeDataType[] = [
             offer: "From ₹19,725 / guest",
             loc: "Chicago, United States",
             image:
-              "https://a0.muscache.com/im/pictures/Mt/MtTemplate-6276539/original/a6ecba10-aed8-481c-bd0d-91744ebf3228.jpeg?im_w=480",
+              "https://a0.muscache.com/im/pictures/Mt/MtTemplate-5946904/original/3fc78212-954c-4e94-8464-1513c5a8cd91.jpeg?im_w=480",
           },
           {
             isGuestFav: "Original",
@@ -783,7 +802,7 @@ const data: HomeDataType[] = [
             offer: "From ₹8,974 / guest",
             loc: "Rio de Janeiro, Brazil",
             image:
-              "https://a0.muscache.com/im/pictures/Mt/MtTemplate-6276539/original/a6ecba10-aed8-481c-bd0d-91744ebf3228.jpeg?im_w=480",
+              "https://a0.muscache.com/im/pictures/Mt/MtTemplate-5946904/original/3fc78212-954c-4e94-8464-1513c5a8cd91.jpeg?im_w=480",
           },
           {
             isGuestFav: "Original",
@@ -792,7 +811,7 @@ const data: HomeDataType[] = [
             offer: "From ₹19,725 / guest",
             loc: "Chicago, United States",
             image:
-              "https://a0.muscache.com/im/pictures/Mt/MtTemplate-6276539/original/a6ecba10-aed8-481c-bd0d-91744ebf3228.jpeg?im_w=480",
+              "https://a0.muscache.com/im/pictures/Mt/MtTemplate-5946904/original/3fc78212-954c-4e94-8464-1513c5a8cd91.jpeg?im_w=480",
           },
           {
             isGuestFav: "Original",
@@ -978,7 +997,7 @@ const data: HomeDataType[] = [
             offer: "From ₹2,208 / guest",
             rating: "4.96",
             image:
-              "https://a0.muscache.com/im/pictures/lombard/MtTemplate-165149-active_media/original/b0499a80-9efa-4618-843f-fa8be3ad140b.jpg?im_w=480",
+              "https://a0.muscache.com/im/pictures/Mt/MtTemplate-5749656/original/6183fae2-c34f-4416-9dd4-6a855068a819.jpeg?im_w=480",
           },
           {
             isGuestFav: "Popular",
@@ -987,7 +1006,7 @@ const data: HomeDataType[] = [
             offer: "From ₹1,743 / guest",
             rating: "4.98",
             image:
-              "https://a0.muscache.com/im/pictures/lombard/MtTemplate-165149-active_media/original/b0499a80-9efa-4618-843f-fa8be3ad140b.jpg?im_w=480",
+              "https://a0.muscache.com/im/pictures/Mt/MtTemplate-5749656/original/6183fae2-c34f-4416-9dd4-6a855068a819.jpeg?im_w=480",
           },
           {
             isGuestFav: "Popular",
@@ -996,7 +1015,7 @@ const data: HomeDataType[] = [
             offer: "From ₹2,208 / guest",
             rating: "4.96",
             image:
-              "https://a0.muscache.com/im/pictures/lombard/MtTemplate-165149-active_media/original/b0499a80-9efa-4618-843f-fa8be3ad140b.jpg?im_w=480",
+              "https://a0.muscache.com/im/pictures/Mt/MtTemplate-5749656/original/6183fae2-c34f-4416-9dd4-6a855068a819.jpeg?im_w=480",
           },
           {
             isGuestFav: "Popular",
@@ -1005,7 +1024,7 @@ const data: HomeDataType[] = [
             offer: "From ₹1,743 / guest",
             rating: "4.98",
             image:
-              "https://a0.muscache.com/im/pictures/lombard/MtTemplate-165149-active_media/original/b0499a80-9efa-4618-843f-fa8be3ad140b.jpg?im_w=480",
+              "https://a0.muscache.com/im/pictures/Mt/MtTemplate-5749656/original/6183fae2-c34f-4416-9dd4-6a855068a819.jpeg?im_w=480",
           },
           {
             isGuestFav: "Popular",
@@ -1014,7 +1033,7 @@ const data: HomeDataType[] = [
             offer: "From ₹2,208 / guest",
             rating: "4.96",
             image:
-              "https://a0.muscache.com/im/pictures/lombard/MtTemplate-165149-active_media/original/b0499a80-9efa-4618-843f-fa8be3ad140b.jpg?im_w=480",
+              "https://a0.muscache.com/im/pictures/Mt/MtTemplate-5749656/original/6183fae2-c34f-4416-9dd4-6a855068a819.jpeg?im_w=480",
           },
           {
             isGuestFav: "Popular",
@@ -1023,7 +1042,7 @@ const data: HomeDataType[] = [
             offer: "From ₹1,743 / guest",
             rating: "4.98",
             image:
-              "https://a0.muscache.com/im/pictures/lombard/MtTemplate-165149-active_media/original/b0499a80-9efa-4618-843f-fa8be3ad140b.jpg?im_w=480",
+              "https://a0.muscache.com/im/pictures/Mt/MtTemplate-5749656/original/6183fae2-c34f-4416-9dd4-6a855068a819.jpeg?im_w=480",
           },
           {
             isGuestFav: "Popular",
@@ -1032,7 +1051,7 @@ const data: HomeDataType[] = [
             offer: "From ₹2,208 / guest",
             rating: "4.96",
             image:
-              "https://a0.muscache.com/im/pictures/lombard/MtTemplate-165149-active_media/original/b0499a80-9efa-4618-843f-fa8be3ad140b.jpg?im_w=480",
+              "https://a0.muscache.com/im/pictures/Mt/MtTemplate-5749656/original/6183fae2-c34f-4416-9dd4-6a855068a819.jpeg?im_w=480",
           },
           {
             isGuestFav: "Popular",
@@ -1050,6 +1069,11 @@ const data: HomeDataType[] = [
   {
     heading: "Services",
     isNew: true,
+    searchBar: [
+      { title: "Where", sub: "Search destinations" },
+      { title: "Date", sub: "Add dates" },
+      { title: "Type of service", sub: "Add service" },
+    ],
     videoUrl:
       "https://a0.muscache.com/videos/search-bar-icons/webm/consierge-twirl.webm",
     items: [

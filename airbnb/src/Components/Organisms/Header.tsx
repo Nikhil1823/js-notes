@@ -1,18 +1,29 @@
-// import { clsx } from "clsx";
-import { useEffect, useState } from "react";
-import { exportData } from "../../data/HomePage";
-const Header = () => {
+import { useContext } from "react";
+import { dataContext } from "../../App";
+import React from "react";
+import { clsx } from "clsx";
+import type { HomeDataType } from "../../data/HomePage";
+import DestinationSelector from "../atoms/DestinationSelector";
+import NavIcons from "../atoms/NavIcons";
+
+type HeaderPropType = {
+  data: HomeDataType[];
+};
+const Header = ({ data }: HeaderPropType) => {
+  console.log("data", data[0]);
+
   return (
     <div className={"header-bg w-full  h-[199.68px]  origin-top "}>
-      <Navbar />
-      <SearchBar />
+      <Navbar data={data} />
+      <SearchBar data={data} />
     </div>
   );
 };
 
 export default Header;
 
-const SearchBar = () => {
+const SearchBar = React.memo(({ data }: HeaderPropType) => {
+  const productContext = useContext(dataContext);
   return (
     <div className="h-16.5 max-w-212.5 mx-auto rounded-4xl relative ">
       <div
@@ -22,34 +33,23 @@ const SearchBar = () => {
             "rgba(0, 0, 0, 0.1) 0 8px 24px 0, rgba(0, 0, 0, 0.02) 0 0 0 1px",
         }}
       ></div>
-      <div className="grid grid-cols-[minmax(0,2fr)_1px_minmax(0,1fr)_1px_minmax(0,1fr)_1px_minmax(0,2fr)] gap-x-0.5 h-full items-center relative rounded-4xl  bg-[#ffffff]">
-        <div id="one" className="px-8 py-3.75">
-          <div className="text-[0.75rem]/[1rem] pb-0.5">Where</div>
-          <div className="text-[14px]/[18px] text-[#222222] opacity-80">
-            Search destinations
-          </div>
-        </div>
-        <div id="seperator" className="h-8 w-0.25 bg-[#DDDDDD]"></div>
-        <div id="two" className="px-6 py-3.75 ">
-          <div className="text-[0.75rem]/[1rem] pb-0.5">Check in</div>
-          <div className="text-[14px]/[18px] text-[#222222] opacity-80">
-            Add dates
-          </div>
-        </div>
-        <div id="seperator" className="h-8 w-0.25 bg-[#DDDDDD]"></div>
-        <div id="three" className="px-6 py-3.75 ">
-          <div className="text-[0.75rem]/[1rem] pb-0.5">Check out</div>
-          <div className="text-[14px]/[18px] text-[#222222] opacity-80">
-            Add dates
-          </div>
-        </div>
-        <div id="seperator" className="h-8 w-0.25 bg-[#DDDDDD]"></div>
-        <div id="four" className="px-6 py-3.75 pr-[130.904px]">
-          <div className="text-[0.75rem]/[1rem] pb-0.5">Who</div>
-          <div className="text-[14px]/[18px] text-[#222222] opacity-80">
-            Add guests
-          </div>
-        </div>
+      <div
+        className={clsx(
+          "grid  gap-x-0.5 h-full items-center relative rounded-4xl  bg-[#ffffff] grid-cols-[minmax(0,1fr)_1px_minmax(0,1fr)_1px_minmax(0,1fr)]",
+          productContext?.selected == 0 &&
+            "grid-cols-[minmax(0,2fr)_1px_minmax(0,1fr)_1px_minmax(0,1fr)_1px_minmax(0,2fr)]"
+        )}
+      >
+        {productContext &&
+          data[productContext?.selected].searchBar.map((item, i) => {
+            const data = {
+              title: item.title,
+              sub: item.sub,
+              extraPadding: i == 0,
+            };
+
+            return <DestinationSelector {...data} key={i} />;
+          })}
         <div id="search-icon" className="p-2.5 absolute right-0">
           <button className="bg-[#FF385C] p-2.5 rounded-full w-12 h-12 flex items-center justify-center">
             <svg
@@ -78,241 +78,92 @@ const SearchBar = () => {
       </div>
     </div>
   );
-};
-import { clsx } from "clsx";
-const Navbar = () => {
-  const [data, setData] = useState([{}]);
-  useEffect(() => {
-    setData(exportData());
-  }, []);
-  console.log(data);
-  console.log();
+});
 
+const Navbar = ({ data }: HeaderPropType) => {
   return (
     <div className="px-12 pt-2 flex justify-between h-25.5">
-      <NavLeft />
+      <div id="left" className="h-20 items-center flex w-[225.28px]">
+        <svg
+          width="102"
+          height="32"
+          viewBox="0 0 3490 1080"
+          style={{ display: "block", color: "#FF385C " }}
+        >
+          <path
+            d="M1494.71 456.953C1458.28 412.178 1408.46 389.892 1349.68 389.892C1233.51 389.892 1146.18 481.906 1146.18 605.892C1146.18 729.877 1233.51 821.892 1349.68 821.892C1408.46 821.892 1458.28 799.605 1494.71 754.83L1500.95 810.195H1589.84V401.588H1500.95L1494.71 456.953ZM1369.18 736.895C1295.33 736.895 1242.08 683.41 1242.08 605.892C1242.08 528.373 1295.33 474.888 1369.18 474.888C1443.02 474.888 1495.49 529.153 1495.49 605.892C1495.49 682.63 1443.8 736.895 1369.18 736.895ZM1656.11 810.195H1750.46V401.588H1656.11V810.195ZM948.912 666.715C875.618 506.859 795.308 344.664 713.438 184.809C698.623 155.177 670.554 98.2527 645.603 67.8412C609.736 24.1733 556.715 0.779785 502.915 0.779785C449.115 0.779785 396.094 24.1733 360.227 67.8412C335.277 98.2527 307.207 155.177 292.392 184.809C210.522 344.664 130.212 506.859 56.9187 666.715C47.5621 687.769 24.9504 737.675 16.3736 760.289C6.2373 787.581 0.779297 817.213 0.779297 846.845C0.779297 975.509 101.362 1079.22 235.473 1079.22C346.193 1079.22 434.3 1008.26 502.915 934.18C571.53 1008.26 659.638 1079.22 770.357 1079.22C904.468 1079.22 1005.83 975.509 1005.83 846.845C1005.83 817.213 999.593 787.581 989.457 760.289C980.88 737.675 958.268 687.769 948.912 666.715ZM502.915 810.195C447.555 738.455 396.094 649.56 396.094 577.819C396.094 506.079 446.776 470.209 502.915 470.209C559.055 470.209 610.516 508.419 610.516 577.819C610.516 647.22 558.275 738.455 502.915 810.195ZM770.357 998.902C688.362 998.902 618.032 941.557 555.741 872.656C619.966 792.541 690.826 679.121 690.826 577.819C690.826 458.513 598.04 389.892 502.915 389.892C407.79 389.892 315.784 458.513 315.784 577.819C315.784 679.098 386.145 792.478 450.144 872.593C387.845 941.526 317.491 998.902 235.473 998.902C146.586 998.902 81.0898 931.061 81.0898 846.845C81.0898 826.57 84.2087 807.856 91.2261 788.361C98.2436 770.426 120.855 720.52 130.212 701.025C203.505 541.17 282.256 380.534 364.126 220.679C378.941 191.047 403.891 141.921 422.605 119.307C442.877 94.3538 470.947 81.0975 502.915 81.0975C534.883 81.0975 562.953 94.3538 583.226 119.307C601.939 141.921 626.89 191.047 641.704 220.679C723.574 380.534 802.325 541.17 875.618 701.025C884.975 720.52 907.587 770.426 914.604 788.361C921.622 807.856 925.52 826.57 925.52 846.845C925.52 931.061 859.244 998.902 770.357 998.902ZM3285.71 389.892C3226.91 389.892 3175.97 413.098 3139.91 456.953V226.917H3045.56V810.195H3134.45L3140.69 754.83C3177.12 799.605 3226.94 821.892 3285.71 821.892C3401.89 821.892 3489.22 729.877 3489.22 605.892C3489.22 481.906 3401.89 389.892 3285.71 389.892ZM3266.22 736.895C3191.6 736.895 3139.91 682.63 3139.91 605.892C3139.91 529.153 3191.6 474.888 3266.22 474.888C3340.85 474.888 3393.32 528.373 3393.32 605.892C3393.32 683.41 3340.07 736.895 3266.22 736.895ZM2827.24 389.892C2766.15 389.892 2723.56 418.182 2699.37 456.953L2693.13 401.588H2604.24V810.195H2698.59V573.921C2698.59 516.217 2741.47 474.888 2800.73 474.888C2856.87 474.888 2888.84 513.097 2888.84 578.599V810.195H2983.19V566.903C2983.19 457.733 2923.15 389.892 2827.24 389.892ZM1911.86 460.072L1905.62 401.588H1816.73V810.195H1911.08V604.332C1911.08 532.592 1954.74 486.585 2027.26 486.585C2042.85 486.585 2058.44 488.144 2070.92 492.043V401.588C2059.22 396.91 2044.41 395.35 2028.04 395.35C1978.58 395.35 1936.66 421.177 1911.86 460.072ZM2353.96 389.892C2295.15 389.892 2244.21 413.098 2208.15 456.953V226.917H2113.8V810.195H2202.69L2208.93 754.83C2245.36 799.605 2295.18 821.892 2353.96 821.892C2470.13 821.892 2557.46 729.877 2557.46 605.892C2557.46 481.906 2470.13 389.892 2353.96 389.892ZM2334.46 736.895C2259.84 736.895 2208.15 682.63 2208.15 605.892C2208.15 529.153 2259.84 474.888 2334.46 474.888C2409.09 474.888 2461.56 528.373 2461.56 605.892C2461.56 683.41 2408.31 736.895 2334.46 736.895ZM1703.28 226.917C1669.48 226.917 1642.08 254.326 1642.08 288.13C1642.08 321.934 1669.48 349.343 1703.28 349.343C1737.09 349.343 1764.49 321.934 1764.49 288.13C1764.49 254.326 1737.09 226.917 1703.28 226.917Z"
+            fill="currentcolor"
+          ></path>
+        </svg>
+      </div>
 
       <div id="middle" className="flex items-center h-20 w-125  ">
-        {/* <div className="mt-5.5 mb-6 w-full h-auto">
-          <span className="flex justify-center">
-            <div className="mt-1.25 flex  gap-x-8.75 "> */}
-        {/* {data?.map((item) => {
-                return (
-                  <div
-                    id="home"
-                    className="flex items-center relative"
-                    onClick={() => {
-                      console.log("clicked this buttn", item.heading);
-                    }}
-                  >
-                    <span className="h-9 w-9 inline-block">
-                      <video
-                        autoPlay
-                        src={item.videoUrl}
-                        className="w-full h-full scale-200"
-                      ></video>
-                    </span>
-                    <span
-                      id="text"
-                      className={clsx(
-                    "font-semibold text-[14px]/[18px] -translate-y-0.5",
-                    item.heading == "home" && "ml-4",
-                    item.heading == "Experiences" && "ml-2",
-                    item.heading == "Services" && "ml-3"
-                  )}
-                    >
-                      {item?.heading}
-                    </span>
-                    <span className="w-26 bg-black h-0.75 absolute -bottom-3 -left-1 rounded-2xl border-b-4"></span>
-                  </div>
-                );
-              })} */}
         <div className="mt-5.5 mb-6 w-full h-auto">
           <span className="flex justify-center">
             <div className="mt-1.25 flex  gap-x-8.75 ">
-              {/* need change */}
-              <div id="home" className="flex items-center relative">
-                <span className="h-9 w-9 inline-block">
-                  <video
-                    autoPlay
-                    src="https://a0.muscache.com/videos/search-bar-icons/webm/house-twirl-selected.webm"
-                    className="w-full h-full scale-200"
-                  ></video>
-                </span>
-                <span
-                  id="text"
-                  className={clsx(
-                    "font-semibold text-[14px]/[18px] -translate-y-0.5 ml-4"
-                  )}
-                >
-                  Homes
-                </span>
-                <span className="w-26 bg-black h-0.75 absolute -bottom-3 -left-1 rounded-2xl border-b-4"></span>
-              </div>
+              {data?.map((item, i) => {
+                const data = {
+                  heading: item.heading,
+                  videoUrl: item.videoUrl,
+                };
 
-              <div id="experience" className="flex items-center">
-                <span className="h-9 w-9 inline-block">
-                  <video
-                    src="https://a0.muscache.com/videos/search-bar-icons/webm/balloon-twirl.webm"
-                    className="w-full h-full scale-200"
-                  ></video>
-                </span>
-                <span
-                  id="text"
-                  className="ml-2  font-semibold text-[14px]/[18px] -translate-y-0.5"
-                >
-                  Experiences
-                </span>
-              </div>
-              <div id="service" className="flex items-center">
-                <span className="inline-block h-9 w-9">
-                  <video
-                    src="https://a0.muscache.com/videos/search-bar-icons/webm/consierge-twirl.webm"
-                    className="w-full h-full scale-200"
-                  ></video>
-                </span>
-                <span
-                  id="text"
-                  className="ml-3  font-semibold text-[14px]/[18px] -translate-y-0.5"
-                >
-                  Services
-                </span>
-              </div>
+                return <NavIcons {...data} key={i} />;
+              })}
             </div>
           </span>
         </div>
       </div>
-      {/* </span>
+      <div id="right" className="flex items-center justify-end h-20">
+        <div
+          id="right-wrapper"
+          className="flex items-center justify-end flex-auto mr-3 gap-x-3"
+        >
+          <button className="px-3 py-2.75 text-[14px]/[normal] border-[#ffffff] border-1 rounded-3xl  border-t-0">
+            Become a host
+          </button>
+          <button className="w-10 h-10 bg-[#f2f2f2] flex items-center justify-center rounded-full">
+            {" "}
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 16 16"
+              aria-hidden="true"
+              role="presentation"
+              focusable="false"
+              style={{
+                display: "block",
+                height: " 16px",
+                width: "16px",
+                fill: " currentcolor",
+              }}
+            >
+              <path d="M8 .25a7.77 7.77 0 0 1 7.75 7.78 7.75 7.75 0 0 1-7.52 7.72h-.25A7.75 7.75 0 0 1 .25 8.24v-.25A7.75 7.75 0 0 1 8 .25zm1.95 8.5h-3.9c.15 2.9 1.17 5.34 1.88 5.5H8c.68 0 1.72-2.37 1.93-5.23zm4.26 0h-2.76c-.09 1.96-.53 3.78-1.18 5.08A6.26 6.26 0 0 0 14.17 9zm-9.67 0H1.8a6.26 6.26 0 0 0 3.94 5.08 12.59 12.59 0 0 1-1.16-4.7l-.03-.38zm1.2-6.58-.12.05a6.26 6.26 0 0 0-3.83 5.03h2.75c.09-1.83.48-3.54 1.06-4.81zm2.25-.42c-.7 0-1.78 2.51-1.94 5.5h3.9c-.15-2.9-1.18-5.34-1.89-5.5h-.07zm2.28.43.03.05a12.95 12.95 0 0 1 1.15 5.02h2.75a6.28 6.28 0 0 0-3.93-5.07z"></path>
+            </svg>
+          </button>
         </div>
-      </div> */}
-      <NavRight />
-    </div>
-  );
-
-  <div className="mt-5.5 mb-6 w-full h-auto">
-    <span className="flex justify-center">
-      <div className="mt-1.25 flex  gap-x-8.75 ">
-        <div id="home" className="flex items-center relative">
-          <span className="h-9 w-9 inline-block">
-            <video
-              autoPlay
-              src="https://a0.muscache.com/videos/search-bar-icons/webm/house-twirl-selected.webm"
-              className="w-full h-full scale-200"
-            ></video>
-          </span>
-          <span
-            id="text"
-            className="ml-4  font-semibold text-[14px]/[18px] -translate-y-0.5"
-          >
-            Homes
-          </span>
-          <span className="w-26 bg-black h-0.75 absolute -bottom-3 -left-1 rounded-2xl border-b-4"></span>
+        <div id="ham" className="">
+          <button className="w-10 h-10  bg-[#f2f2f2] flex items-center justify-center rounded-full">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 32 32"
+              aria-hidden="true"
+              role="presentation"
+              focusable="false"
+              style={{
+                display: " block",
+                fill: "none",
+                height: "16px",
+                width: "16px",
+                stroke: " currentcolor",
+                strokeWidth: 3,
+                overflow: "visible",
+              }}
+            >
+              <g fill="none">
+                <path d="M2 16h28M2 24h28M2 8h28"></path>
+              </g>
+            </svg>
+          </button>
         </div>
-        <div id="experience" className="flex items-center">
-          <span className="h-9 w-9 inline-block">
-            <video
-              src="https://a0.muscache.com/videos/search-bar-icons/webm/balloon-twirl.webm"
-              className="w-full h-full scale-200"
-            ></video>
-          </span>
-          <span
-            id="text"
-            className="ml-2  font-semibold text-[14px]/[18px] -translate-y-0.5"
-          >
-            Experiences
-          </span>
-        </div>
-        <div id="service" className="flex items-center">
-          <span className="inline-block h-9 w-9">
-            <video
-              src="https://a0.muscache.com/videos/search-bar-icons/webm/consierge-twirl.webm"
-              className="w-full h-full scale-200"
-            ></video>
-          </span>
-          <span
-            id="text"
-            className="ml-3  font-semibold text-[14px]/[18px] -translate-y-0.5"
-          >
-            Services
-          </span>
-        </div>
-      </div>
-    </span>
-  </div>;
-  // </div>
-  // </div>
-};
-
-const NavLeft = () => {
-  return (
-    <div id="left" className="h-20 items-center flex w-[225.28px]">
-      <svg
-        width="102"
-        height="32"
-        viewBox="0 0 3490 1080"
-        style={{ display: "block", color: "#FF385C " }}
-      >
-        <path
-          d="M1494.71 456.953C1458.28 412.178 1408.46 389.892 1349.68 389.892C1233.51 389.892 1146.18 481.906 1146.18 605.892C1146.18 729.877 1233.51 821.892 1349.68 821.892C1408.46 821.892 1458.28 799.605 1494.71 754.83L1500.95 810.195H1589.84V401.588H1500.95L1494.71 456.953ZM1369.18 736.895C1295.33 736.895 1242.08 683.41 1242.08 605.892C1242.08 528.373 1295.33 474.888 1369.18 474.888C1443.02 474.888 1495.49 529.153 1495.49 605.892C1495.49 682.63 1443.8 736.895 1369.18 736.895ZM1656.11 810.195H1750.46V401.588H1656.11V810.195ZM948.912 666.715C875.618 506.859 795.308 344.664 713.438 184.809C698.623 155.177 670.554 98.2527 645.603 67.8412C609.736 24.1733 556.715 0.779785 502.915 0.779785C449.115 0.779785 396.094 24.1733 360.227 67.8412C335.277 98.2527 307.207 155.177 292.392 184.809C210.522 344.664 130.212 506.859 56.9187 666.715C47.5621 687.769 24.9504 737.675 16.3736 760.289C6.2373 787.581 0.779297 817.213 0.779297 846.845C0.779297 975.509 101.362 1079.22 235.473 1079.22C346.193 1079.22 434.3 1008.26 502.915 934.18C571.53 1008.26 659.638 1079.22 770.357 1079.22C904.468 1079.22 1005.83 975.509 1005.83 846.845C1005.83 817.213 999.593 787.581 989.457 760.289C980.88 737.675 958.268 687.769 948.912 666.715ZM502.915 810.195C447.555 738.455 396.094 649.56 396.094 577.819C396.094 506.079 446.776 470.209 502.915 470.209C559.055 470.209 610.516 508.419 610.516 577.819C610.516 647.22 558.275 738.455 502.915 810.195ZM770.357 998.902C688.362 998.902 618.032 941.557 555.741 872.656C619.966 792.541 690.826 679.121 690.826 577.819C690.826 458.513 598.04 389.892 502.915 389.892C407.79 389.892 315.784 458.513 315.784 577.819C315.784 679.098 386.145 792.478 450.144 872.593C387.845 941.526 317.491 998.902 235.473 998.902C146.586 998.902 81.0898 931.061 81.0898 846.845C81.0898 826.57 84.2087 807.856 91.2261 788.361C98.2436 770.426 120.855 720.52 130.212 701.025C203.505 541.17 282.256 380.534 364.126 220.679C378.941 191.047 403.891 141.921 422.605 119.307C442.877 94.3538 470.947 81.0975 502.915 81.0975C534.883 81.0975 562.953 94.3538 583.226 119.307C601.939 141.921 626.89 191.047 641.704 220.679C723.574 380.534 802.325 541.17 875.618 701.025C884.975 720.52 907.587 770.426 914.604 788.361C921.622 807.856 925.52 826.57 925.52 846.845C925.52 931.061 859.244 998.902 770.357 998.902ZM3285.71 389.892C3226.91 389.892 3175.97 413.098 3139.91 456.953V226.917H3045.56V810.195H3134.45L3140.69 754.83C3177.12 799.605 3226.94 821.892 3285.71 821.892C3401.89 821.892 3489.22 729.877 3489.22 605.892C3489.22 481.906 3401.89 389.892 3285.71 389.892ZM3266.22 736.895C3191.6 736.895 3139.91 682.63 3139.91 605.892C3139.91 529.153 3191.6 474.888 3266.22 474.888C3340.85 474.888 3393.32 528.373 3393.32 605.892C3393.32 683.41 3340.07 736.895 3266.22 736.895ZM2827.24 389.892C2766.15 389.892 2723.56 418.182 2699.37 456.953L2693.13 401.588H2604.24V810.195H2698.59V573.921C2698.59 516.217 2741.47 474.888 2800.73 474.888C2856.87 474.888 2888.84 513.097 2888.84 578.599V810.195H2983.19V566.903C2983.19 457.733 2923.15 389.892 2827.24 389.892ZM1911.86 460.072L1905.62 401.588H1816.73V810.195H1911.08V604.332C1911.08 532.592 1954.74 486.585 2027.26 486.585C2042.85 486.585 2058.44 488.144 2070.92 492.043V401.588C2059.22 396.91 2044.41 395.35 2028.04 395.35C1978.58 395.35 1936.66 421.177 1911.86 460.072ZM2353.96 389.892C2295.15 389.892 2244.21 413.098 2208.15 456.953V226.917H2113.8V810.195H2202.69L2208.93 754.83C2245.36 799.605 2295.18 821.892 2353.96 821.892C2470.13 821.892 2557.46 729.877 2557.46 605.892C2557.46 481.906 2470.13 389.892 2353.96 389.892ZM2334.46 736.895C2259.84 736.895 2208.15 682.63 2208.15 605.892C2208.15 529.153 2259.84 474.888 2334.46 474.888C2409.09 474.888 2461.56 528.373 2461.56 605.892C2461.56 683.41 2408.31 736.895 2334.46 736.895ZM1703.28 226.917C1669.48 226.917 1642.08 254.326 1642.08 288.13C1642.08 321.934 1669.48 349.343 1703.28 349.343C1737.09 349.343 1764.49 321.934 1764.49 288.13C1764.49 254.326 1737.09 226.917 1703.28 226.917Z"
-          fill="currentcolor"
-        ></path>
-      </svg>
-    </div>
-  );
-};
-
-const NavRight = () => {
-  return (
-    <div id="right" className="flex items-center justify-end h-20">
-      <div
-        id="right-wrapper"
-        className="flex items-center justify-end flex-auto mr-3 gap-x-3"
-      >
-        <button className="px-3 py-2.75 text-[14px]/[normal] border-[#ffffff] border-1 rounded-3xl  border-t-0">
-          Become a host
-        </button>
-        <button className="w-10 h-10 bg-[#f2f2f2] flex items-center justify-center rounded-full">
-          {" "}
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            viewBox="0 0 16 16"
-            aria-hidden="true"
-            role="presentation"
-            focusable="false"
-            style={{
-              display: "block",
-              height: " 16px",
-              width: "16px",
-              fill: " currentcolor",
-            }}
-          >
-            <path d="M8 .25a7.77 7.77 0 0 1 7.75 7.78 7.75 7.75 0 0 1-7.52 7.72h-.25A7.75 7.75 0 0 1 .25 8.24v-.25A7.75 7.75 0 0 1 8 .25zm1.95 8.5h-3.9c.15 2.9 1.17 5.34 1.88 5.5H8c.68 0 1.72-2.37 1.93-5.23zm4.26 0h-2.76c-.09 1.96-.53 3.78-1.18 5.08A6.26 6.26 0 0 0 14.17 9zm-9.67 0H1.8a6.26 6.26 0 0 0 3.94 5.08 12.59 12.59 0 0 1-1.16-4.7l-.03-.38zm1.2-6.58-.12.05a6.26 6.26 0 0 0-3.83 5.03h2.75c.09-1.83.48-3.54 1.06-4.81zm2.25-.42c-.7 0-1.78 2.51-1.94 5.5h3.9c-.15-2.9-1.18-5.34-1.89-5.5h-.07zm2.28.43.03.05a12.95 12.95 0 0 1 1.15 5.02h2.75a6.28 6.28 0 0 0-3.93-5.07z"></path>
-          </svg>
-        </button>
-      </div>
-      <div id="ham" className="">
-        <button className="w-10 h-10  bg-[#f2f2f2] flex items-center justify-center rounded-full">
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            viewBox="0 0 32 32"
-            aria-hidden="true"
-            role="presentation"
-            focusable="false"
-            style={{
-              display: " block",
-              fill: "none",
-              height: "16px",
-              width: "16px",
-              stroke: " currentcolor",
-              strokeWidth: 3,
-              overflow: "visible",
-            }}
-          >
-            <g fill="none">
-              <path d="M2 16h28M2 24h28M2 8h28"></path>
-            </g>
-          </svg>
-        </button>
       </div>
     </div>
   );

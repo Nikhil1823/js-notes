@@ -7,17 +7,17 @@ type ProductCarouselProps = {
 const ProductCarousel: React.FC<ProductCarouselProps> = ({ items }) => {
   return (
     <>
-      {items.map((item) => {
+      {items?.map((item, i) => {
         return (
-          <div className="mx-auto my-0 max-w-[1440px]">
+          <div className="mx-auto my-0 max-w-[1440px]" key={item?.title + i}>
             <CardHeading title={item.title} />
             <div className="px-[48px]  -mb-[8px] -mt-[4px]  ">
               <div
                 id="inner-div"
                 className=" pt-1 pb-2 justify-start grid grid-flow-col gap-x-[11px] gap-y-[16px]  auto-cols-[calc(14.2857%_-_9.42857px)] overflow-x-auto overflow-y-hidden "
               >
-                {item.products.map((product) => {
-                  return <ProductCard product={product} />;
+                {item.products.map((product, i) => {
+                  return <ProductCard product={product} key={i} />;
                 })}
               </div>
             </div>
