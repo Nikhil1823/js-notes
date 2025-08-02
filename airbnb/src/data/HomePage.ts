@@ -1,4 +1,4 @@
-type HomeDataType = {
+export type HomeDataType = {
   heading: string;
   videoUrl: string;
   isNew: boolean;

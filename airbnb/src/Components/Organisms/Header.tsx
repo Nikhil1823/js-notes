@@ -79,7 +79,7 @@ const SearchBar = () => {
     </div>
   );
 };
-
+import { clsx } from "clsx";
 const Navbar = () => {
   const [data, setData] = useState([{}]);
   useEffect(() => {
@@ -93,10 +93,10 @@ const Navbar = () => {
       <NavLeft />
 
       <div id="middle" className="flex items-center h-20 w-125  ">
-        <div className="mt-5.5 mb-6 w-full h-auto">
+        {/* <div className="mt-5.5 mb-6 w-full h-auto">
           <span className="flex justify-center">
-            <div className="mt-1.25 flex  gap-x-8.75 ">
-              {data?.map((item) => {
+            <div className="mt-1.25 flex  gap-x-8.75 "> */}
+        {/* {data?.map((item) => {
                 return (
                   <div
                     id="home"
@@ -114,18 +114,77 @@ const Navbar = () => {
                     </span>
                     <span
                       id="text"
-                      className="ml-4  font-semibold text-[14px]/[18px] -translate-y-0.5"
+                      className={clsx(
+                    "font-semibold text-[14px]/[18px] -translate-y-0.5",
+                    item.heading == "home" && "ml-4",
+                    item.heading == "Experiences" && "ml-2",
+                    item.heading == "Services" && "ml-3"
+                  )}
                     >
                       {item?.heading}
                     </span>
                     <span className="w-26 bg-black h-0.75 absolute -bottom-3 -left-1 rounded-2xl border-b-4"></span>
                   </div>
                 );
-              })}
+              })} */}
+        <div className="mt-5.5 mb-6 w-full h-auto">
+          <span className="flex justify-center">
+            <div className="mt-1.25 flex  gap-x-8.75 ">
+              {/* need change */}
+              <div id="home" className="flex items-center relative">
+                <span className="h-9 w-9 inline-block">
+                  <video
+                    autoPlay
+                    src="https://a0.muscache.com/videos/search-bar-icons/webm/house-twirl-selected.webm"
+                    className="w-full h-full scale-200"
+                  ></video>
+                </span>
+                <span
+                  id="text"
+                  className={clsx(
+                    "font-semibold text-[14px]/[18px] -translate-y-0.5 ml-4"
+                  )}
+                >
+                  Homes
+                </span>
+                <span className="w-26 bg-black h-0.75 absolute -bottom-3 -left-1 rounded-2xl border-b-4"></span>
+              </div>
+
+              <div id="experience" className="flex items-center">
+                <span className="h-9 w-9 inline-block">
+                  <video
+                    src="https://a0.muscache.com/videos/search-bar-icons/webm/balloon-twirl.webm"
+                    className="w-full h-full scale-200"
+                  ></video>
+                </span>
+                <span
+                  id="text"
+                  className="ml-2  font-semibold text-[14px]/[18px] -translate-y-0.5"
+                >
+                  Experiences
+                </span>
+              </div>
+              <div id="service" className="flex items-center">
+                <span className="inline-block h-9 w-9">
+                  <video
+                    src="https://a0.muscache.com/videos/search-bar-icons/webm/consierge-twirl.webm"
+                    className="w-full h-full scale-200"
+                  ></video>
+                </span>
+                <span
+                  id="text"
+                  className="ml-3  font-semibold text-[14px]/[18px] -translate-y-0.5"
+                >
+                  Services
+                </span>
+              </div>
             </div>
           </span>
         </div>
       </div>
+      {/* </span>
+        </div>
+      </div> */}
       <NavRight />
     </div>
   );
