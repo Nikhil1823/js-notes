@@ -38,7 +38,8 @@ const WishIcon = ({ type }: { type: string }) => {
                   strokeWidth: 2,
                   overflow: "visible",
                 }}
-                onClick={() => {
+                onClick={(e) => {
+                  e.stopPropagation();
                   setWish(!isWish);
                 }}
                 className={clsx(

@@ -10,8 +10,6 @@ type HeaderPropType = {
   data: HomeDataType[];
 };
 const Header = ({ data }: HeaderPropType) => {
-  console.log("data", data[0]);
-
   return (
     <div className={"header-bg w-full  h-[199.68px]  origin-top "}>
       <Navbar data={data} />
@@ -24,6 +22,9 @@ export default Header;
 
 const SearchBar = React.memo(({ data }: HeaderPropType) => {
   const productContext = useContext(dataContext);
+  const arrLen = productContext
+    ? data[productContext?.selected].searchBar.length
+    : 0;
   return (
     <div className="h-16.5 max-w-212.5 mx-auto rounded-4xl relative ">
       <div
@@ -48,7 +49,14 @@ const SearchBar = React.memo(({ data }: HeaderPropType) => {
               extraPadding: i == 0,
             };
 
-            return <DestinationSelector {...data} key={i} />;
+            return (
+              <>
+                <DestinationSelector {...data} key={i + data.sub} />
+                {arrLen != i + 1 && (
+                  <div className="h-8 w-0.25 bg-[#DDDDDD]"></div>
+                )}
+              </>
+            );
           })}
         <div id="search-icon" className="p-2.5 absolute right-0">
           <button className="bg-[#FF385C] p-2.5 rounded-full w-12 h-12 flex items-center justify-center">

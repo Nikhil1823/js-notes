@@ -825,7 +825,7 @@ const data: HomeDataType[] = [
           {
             isGuestFav: "Original",
             buttonType: "share",
-            name: "Learn how to mix with DJ Lady D at Lollapalooza",
+            name: "Learn how to mix with DJ Lady D at Lollapalooza Lollapalooza",
             offer: "From ₹19,725 / guest",
             loc: "Chicago, United States",
             image:
@@ -1148,7 +1148,7 @@ const data: HomeDataType[] = [
           },
           {
             isGuestFav: "",
-            name: "Photo session at the Metropolitan Museum of Art",
+            name: "Photo session at the Metropolitan Museum of Art Museum of Art",
 
             offer: "From ₹26,300 / guest",
             rating: "4.93",
