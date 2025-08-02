@@ -5,6 +5,7 @@ import { clsx } from "clsx";
 import type { HomeDataType } from "../../data/HomePage";
 import DestinationSelector from "../atoms/DestinationSelector";
 import NavIcons from "../atoms/NavIcons";
+import IconIsland from "../molecules/IconIsland";
 
 type HeaderPropType = {
   data: HomeDataType[];
@@ -25,6 +26,7 @@ const SearchBar = React.memo(({ data }: HeaderPropType) => {
   const arrLen = productContext
     ? data[productContext?.selected].searchBar.length
     : 0;
+
   return (
     <div className="h-16.5 max-w-212.5 mx-auto rounded-4xl relative ">
       <div
@@ -42,7 +44,7 @@ const SearchBar = React.memo(({ data }: HeaderPropType) => {
         )}
       >
         {productContext &&
-          data[productContext?.selected].searchBar.map((item, i) => {
+          data[productContext.selected].searchBar.map((item, i) => {
             const data = {
               title: item.title,
               sub: item.sub,
@@ -104,8 +106,8 @@ const Navbar = ({ data }: HeaderPropType) => {
           ></path>
         </svg>
       </div>
-
-      <div id="middle" className="flex items-center h-20 w-125  ">
+      <IconIsland data={data} />
+      {/* <div className="flex items-center h-20 w-125  ">
         <div className="mt-5.5 mb-6 w-full h-auto">
           <span className="flex justify-center">
             <div className="mt-1.25 flex  gap-x-8.75 ">
@@ -120,7 +122,7 @@ const Navbar = ({ data }: HeaderPropType) => {
             </div>
           </span>
         </div>
-      </div>
+      </div> */}
       <div id="right" className="flex items-center justify-end h-20">
         <div
           id="right-wrapper"

@@ -16,12 +16,15 @@ type ContextType = {
 function App() {
   const [selected, setSelected] = useState(0);
   const data = useRef<HomeDataType[]>(exportData());
+  console.log("data", data.current[selected].items);
 
   return (
     <>
       <dataContext.Provider value={{ selected, setSelected }}>
         <Header data={data.current} />
-        <ProductCarousel items={data.current[selected]?.items} />
+        {data.current[selected]?.items.map((item) => {
+          return <ProductCarousel items={item} />;
+        })}
       </dataContext.Provider>
     </>
   );

@@ -1,5 +1,5 @@
 export type HomeDataType = {
-  heading: string;
+  heading: "Homes" | "Experiences" | "Services";
   videoUrl: string;
   isNew: boolean;
   items: productCarouselType[];

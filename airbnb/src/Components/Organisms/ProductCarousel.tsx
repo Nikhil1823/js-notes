@@ -3,47 +3,36 @@ import type { productCarouselType } from "../../data/HomePage";
 import { useContext, useRef } from "react";
 
 type ProductCarouselProps = {
-  items: productCarouselType[];
+  items: productCarouselType;
 };
 
 const ProductCarousel: React.FC<ProductCarouselProps> = ({ items }) => {
   const carouselRef = useRef<HTMLDivElement | null>(null);
+
   return (
     <>
-      {items?.map((item, i) => {
-        return (
-          <>
-            <div className="mx-auto my-0 max-w-[1440px]" key={item?.title + i}>
-              <CardHeading {...{ title: item.title, carouselRef }} />
-              <div className="px-12  -mb-2 -mt-1  ">
-                <div
-                  className=" pt-1 pb-2 justify-start grid grid-flow-col gap-x-2.75 gap-y-4  auto-cols-[calc(14.2857%_-_9.42857px)]  overflow-x-scroll  "
-                  ref={carouselRef}
-                >
-                  {item.products.map((product, i) => {
-                    return (
-                      <ProductCard product={product} key={i + product.offer} />
-                    );
-                  })}
-                </div>
-              </div>
-            </div>
-            {item.title == "Airbnb Originals" && (
-              <div className="px-12 pt-10 pb-2 max-w-360 -tracking-[0.96px]">
-                <h1 className="font-medium text-[32px]/9">
-                  Popular with travellers from your area
-                </h1>
-              </div>
-            )}
-          </>
-        );
-        console.log(
-          "media query for inner div :  lg:auto-cols-[calc(20%_-_8.8px)]"
-        );
-        console.log("media query for inner div wrapper :  lg:px-8");
-      })}
+      <div className="mx-auto my-0 max-w-[1440px]">
+        <CardHeading {...{ title: items.title, carouselRef }} />
+        <div className="px-12  -mb-2 -mt-1  ">
+          <div
+            className=" pt-1 pb-2 justify-start grid grid-flow-col gap-x-2.75 gap-y-4  auto-cols-[calc(14.2857%_-_9.42857px)]  overflow-x-scroll  "
+            ref={carouselRef}
+          >
+            <ProductCard product={items.products} />
+          </div>
+        </div>
+      </div>
+      {items.title == "Airbnb Originals" && (
+        <div className="px-12 pt-10 pb-2 max-w-360 -tracking-[0.96px]">
+          <h1 className="font-medium text-[32px]/9">
+            Popular with travellers from your area
+          </h1>
+        </div>
+      )}
     </>
   );
+  console.log("media query for inner div :  lg:auto-cols-[calc(20%_-_8.8px)]");
+  console.log("media query for inner div wrapper :  lg:px-8");
 };
 
 export default ProductCarousel;
@@ -58,7 +47,7 @@ const CardHeading: React.FC<headingProps> = ({ title, carouselRef }) => {
   return (
     <div className="mx-12 mt-8 mb-3.5 text-[14px]/[20.2px] ">
       <div className=" flex " id="heading">
-        <div className="title text-[20px]/[24px] -tracking-[0.18px] font-[600] flex translate-y-0.5 ">
+        <div className="title text-[20px]/[24px] -tracking-[0.18px] font-semibold flex translate-y-0.5 ">
           <p>{title}</p>
           {productContext && productContext.selected != 2 && (
             <span className="ml-0.5">
@@ -115,9 +104,8 @@ const CardHeading: React.FC<headingProps> = ({ title, carouselRef }) => {
               console.log(carouselRef.current?.scrollBy);
 
               carouselRef.current?.scrollBy({
-                left: 1000,
+                left: 200,
                 behavior: "smooth",
-                // top: 100,
               });
             }}
           >

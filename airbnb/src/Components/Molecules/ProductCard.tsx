@@ -6,32 +6,41 @@ type CardDetailsProps = {
   details: productType;
 };
 type ProductCardProps = {
-  product: productType;
+  product: productType[];
 };
 const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
   return (
-    <div className="container flex flex-col gap-2 grow shrink-0 basis-full text-[0.875rem]/[1.43]">
-      <div className="image-div relative rounded-[20px] inline-block">
-        <div className="aspect-[20/19] rounded-[20px] overflow-clip relative">
-          <img
-            className="object-center object-cover w-full align-bottom relative h-full"
-            src={product.image}
-            alt=""
-          />
-          <div className="p-3 pb-0 absolute  inset-0 ">
-            <div className="flex justify-between ">
-              {product.isGuestFav?.length > 0 && (
-                <FavoriteLabel label={product.isGuestFav} />
-              )}
-              <WishIcon
-                type={product.buttonType?.length ? product.buttonType : "like"}
-              />
+    <>
+      {product.map((item, i) => {
+        return (
+          <div
+            className="container flex flex-col gap-2 grow shrink-0 basis-full text-[0.875rem]/[1.43]"
+            key={i + item.offer}
+          >
+            <div className="image-div relative rounded-[20px] inline-block">
+              <div className="aspect-[20/19] rounded-[20px] overflow-clip relative">
+                <img
+                  className="object-center object-cover w-full align-bottom relative h-full"
+                  src={item.image}
+                  alt=""
+                />
+                <div className="p-3 pb-0 absolute  inset-0 ">
+                  <div className="flex justify-between ">
+                    {item.isGuestFav?.length > 0 && (
+                      <FavoriteLabel label={item.isGuestFav} />
+                    )}
+                    <WishIcon
+                      type={item.buttonType?.length ? item.buttonType : "like"}
+                    />
+                  </div>
+                </div>
+              </div>
             </div>
+            <CardDetails details={item} />
           </div>
-        </div>
-      </div>
-      <CardDetails details={product} />
-    </div>
+        );
+      })}
+    </>
   );
 };
 
@@ -46,12 +55,12 @@ const CardDetails: React.FC<CardDetailsProps> = ({ details }) => {
       <span className="text-[13px]/[16px] font-medium overflow-clip overflow-ellipsis line-clamp-3 text-pretty">
         {details.name}
       </span>
-      <div className=" text-[12px]/[16px] relative translate-y-[2px] ">
+      <div className=" text-[12px]/[16px] relative translate-y-0.5 ">
         <div className="  text-[0.75rem]/[1rem] flex-wrap text-[#6A6A6A] flex items-baseline flex-col relative w-full gap-0.5">
           <span className="">{details?.loc}</span>
           <div className="flex flex-row">
-            <span className="font-[400]">{price}</span>&nbsp;
-            {time && <span className=" font-[400]">for {time}</span>}
+            <span className="font-normal">{price}</span>&nbsp;
+            {time && <span className=" font-normal">for {time}</span>}
             {details?.rating && (
               <>
                 <span className="font-bold -translate-y-[2.1px] text-[#c1c1c1] ">
