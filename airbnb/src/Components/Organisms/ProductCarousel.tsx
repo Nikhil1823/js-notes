@@ -13,7 +13,7 @@ const ProductCarousel: React.FC<ProductCarouselProps> = ({ items }) => {
     <>
       <div className="mx-auto my-0 max-w-[1440px]">
         <CardHeading {...{ title: items.title, carouselRef }} />
-        <div className="px-12  -mb-2 -mt-1  ">
+        <div className="px-12  -mb-2 -mt-1">
           <div
             className=" pt-1 pb-2 justify-start grid grid-flow-col gap-x-2.75 gap-y-4  auto-cols-[calc(14.2857%_-_9.42857px)]  overflow-x-scroll  "
             ref={carouselRef}

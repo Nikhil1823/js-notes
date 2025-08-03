@@ -1,10 +1,8 @@
 import { useContext } from "react";
 import { dataContext } from "../../App";
-import React from "react";
 import { clsx } from "clsx";
 import type { HomeDataType } from "../../data/HomePage";
 import DestinationSelector from "../atoms/DestinationSelector";
-import NavIcons from "../atoms/NavIcons";
 import IconIsland from "../molecules/IconIsland";
 
 type HeaderPropType = {
@@ -21,7 +19,7 @@ const Header = ({ data }: HeaderPropType) => {
 
 export default Header;
 
-const SearchBar = React.memo(({ data }: HeaderPropType) => {
+const SearchBar = ({ data }: HeaderPropType) => {
   const productContext = useContext(dataContext);
   const arrLen = productContext
     ? data[productContext?.selected].searchBar.length
@@ -53,7 +51,7 @@ const SearchBar = React.memo(({ data }: HeaderPropType) => {
 
             return (
               <>
-                <DestinationSelector {...data} key={i + data.sub} />
+                <DestinationSelector {...data} key={i + Math.random()} />
                 {arrLen != i + 1 && (
                   <div className="h-8 w-0.25 bg-[#DDDDDD]"></div>
                 )}
@@ -88,7 +86,7 @@ const SearchBar = React.memo(({ data }: HeaderPropType) => {
       </div>
     </div>
   );
-});
+};
 
 const Navbar = ({ data }: HeaderPropType) => {
   return (
@@ -107,22 +105,7 @@ const Navbar = ({ data }: HeaderPropType) => {
         </svg>
       </div>
       <IconIsland data={data} />
-      {/* <div className="flex items-center h-20 w-125  ">
-        <div className="mt-5.5 mb-6 w-full h-auto">
-          <span className="flex justify-center">
-            <div className="mt-1.25 flex  gap-x-8.75 ">
-              {data?.map((item, i) => {
-                const data = {
-                  heading: item.heading,
-                  videoUrl: item.videoUrl,
-                };
 
-                return <NavIcons {...data} key={i} />;
-              })}
-            </div>
-          </span>
-        </div>
-      </div> */}
       <div id="right" className="flex items-center justify-end h-20">
         <div
           id="right-wrapper"

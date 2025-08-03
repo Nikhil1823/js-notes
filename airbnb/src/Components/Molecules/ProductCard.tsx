@@ -57,10 +57,14 @@ const CardDetails: React.FC<CardDetailsProps> = ({ details }) => {
       </span>
       <div className=" text-[12px]/[16px] relative translate-y-0.5 ">
         <div className="  text-[0.75rem]/[1rem] flex-wrap text-[#6A6A6A] flex items-baseline flex-col relative w-full gap-0.5">
-          <span className="">{details?.loc}</span>
-          <div className="flex flex-row">
+          {details?.loc && <span className="">{details.loc}</span>}
+          <div className="flex flex-row ">
             <span className="font-normal">{price}</span>&nbsp;
-            {time && <span className=" font-normal">for {time}</span>}
+            {time && (
+              <span className="font-normal whitespace-nowrap overflow-hidden text-ellipsis">
+                for{time}
+              </span>
+            )}
             {details?.rating && (
               <>
                 <span className="font-bold -translate-y-[2.1px] text-[#c1c1c1] ">
@@ -93,7 +97,7 @@ const CardDetails: React.FC<CardDetailsProps> = ({ details }) => {
               </>
             )}
           </div>
-          <span>{details?.min}</span>
+          {details?.min && <span>{details.min}</span>}
         </div>
       </div>
     </div>

@@ -21,15 +21,12 @@ const indexResolver = (heading: string) => {
 const NavIcons = ({ heading, videoUrl }: NavIconProp) => {
   const productContext = useContext(dataContext);
   const index = indexResolver(heading);
-  console.log(index);
 
   return (
     <div
       key={heading}
       className="flex items-center relative"
       onClick={() => {
-        console.log("clicked here", index);
-
         productContext?.setSelected(index);
       }}
     >

@@ -1,10 +1,5 @@
-// import FavoriteLabel from "./Components/Atoms/FavoriteLabel";
-// import WishIcon from "./Components/Atoms/WishIcon";
-// import ProductCard from "./Components/Molecules/ProductCard";
 import Header from "./Components/organisms/Header";
 import ProductCarousel from "./Components/organisms/ProductCarousel";
-// import ProductCarousel from "./Components/Organisms/ProductCarousel";
-// import ResultContainer from "./Components/organisms/ResultContainer";
 import { exportData } from "./data/HomePage";
 import type { HomeDataType } from "./data/HomePage";
 import { createContext, useState, useRef } from "react";
@@ -19,14 +14,12 @@ function App() {
   console.log("data", data.current[selected].items);
 
   return (
-    <>
-      <dataContext.Provider value={{ selected, setSelected }}>
-        <Header data={data.current} />
-        {data.current[selected]?.items.map((item) => {
-          return <ProductCarousel items={item} />;
-        })}
-      </dataContext.Provider>
-    </>
+    <dataContext.Provider value={{ selected, setSelected }}>
+      <Header data={data.current} />
+      {data.current[selected]?.items.map((item, i) => {
+        return <ProductCarousel items={item} key={i + item.title} />;
+      })}
+    </dataContext.Provider>
   );
 }
 
