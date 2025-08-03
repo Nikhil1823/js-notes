@@ -3,7 +3,7 @@ import { dataContext } from "../../App";
 import { clsx } from "clsx";
 import type { HomeDataType } from "../../data/HomePage";
 import DestinationSelector from "../atoms/DestinationSelector";
-import IconIsland from "../molecules/IconIsland";
+import IconCollection from "../molecules/IconCollection.tsx";
 
 type HeaderPropType = {
   data: HomeDataType[];
@@ -104,7 +104,7 @@ const Navbar = ({ data }: HeaderPropType) => {
           ></path>
         </svg>
       </div>
-      <IconIsland data={data} />
+      <IconCollection data={data} />
 
       <div id="right" className="flex items-center justify-end h-20">
         <div

@@ -4,7 +4,7 @@ import type { HomeDataType } from "../../data/HomePage";
 type HomeDataProp = {
   data: HomeDataType[];
 };
-const IconIsland: React.FC<HomeDataProp> = ({ data }) => {
+const IconCollection: React.FC<HomeDataProp> = ({ data }) => {
   return (
     <div className="flex items-center h-20 w-125  ">
       <div className="mt-5.5 mb-6 w-full h-auto">
@@ -25,4 +25,4 @@ const IconIsland: React.FC<HomeDataProp> = ({ data }) => {
   );
 };
 
-export default IconIsland;
+export default IconCollection;

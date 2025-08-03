@@ -101,8 +101,6 @@ const CardHeading: React.FC<headingProps> = ({ title, carouselRef }) => {
           <button
             className="bg-[#f2f2f2] flex items-center justify-center rounded-full w-6"
             onClick={() => {
-              console.log(carouselRef.current?.scrollBy);
-
               carouselRef.current?.scrollBy({
                 left: 200,
                 behavior: "smooth",

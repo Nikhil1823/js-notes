@@ -1,3 +1,4 @@
+import Footer from "./Components/organisms/Footer";
 import Header from "./Components/organisms/Header";
 import ProductCarousel from "./Components/organisms/ProductCarousel";
 import { exportData } from "./data/HomePage";
@@ -11,7 +12,6 @@ type ContextType = {
 function App() {
   const [selected, setSelected] = useState(0);
   const data = useRef<HomeDataType[]>(exportData());
-  console.log("data", data.current[selected].items);
 
   return (
     <dataContext.Provider value={{ selected, setSelected }}>
@@ -19,6 +19,7 @@ function App() {
       {data.current[selected]?.items.map((item, i) => {
         return <ProductCarousel items={item} key={i + item.title} />;
       })}
+      <Footer />
     </dataContext.Provider>
   );
 }
