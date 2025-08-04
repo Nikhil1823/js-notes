@@ -1,5 +1,4 @@
 import React, { useEffect } from "react";
-import { createPortal } from "react-dom";
 
 import clsx from "clsx";
 type ModalPropType = {
@@ -21,32 +20,30 @@ const CustomModal: React.FC<ModalPropType> = ({
     }
   }, [modalStatus]);
   return (
-    <>
+    <div
+      className={clsx(
+        "bg-[rgba(0,0,0,0.75)] h-full inset-0 fixed top-0 z-10 w-full flex justify-center items-center",
+        !modalStatus && "hidden"
+      )}
+      onClick={() => setModalStatus(false)}
+    >
       <div
-        className={clsx(
-          "bg-[rgba(0,0,0,0.75)] h-full inset-0 fixed top-0 z-10 w-full flex justify-center items-center",
-          !modalStatus && "hidden"
-        )}
-        onClick={() => setModalStatus(false)}
+        className="max-w-80 p-8  bg-white h-[97%] max-h-200 rounded-[20px] relative"
+        onClick={(e) => {
+          e.stopPropagation();
+        }}
       >
-        <div
-          className="max-w-80 p-8  bg-white h-[97%] max-h-200 rounded-[20px] relative"
-          onClick={(e) => {
-            e.stopPropagation();
-          }}
-        >
-          <div className=" overflow-y-scroll flex  items-center flex-col  gap-y-2 h-full w-full ">
-            <button
-              className="absolute  bg-white border-1 rounded-full w-8 h-8 -top-5 -right-10"
-              onClick={() => setModalStatus(!modalStatus)}
-            >
-              <span>X</span>
-            </button>
-            {children}
-          </div>
+        <div className=" overflow-y-scroll flex  items-center flex-col  gap-y-2 h-full w-full ">
+          <button
+            className="absolute  bg-white border-1 rounded-full w-8 h-8 -top-5 -right-10"
+            onClick={() => setModalStatus(!modalStatus)}
+          >
+            <span>X</span>
+          </button>
+          {children}
         </div>
       </div>
-    </>
+    </div>
   );
 };
 
