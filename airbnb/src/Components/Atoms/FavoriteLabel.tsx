@@ -1,5 +1,4 @@
-// import React from 'react'
-
+import React from "react";
 const FavoriteLabel: React.FC<{ label: string }> = ({ label }) => {
   return (
     <div className="bg-[#ffffffcc] h-fit px-[9.5px] py-[5.5px] border-[1px] rounded-[14px] inline-flex text-ellipsis overflow-clip  border-[#ffffffcc] text-[11px]/[13px]">
@@ -13,4 +12,4 @@ const FavoriteLabel: React.FC<{ label: string }> = ({ label }) => {
   );
 };
 
-export default FavoriteLabel;
+export default React.memo(FavoriteLabel);

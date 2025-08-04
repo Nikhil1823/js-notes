@@ -5,8 +5,8 @@
   width="12"
   height="12"
   fill="none"
-  stroke="currentColor"
-  stroke-width="5.33333"
+  stroke="#222222"
+  stroke-width="4"
   aria-hidden="true"
   role="presentation"
 >

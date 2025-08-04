@@ -3,6 +3,7 @@ import Header from "./Components/organisms/Header";
 import ProductCarousel from "./Components/organisms/ProductCarousel";
 import { exportData } from "./data/HomePage";
 import type { HomeDataType } from "./data/HomePage";
+
 import { createContext, useState, useRef } from "react";
 export const dataContext = createContext<ContextType | null>(null);
 type ContextType = {
@@ -11,6 +12,7 @@ type ContextType = {
 };
 function App() {
   const [selected, setSelected] = useState(0);
+
   const data = useRef<HomeDataType[]>(exportData());
 
   return (
@@ -19,7 +21,7 @@ function App() {
       {data.current[selected]?.items.map((item, i) => {
         return <ProductCarousel items={item} key={i + item.title} />;
       })}
-      <Footer />
+      <Footer property={data.current[selected]?.items[0].products[0]} />
     </dataContext.Provider>
   );
 }

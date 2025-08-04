@@ -1,4 +1,3 @@
-import ProductCard from "../molecules/ProductCard";
 import type { productCarouselType } from "../../data/HomePage";
 import { useContext, useRef } from "react";
 
@@ -15,10 +14,10 @@ const ProductCarousel: React.FC<ProductCarouselProps> = ({ items }) => {
         <CardHeading {...{ title: items.title, carouselRef }} />
         <div className="px-12  -mb-2 -mt-1">
           <div
-            className=" pt-1 pb-2 justify-start grid grid-flow-col gap-x-2.75 gap-y-4  auto-cols-[calc(14.2857%_-_9.42857px)]  overflow-x-scroll  "
+            className=" pt-1 pb-2 justify-start grid grid-flow-col gap-x-2.75 gap-y-4  auto-cols-[calc(14.2857%_-_9.42857px)]  overflow-x-scroll"
             ref={carouselRef}
           >
-            <ProductCard product={items.products} />
+            <CardStrip items={items.products} />
           </div>
         </div>
       </div>
@@ -42,8 +41,12 @@ type headingProps = {
   carouselRef: React.RefObject<null | HTMLDivElement>;
 };
 import { dataContext } from "../../App";
+import { exportSvg } from "../../assets/svgs";
+import CardStrip from "../molecules/CardStrip";
+// import PropertyModal from "../atoms/PropertyModal";
 const CardHeading: React.FC<headingProps> = ({ title, carouselRef }) => {
   const productContext = useContext(dataContext);
+
   return (
     <div className="mx-12 mt-8 mb-3.5 text-[14px]/[20.2px] ">
       <div className=" flex " id="heading">
@@ -51,52 +54,21 @@ const CardHeading: React.FC<headingProps> = ({ title, carouselRef }) => {
           <p>{title}</p>
           {productContext && productContext.selected != 2 && (
             <span className="ml-0.5">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                viewBox="0 0 32 32"
-                aria-hidden="true"
-                role="presentation"
-                focusable="false"
-                style={{
-                  fill: "none",
-                  height: "12px",
-                  width: "12px",
-                  display: "inline",
-                  stroke: "currentcolor",
-                  strokeWidth: 5.33333,
-                  overflow: "visible",
-                  marginTop: "-2px",
-                }}
-              >
-                <path
-                  fill="none"
-                  d="m12 4 11.3 11.3a1 1 0 0 1 0 1.4L12 28"
-                ></path>
-              </svg>
+              <img
+                src={exportSvg("rightArrow")}
+                alt="rightArrow"
+                className="mt-1.75"
+              />
             </span>
           )}
         </div>
         <div className="navigation ml-auto flex gap-x-1">
           <button className="prev cursor-not-allowed opacity-[0.5]  bg-[#ffffff] flex items-center justify-center rounded-full w-6 border-1 border-[#DDDDDD]  ">
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              viewBox="0 0 32 32"
-              aria-hidden="true"
-              role="presentation"
-              focusable="false"
-              style={{
-                display: "block",
-                fill: "none",
-                height: "12px",
-                width: "12px",
-                stroke: "#c1c1c1",
-                strokeWidth: 4,
-                overflow: "visible",
-                transform: "translateY(0.8px)",
-              }}
-            >
-              <path fill="none" d="M20 28 8.7 16.7a1 1 0 0 1 0-1.4L20 4"></path>
-            </svg>
+            <img
+              src={exportSvg("carouselLeftArrow")}
+              alt="carouselLeftArrow"
+              className="translate-y-0.25"
+            />
           </button>
           <button
             className="bg-[#f2f2f2] flex items-center justify-center rounded-full w-6"
@@ -107,28 +79,11 @@ const CardHeading: React.FC<headingProps> = ({ title, carouselRef }) => {
               });
             }}
           >
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              viewBox="0 0 32 32"
-              aria-hidden="true"
-              role="presentation"
-              focusable="false"
-              style={{
-                display: "block",
-                fill: "none",
-                height: "12px",
-                width: "12px",
-                stroke: "currentcolor",
-                strokeWidth: 4,
-                overflow: "visible",
-                transform: "translateY(0.8px)",
-              }}
-            >
-              <path
-                fill="none"
-                d="m12 4 11.3 11.3a1 1 0 0 1 0 1.4L12 28"
-              ></path>
-            </svg>
+            <img
+              src={exportSvg("carouselRightArrow")}
+              alt="carouselRightArrow"
+              className="translate-y-0.25"
+            />
           </button>
         </div>
       </div>

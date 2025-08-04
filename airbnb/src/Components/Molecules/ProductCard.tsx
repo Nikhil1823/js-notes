@@ -1,105 +1,95 @@
 import FavoriteLabel from "../atoms/FavoriteLabel";
 import WishIcon from "../atoms/WishIcon";
+import CardDetails from "../atoms/CardDetails";
 import type { productType } from "../../data/HomePage";
-
-type CardDetailsProps = {
-  details: productType;
-};
+import React, { useState, useCallback } from "react";
+import CustomModal from "../atoms/CustomModal";
+import { exportSvg } from "../../assets/svgs";
 type ProductCardProps = {
-  product: productType[];
+  product: productType;
 };
 const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
+  const [property, setProperty] = useState<productType | null>(null);
+  const [isModalOpen, setModalOpen] = useState(false);
+  const handleModalStatus = useCallback((item: productType) => {
+    setModalOpen(!isModalOpen);
+    setProperty(item);
+  }, []);
   return (
     <>
-      {product.map((item, i) => {
-        return (
-          <div
-            className="container flex flex-col gap-2 grow shrink-0 basis-full text-[0.875rem]/[1.43]"
-            key={i + item.offer}
-          >
-            <div className="image-div relative rounded-[20px] inline-block">
-              <div className="aspect-[20/19] rounded-[20px] overflow-clip relative">
-                <img
-                  className="object-center object-cover w-full align-bottom relative h-full"
-                  src={item.image}
-                  alt=""
+      <div
+        className="container flex flex-col gap-2 grow shrink-0 basis-full text-[0.875rem]/[1.43]"
+        onClick={() => handleModalStatus(product)}
+      >
+        <div className="image-div relative rounded-[20px] inline-block">
+          <div className="aspect-[20/19] rounded-[20px] overflow-clip relative">
+            <img
+              className="object-center object-cover w-full align-bottom relative h-full"
+              src={product.image}
+              alt=""
+            />
+            <div className="p-3 pb-0 absolute  inset-0 ">
+              <div className="flex justify-between ">
+                {product.isGuestFav?.length > 0 && (
+                  <FavoriteLabel label={product.isGuestFav} />
+                )}
+                <WishIcon
+                  type={
+                    product.buttonType?.length ? product.buttonType : "like"
+                  }
                 />
-                <div className="p-3 pb-0 absolute  inset-0 ">
-                  <div className="flex justify-between ">
-                    {item.isGuestFav?.length > 0 && (
-                      <FavoriteLabel label={item.isGuestFav} />
-                    )}
-                    <WishIcon
-                      type={item.buttonType?.length ? item.buttonType : "like"}
-                    />
-                  </div>
-                </div>
               </div>
             </div>
-            <CardDetails details={item} />
           </div>
-        );
-      })}
+        </div>
+        <CardDetails details={product} />
+      </div>
+      <CustomModal modalStatus={isModalOpen} setModalStatus={setModalOpen}>
+        <>
+          <div className="flex flex-row">
+            <img
+              src={property?.image}
+              alt=""
+              className="rounded-[12px] object-cover object-center aspect-[20/19]"
+            />
+          </div>
+
+          <h2 className="text-2xl mt-10 font-semibold tracking-wide ">
+            {property?.name}
+          </h2>
+          <div className="offer  flex items-start flex-col justify-items-start w-full">
+            {property?.rating && (
+              <div className="pl-1.5">
+                <img
+                  src={exportSvg("ratingIcon")}
+                  alt="ratingIcon"
+                  className="scale-200 inline-block -translate-y-0.5 mr-2"
+                />
+                <span className="text-[21px] text-blue-600">
+                  {property.rating}
+                </span>
+              </div>
+            )}
+            <div>
+              <span className=" text-[22px] font-medium ">
+                {property?.offer.split("for")[0]}
+              </span>
+              <span className="text-xl text-gray-600">
+                for {property?.offer.split("for")[1]}
+              </span>
+            </div>
+          </div>
+
+          <p className="text-2xl text-grey-900 ">
+            THis is beautiful villa Lorem ipsum dolor sit amet consectetur
+            adipisicing elit. Provident tempore itaque placeat iure similique.
+            Sit explicabo earum alias impedit deserunt enim blanditiis nesciunt
+            fugiat similique nihil iure, error nisi eius?
+          </p>
+        </>
+      </CustomModal>
     </>
   );
 };
 
-export default ProductCard;
-
-const CardDetails: React.FC<CardDetailsProps> = ({ details }) => {
-  const price = details.offer.split("for")[0];
-  const time = details.offer.split("for")[1];
-
-  return (
-    <div className="mx-1 gap-0.5 flex flex-col">
-      <span className="text-[13px]/[16px] font-medium overflow-clip overflow-ellipsis line-clamp-3 text-pretty">
-        {details.name}
-      </span>
-      <div className=" text-[12px]/[16px] relative translate-y-0.5 ">
-        <div className="  text-[0.75rem]/[1rem] flex-wrap text-[#6A6A6A] flex items-baseline flex-col relative w-full gap-0.5">
-          {details?.loc && <span className="">{details.loc}</span>}
-          <div className="flex flex-row ">
-            <span className="font-normal">{price}</span>&nbsp;
-            {time && (
-              <span className="font-normal whitespace-nowrap overflow-hidden text-ellipsis">
-                for{time}
-              </span>
-            )}
-            {details?.rating && (
-              <>
-                <span className="font-bold -translate-y-[2.1px] text-[#c1c1c1] ">
-                  &nbsp;.&nbsp;
-                </span>
-
-                <div className="flex items-baseline gap-x-[2.5px] text-[#6a6a6a]">
-                  <span className="my-auto">
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      viewBox="0 0 32 32"
-                      aria-hidden="true"
-                      role="presentation"
-                      focusable="false"
-                      style={{
-                        display: " block",
-                        height: "8px",
-                        width: "8px",
-                        fill: "currentcolor",
-                      }}
-                    >
-                      <path
-                        fillRule="evenodd"
-                        d="m15.1 1.58-4.13 8.88-9.86 1.27a1 1 0 0 0-.54 1.74l7.3 6.57-1.97 9.85a1 1 0 0 0 1.48 1.06l8.62-5 8.63 5a1 1 0 0 0 1.48-1.06l-1.97-9.85 7.3-6.57a1 1 0 0 0-.55-1.73l-9.86-1.28-4.12-8.88a1 1 0 0 0-1.82 0z"
-                      ></path>
-                    </svg>
-                  </span>
-                  <span>{details.rating}</span>
-                </div>
-              </>
-            )}
-          </div>
-          {details?.min && <span>{details.min}</span>}
-        </div>
-      </div>
-    </div>
-  );
-};
+export default React.memo(ProductCard);

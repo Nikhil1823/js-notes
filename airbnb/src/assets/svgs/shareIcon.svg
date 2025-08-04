@@ -5,13 +5,12 @@
   width="12"
   height="12"
   fill="none"
-  stroke="currentColor"
-  stroke-width="5.33333"
+  stroke="rgb(34, 34, 34)"
+  stroke-width="4"
   aria-hidden="true"
   role="presentation"
 >
   <path
-    d="m12 4 11.3 11.3a1 1 0 0 1 0 1.4L12 28"
-    fill="none"
+    d="M27 18v9c0 1.1046-.8954 2-2 2h-18c-1.10457 0-2-.8954-2-2v-9m11-15v21m-10-11 9.2929-9.29289c.3905-.39053 1.0237-.39053 1.4142 0l9.2929 9.29289"
   />
 </svg>
