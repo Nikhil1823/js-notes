@@ -28,7 +28,7 @@ const CustomModal: React.FC<ModalPropType> = ({
       onClick={() => setModalStatus(false)}
     >
       <div
-        className="max-w-80 p-8  bg-white h-[97%] max-h-200 rounded-[20px] relative"
+        className="max-w-90 p-8  bg-white h-[90%] max-h-200 rounded-[20px] relative"
         onClick={(e) => {
           e.stopPropagation();
         }}

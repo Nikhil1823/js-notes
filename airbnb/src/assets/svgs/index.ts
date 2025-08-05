@@ -9,6 +9,7 @@ import wishIconUrl from "./wishIcon.svg";
 import shareIconUrl from "./shareIcon.svg";
 import ratingIconUrl from "./rating.svg";
 import redWishIconUrl from "./redWishIcon.svg";
+import downIconUrl from "./downIcon.svg";
 type svgMap = {
   [key: string]: string;
 };
@@ -25,6 +26,7 @@ const svgs: svgMap = {
   shareIcon: shareIconUrl,
   redWishIcon: redWishIconUrl,
   ratingIcon: ratingIconUrl,
+  downArrow: downIconUrl,
 };
 
 export const exportSvg = (name: string): string => {

@@ -1482,6 +1482,242 @@ const data: HomeDataType[] = [
   },
 ];
 
+export type footerItems = {
+  heading: string;
+  subHeading: string;
+};
+export type footerDestinationDataType = {
+  title: string;
+  items: footerItems[];
+};
+
+export type footerServiceDataType = {
+  title: string;
+  items: string[];
+};
+
+const footerData = {
+  footer_1: {
+    title: "Unique Stays",
+    items: [
+      {
+        heading: "Cabins",
+        subHeading: "United States",
+      },
+      {
+        heading: "Treehouses",
+        subHeading: "United States",
+      },
+      {
+        heading: "Tiny Houses",
+        subHeading: "United States",
+      },
+      {
+        heading: "Beach Houses",
+        subHeading: "United States",
+      },
+      {
+        heading: "Lake Hosuse",
+        subHeading: "United States",
+      },
+      {
+        heading: "Yurt Rentals",
+        subHeading: "United Kingdom",
+      },
+      {
+        heading: "Yurt Rentals",
+        subHeading: "United States",
+      },
+      {
+        heading: "Treehouses",
+        subHeading: "United States",
+      },
+      {
+        heading: "Tiny Houses",
+        subHeading: "United States",
+      },
+      {
+        heading: "Beach Houses",
+        subHeading: "United States",
+      },
+      {
+        heading: "Lake Hosuse",
+        subHeading: "United States",
+      },
+      {
+        heading: "Yurt Rentals",
+        subHeading: "United Kingdom",
+      },
+      {
+        heading: "Yurt Rentals",
+        subHeading: "United States",
+      },
+      {
+        heading: "Tiny Houses",
+        subHeading: "United States",
+      },
+      {
+        heading: "Beach Houses",
+        subHeading: "United States",
+      },
+      {
+        heading: "Lake Hosuse",
+        subHeading: "United States",
+      },
+      {
+        heading: "Yurt Rentals",
+        subHeading: "United Kingdom",
+      },
+      {
+        heading: "Yurt Rentals",
+        subHeading: "United States",
+      },
+      {
+        heading: "Tiny Houses",
+        subHeading: "United States",
+      },
+      {
+        heading: "Beach Houses",
+        subHeading: "United States",
+      },
+      {
+        heading: "Lake Hosuse",
+        subHeading: "United States",
+      },
+      {
+        heading: "Yurt Rentals",
+        subHeading: "United Kingdom",
+      },
+      {
+        heading: "Yurt Rentals",
+        subHeading: "United States",
+      },
+      {
+        heading: "Tiny Houses",
+        subHeading: "United States",
+      },
+      {
+        heading: "Beach Houses",
+        subHeading: "United States",
+      },
+      {
+        heading: "Lake Hosuse",
+        subHeading: "United States",
+      },
+      {
+        heading: "Yurt Rentals",
+        subHeading: "United Kingdom",
+      },
+      {
+        heading: "Yurt Rentals",
+        subHeading: "United States",
+      },
+      {
+        heading: "Tiny Houses",
+        subHeading: "United States",
+      },
+      {
+        heading: "Beach Houses",
+        subHeading: "United States",
+      },
+      {
+        heading: "Lake Hosuse",
+        subHeading: "United States",
+      },
+      {
+        heading: "Yurt Rentals",
+        subHeading: "United Kingdom",
+      },
+      {
+        heading: "Yurt Rentals",
+        subHeading: "United States",
+      },
+      {
+        heading: "Tiny Houses",
+        subHeading: "United States",
+      },
+      {
+        heading: "Beach Houses",
+        subHeading: "United States",
+      },
+      {
+        heading: "Lake Hosuse",
+        subHeading: "United States",
+      },
+      {
+        heading: "Yurt Rentals",
+        subHeading: "United Kingdom",
+      },
+      {
+        heading: "Yurt Rentals",
+        subHeading: "United States",
+      },
+      {
+        heading: "Tiny Houses",
+        subHeading: "United States",
+      },
+      {
+        heading: "Beach Houses",
+        subHeading: "United States",
+      },
+      {
+        heading: "Lake Hosuse",
+        subHeading: "United States",
+      },
+      {
+        heading: "Yurt Rentals",
+        subHeading: "United Kingdom",
+      },
+      {
+        heading: "Yurt Rentals",
+        subHeading: "United States",
+      },
+    ],
+  },
+
+  footer_2: [
+    {
+      title: "Support",
+      items: [
+        "Help Center",
+        "AirCover",
+        "Anti-discrimination",
+        "Disability support",
+        "Cancellation options",
+        "Report neighbourhood concern",
+      ],
+    },
+    {
+      title: "hosting",
+      items: [
+        "Airbnb your home",
+        "Airbnb your experience",
+        "Airbnb your service",
+        "AirCover for Hosts",
+        "Hosting resources",
+        "Community forum",
+        "Hosting responsibly",
+        "Join a free Hosting class",
+        "Find a co‑host",
+      ],
+    },
+    {
+      title: "Airbnb",
+      items: [
+        "2025 Summer Release",
+        "Newsroom",
+        "Careers",
+        "Investors",
+        "Airbnb.org emergency stays",
+      ],
+    },
+  ],
+};
+
 export const exportData = (): HomeDataType[] => {
   return data;
+};
+
+export const exportFooterData = () => {
+  return footerData;
 };

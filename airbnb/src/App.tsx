@@ -21,7 +21,7 @@ function App() {
       {data.current[selected]?.items.map((item, i) => {
         return <ProductCarousel items={item} key={i + item.title} />;
       })}
-      <Footer property={data.current[selected]?.items[0].products[0]} />
+      <Footer />
     </dataContext.Provider>
   );
 }
