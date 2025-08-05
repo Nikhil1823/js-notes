@@ -11,7 +11,7 @@ const WishIcon = ({ type }: { type: string }) => {
   };
 
   return (
-    <div className="flex ml-auto">
+    <div className="flex ml-auto ">
       <div
         className={clsx(
           "justify-center items-center  break-all font-[600] flex w-8 h-8 ",
@@ -20,7 +20,7 @@ const WishIcon = ({ type }: { type: string }) => {
       >
         <button
           className={clsx(
-            "outline-none    text-base leading-5 justify-center items-center border-none rounded-full inline-flex",
+            "outline-none  cursor-pointer  text-base leading-5 justify-center items-center border-none rounded-full inline-flex",
             type != "like"
               ? "border-1 bg-[#ffffffcc] h-7 w-7"
               : "bg-transparent  w-8 h-8 "

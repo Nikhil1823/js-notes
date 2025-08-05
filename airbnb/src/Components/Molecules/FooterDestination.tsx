@@ -11,13 +11,16 @@ const FooterDestination = ({ destination }: propType) => {
   const [limit, setLimit] = useState(17);
   return (
     <div>
-      <h2 className="mb-2  text-[1.375rem]/[1.625rem] font-medium -tracking-[0.01375 rem]">
+      <h2 className="mb-1.75  text-[1.375rem]/[1.625rem] font-medium -tracking-[0.01375rem] ">
         Inspiration for future getaways
       </h2>
-      <div className="px-3 -mx-3">
-        <button className="my-1.5 p-2.5 -ml-2.5 text-[0.875rem]/[1.125rem] font-medium border-b-1">
+
+      <div className="px-3 -mx-3 relative">
+        <button className="my-1.5 p-2.5 -ml-2.5 text-[0.875rem]/[1.125rem] font-normal translate-y-0.75 tracking-[0.1px]">
           {destination.title}
         </button>
+        <div className="h-0.5  w-[83.912px] left-3 absolute bg-black"></div>
+        <div className="w-full h-0.25 bg-[#dddddd]"></div>
       </div>
       <div className="pt-8">
         <ul className="grid [grid-template-columns:repeat(6,minmax(0,1fr))] gap-y-6 gap-x-2">

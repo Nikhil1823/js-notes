@@ -21,26 +21,26 @@ const Footer = () => {
 
       <div
         id="footer-tos"
-        className="border-[#ebebeb] border-t-1 px-12 flex justify-between items-center py-6"
+        className="border-[#ebebeb] border-t-1 px-12 flex justify-between items-center py-6 -translate-y-0.25 cursor-pointer"
       >
         <div
           id="left"
-          className="text-[#222222] p-1 -m-1 text-[0.875rem]/[20.2px] flex "
+          className="text-[#222222] p-1 -m-1 text-[0.875rem]/[20.2px] flex"
         >
           <div>© 2025 Airbnb, Inc.</div>
-          <span className="items-center text-center px-2 align-top flex -translate-y-1">
+          <span className="items-center text-center px-2 align-top flex -translate-y-0.75">
             .
           </span>
           <div>Privacy</div>
-          <span className="items-center text-center px-2 align-top flex -translate-y-1">
+          <span className="items-center text-center px-2 align-top flex -translate-y-0.75">
             .
           </span>
           <div>Terms</div>
-          <span className="items-center text-center px-2 align-top flex -translate-y-1">
+          <span className="items-center text-center px-2 align-top flex -translate-y-0.75">
             .
           </span>
           <div>Sitemap</div>
-          <span className="items-center text-center px-2 align-top flex -translate-y-1">
+          <span className="items-center text-center px-2 align-top flex -translate-y-0.75">
             .
           </span>
           <div>Company details</div>
@@ -48,7 +48,7 @@ const Footer = () => {
         <div id="right" className="flex items-center h-7.5">
           <div className="-ml-2 max-h-full">
             <button className="py-1.5 px-2 text-[0.875rem]/[1.125rem] mr-1">
-              <span className="flex gap-2 flex-row">
+              <span className="flex gap-2 flex-row tracking-[0.12px]">
                 <img src={exportSvg("worldIcon")} alt="" />
                 English (IN)
               </span>
@@ -68,7 +68,7 @@ const Footer = () => {
               <li className="mr-1">
                 <img src={exportSvg("xIcon")} alt="xIcon" />
               </li>
-              <li className="mr-1">
+              <li className="">
                 <img src={exportSvg("igIcon")} alt="igIcon" />
               </li>
             </ul>

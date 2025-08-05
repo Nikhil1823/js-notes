@@ -1498,7 +1498,7 @@ export type footerServiceDataType = {
 
 const footerData = {
   footer_1: {
-    title: "Unique Stays",
+    title: "Unique stays",
     items: [
       {
         heading: "Cabins",
@@ -1688,7 +1688,7 @@ const footerData = {
       ],
     },
     {
-      title: "hosting",
+      title: "Hosting",
       items: [
         "Airbnb your home",
         "Airbnb your experience",

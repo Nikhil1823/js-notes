@@ -18,7 +18,7 @@ const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
   return (
     <>
       <div
-        className="container flex flex-col gap-2 grow shrink-0 basis-full text-[0.875rem]/[1.43]"
+        className="container flex flex-col gap-2 grow shrink-0 basis-full text-[0.875rem]/[1.43] cursor-pointer"
         onClick={() => handleModalStatus(product)}
       >
         <div className="image-div relative rounded-[20px] inline-block">

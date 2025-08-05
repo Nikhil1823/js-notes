@@ -82,7 +82,7 @@ const Navbar = ({ data }: HeaderPropType) => {
           id="right-wrapper"
           className="flex items-center justify-end flex-auto mr-3 gap-x-3"
         >
-          <button className="px-3 py-2.75 text-[14px]/[normal] border-[#ffffff] border-1 rounded-3xl  border-t-0 font-medium pr-[11.5px]">
+          <button className="px-3 py-2.75 text-[14px]/[normal] border-[#ffffff] border-1 rounded-3xl  border-t-0 font-medium pr-[11.5px] cursor-pointer">
             Become a host
           </button>
           <button className="w-10 h-10 bg-[#f2f2f2] flex items-center justify-center rounded-full">

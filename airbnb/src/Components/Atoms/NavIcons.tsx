@@ -25,7 +25,7 @@ const NavIcons = ({ heading, videoUrl }: NavIconProp) => {
   return (
     <div
       key={heading}
-      className="flex items-center relative"
+      className="flex items-center relative cursor-pointer"
       onClick={() => {
         productContext?.setSelected(index);
       }}
