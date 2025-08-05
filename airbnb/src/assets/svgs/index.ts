@@ -10,6 +10,9 @@ import shareIconUrl from "./shareIcon.svg";
 import ratingIconUrl from "./rating.svg";
 import redWishIconUrl from "./redWishIcon.svg";
 import downIconUrl from "./downIcon.svg";
+import igIconUrl from "./igIcon.svg";
+import xIconUrl from "./xIcon.svg";
+import fbIconUrl from "./fbIcon.svg";
 type svgMap = {
   [key: string]: string;
 };
@@ -27,6 +30,9 @@ const svgs: svgMap = {
   redWishIcon: redWishIconUrl,
   ratingIcon: ratingIconUrl,
   downArrow: downIconUrl,
+  igIcon: igIconUrl,
+  xIcon: xIconUrl,
+  fbIcon: fbIconUrl,
 };
 
 export const exportSvg = (name: string): string => {
