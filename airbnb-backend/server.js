@@ -5,7 +5,7 @@ const app = express();
 
 app.use(express.json());
 app.get("/", (req, res) => {
-  res.send("server is alive");
+  res.status(200).json({ status: "ok", data: "server is alive" });
 });
 app.use("/property", propertyRouter);
 

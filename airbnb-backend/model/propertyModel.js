@@ -3,12 +3,10 @@ const Sequalise = require("sequelize");
 const model = {
   id: {
     type: Sequalise.STRING,
-    allowNull: false,
     primaryKey: true,
   },
   property_type: {
-    type: Sequalise.INTEGER,
-    autoIncrement: true,
+    type: Sequalise.STRING,
     allowNull: false,
   },
   tag: {
@@ -22,8 +20,8 @@ const model = {
     allowNull: false,
   },
   duration_type: {
-    type: Sequalise.ENUM(["day", "night"]),
-    defaultValue: "night",
+    type: Sequalise.ENUM(["day", "nights"]),
+    defaultValue: "nights",
     allowNull: false,
   },
   rating: {
