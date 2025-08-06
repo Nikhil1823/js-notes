@@ -3,15 +3,17 @@ import Header from "./Components/organisms/Header";
 import ProductCarousel from "./Components/organisms/ProductCarousel";
 import { exportData } from "./data/HomePage";
 import type { HomeDataType } from "./data/HomePage";
-
+import { get } from "./utils/fecthData";
 import { createContext, useState, useRef } from "react";
 export const dataContext = createContext<ContextType | null>(null);
+
 type ContextType = {
   selected: number;
   setSelected: React.Dispatch<React.SetStateAction<number>>;
 };
 function App() {
   const [selected, setSelected] = useState(0);
+  get().then((data) => console.log(data));
 
   const data = useRef<HomeDataType[]>(exportData());
 

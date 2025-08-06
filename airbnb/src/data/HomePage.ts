@@ -79,7 +79,7 @@ const data: HomeDataType[] = [
           {
             isGuestFav: "Guest favourite",
             name: "Apartment in Narayanpur",
-            offer: "₹3,87e,8 for 2 nights",
+            offer: "₹3,878 for 2 nights",
             rating: "4.99",
             image:
               "https://a0.muscache.com/im/pictures/hosting/Hosting-1118422882348724135/original/a40a9fc3-9bee-46fc-bc33-61dd649cd6a8.jpeg?im_w=480",
