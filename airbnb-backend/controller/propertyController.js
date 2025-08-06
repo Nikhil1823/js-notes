@@ -1,4 +1,4 @@
-const dbDefs = require("../model/config");
+const dbDefs = require("../models/dbDefs");
 const { idGenerator } = require("../service/idGenerator");
 
 const bulkCreated = async (req, res) => {
@@ -18,9 +18,16 @@ const get = async (req, res) => {
   return data;
 };
 
+const update = async (req, res) => {
+  const { id, data } = req.body;
+  const item = await dbDefs.propertyDbDef.findByPk(id);
+  if (!item) throw new Error("Invalid id field");
+  return await item.update(data);
+};
 module.exports = {
   bulkCreated,
   get,
+  update,
 };
 
 const insertOne = async (property) => {

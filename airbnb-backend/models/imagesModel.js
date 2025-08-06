@@ -1,17 +1,17 @@
-const Sequalise = require("sequelize");
+const sequelize = require("sequelize");
 
 const model = {
   id: {
-    type: Sequalise.STRING,
+    type: sequelize.STRING,
     allowNull: false,
     primaryKey: true,
   },
   imageUrl: {
-    type: Sequalise.STRING,
+    type: sequelize.STRING,
     allowNull: false,
   },
   property_id: {
-    type: Sequalise.STRING,
+    type: sequelize.STRING,
     allowNull: false,
   },
 };
@@ -19,5 +19,3 @@ const model = {
 module.exports = {
   model,
 };
-
-

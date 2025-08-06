@@ -20,4 +20,12 @@ router.get("/fetch", async (req, res) => {
     res.status(503).json({ status: "error", data: e.message });
   }
 });
+router.post("/update", async (req, res) => {
+  try {
+    const result = await propertyController.update(req, res);
+    res.status(200).json({ status: "ok", data: result });
+  } catch (e) {
+    res.status(503).json({ status: "error", data: e.message });
+  }
+});
 module.exports = router;

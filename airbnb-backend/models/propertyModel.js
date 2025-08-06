@@ -1,46 +1,46 @@
-const Sequalise = require("sequelize");
+const sequelize = require("sequelize");
 
 const model = {
   id: {
-    type: Sequalise.STRING,
+    type: sequelize.STRING,
     primaryKey: true,
   },
   property_type: {
-    type: Sequalise.STRING,
+    type: sequelize.STRING,
     allowNull: false,
   },
   tag: {
-    type: Sequalise.STRING,
+    type: sequelize.STRING,
   },
   price: {
-    type: Sequalise.INTEGER,
+    type: sequelize.INTEGER,
   },
   duration: {
-    type: Sequalise.INTEGER,
+    type: sequelize.INTEGER,
     allowNull: false,
   },
   duration_type: {
-    type: Sequalise.ENUM(["day", "nights"]),
+    type: sequelize.ENUM(["day", "nights"]),
     defaultValue: "nights",
     allowNull: false,
   },
   rating: {
-    type: Sequalise.FLOAT,
+    type: sequelize.FLOAT,
   },
 
   address: {
-    type: Sequalise.STRING,
+    type: sequelize.STRING,
   },
   buttonType: {
-    type: Sequalise.ENUM(["like", "share"]),
+    type: sequelize.ENUM(["like", "share"]),
     defaultValue: "like",
   },
   is_liked: {
-    type: Sequalise.BOOLEAN,
+    type: sequelize.BOOLEAN,
     defaultValue: false,
   },
   location: {
-    type: Sequalise.STRING,
+    type: sequelize.STRING,
     allowNull: false,
   },
 };

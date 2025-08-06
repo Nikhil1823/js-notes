@@ -1,16 +1,8 @@
-const Sequalise = require("sequelize");
+require("dotenv").config();
+const Sequelize = require("sequelize");
 const propertyModel = require("./propertyModel");
-
 const imageModel = require("./imagesModel");
-const db = new Sequalise({
-  username: "postgres",
-  password: "12345",
-  host: "127.0.0.1",
-  port: "5432",
-  dialect: "postgres",
-  logging: false,
-  database: "airbnb",
-});
+const db = new Sequelize(require("./config").dev);
 const propertyDbDef = db.define("propertyModel", propertyModel.model, {
   tableName: "propertyModel",
   timestamps: true,
@@ -21,7 +13,6 @@ const imagesDbDef = db.define("imagesModel", imageModel.model, {
 });
 
 db.authenticate();
-db.sync({ alter: true });
 
 module.exports = {
   propertyDbDef,
