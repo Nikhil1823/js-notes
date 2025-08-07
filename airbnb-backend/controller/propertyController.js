@@ -22,6 +22,7 @@ const update = async (req, res) => {
   const { id, data } = req.body;
   const item = await dbDefs.propertyDbDef.findByPk(id);
   if (!item) throw new Error("Invalid id field");
+
   return await item.update(data);
 };
 module.exports = {
