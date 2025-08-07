@@ -3,11 +3,31 @@ import React from "react";
 import clsx from "clsx";
 import { useState } from "react";
 import { exportSvg } from "../../assets/svgs";
-const WishIcon = ({ type }: { type: string }) => {
-  const [isWish, setWish] = useState(false);
+import { useMutation } from "react-query";
+import { postData } from "../../utils/fecthData";
+
+const WishIcon = ({
+  id,
+  type,
+  is_liked,
+}: {
+  type: string;
+  is_liked: boolean;
+  id: string;
+}) => {
+  const [isWish, setWish] = useState(is_liked);
+  const mutation = useMutation({
+    mutationFn: (newWish: boolean) => {
+      return postData({ is_liked: newWish }, id);
+    },
+    onSuccess: () => console.log("data send successfully"),
+    onError: () => console.log("error happened here"),
+  });
   const hanleClick = (e: React.MouseEvent<HTMLImageElement, MouseEvent>) => {
     e.stopPropagation();
-    setWish(!isWish);
+    const newWish = !isWish;
+    setWish(newWish);
+    mutation.mutate(newWish);
   };
 
   return (

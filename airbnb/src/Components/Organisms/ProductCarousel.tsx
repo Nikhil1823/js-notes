@@ -1,27 +1,27 @@
-import type { productCarouselType } from "../../data/HomePage";
+import type { PropertyListDataType } from "../../utils/dataFormater";
 import { useContext, useRef } from "react";
 
 type ProductCarouselProps = {
-  items: productCarouselType;
+  properties: PropertyListDataType;
 };
 
-const ProductCarousel: React.FC<ProductCarouselProps> = ({ items }) => {
+const ProductCarousel: React.FC<ProductCarouselProps> = ({ properties }) => {
   const carouselRef = useRef<HTMLDivElement | null>(null);
 
   return (
     <>
       <div className="mx-auto my-0 max-w-[1440px]">
-        <CardHeading {...{ title: items.title, carouselRef }} />
+        <CardHeading {...{ title: properties.title, carouselRef }} />
         <div className="px-12  -mb-2 -mt-1">
           <div
             className=" pt-1 pb-2 justify-start grid grid-flow-col gap-x-2.75 gap-y-4  auto-cols-[calc(14.2857%_-_9.42857px)]  overflow-x-scroll"
             ref={carouselRef}
           >
-            <CardStrip items={items.products} />
+            <CardStrip items={properties.items} />
           </div>
         </div>
       </div>
-      {items.title == "Airbnb Originals" && (
+      {properties.title == "Airbnb Originals" && (
         <div className="px-12 pt-10 pb-2 max-w-360 -tracking-[0.96px]">
           <h1 className="font-medium text-[32px]/9">
             Popular with travellers from your area
