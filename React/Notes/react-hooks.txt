@@ -4,8 +4,7 @@
         hooks only works inside a functions
 
     why hooks ?
-        to reduce the reliance on this keywords
-
+        to reduce the reliance on this keyword
         to handle sideeffects => useEffect hook will run on component mount,component unmount and component update so this single hook does the job of the 3 lifecyle methods (componentDidUpdate,compoentDidMount,componentWillUnmount)
         
         makes the code cleaner and more managable
