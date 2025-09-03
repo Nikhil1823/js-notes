@@ -1,8 +1,3 @@
-
-
-from 17
-ct 608 min
-
 from 18
 ct 551 
 from 19
