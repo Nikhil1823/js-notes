@@ -1,11 +1,5 @@
 
 
- from 13
- ct 491
-
-from 16
-ct 441
-
 from 17
 ct 608 min
 
