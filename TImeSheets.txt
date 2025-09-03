@@ -1,6 +1,3 @@
-ct 587 min
-from 23
-ct 457
 from 24 code time had issue
 ct 372
 from 25 code time had issue ct(5hr 48)
