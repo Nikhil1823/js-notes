@@ -1,9 +1,4 @@
-From June 10
-coed time 467 main
-from 11
-ct 522 min
-from 12
- ct 386
+
 
  from 13
  ct 491
