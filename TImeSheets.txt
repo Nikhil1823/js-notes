@@ -1,6 +1,4 @@
-from 24 code time had issue
-ct 372
-from 25 code time had issue ct(5hr 48)
+rom 25 code time had issue ct(5hr 48)
 ct 378
 from 26
 ct  590
