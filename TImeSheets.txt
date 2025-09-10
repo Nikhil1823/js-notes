@@ -1,11 +1,4 @@
-from 30
- ct 439
 
-from jul 1
-ct 485
-from jul 2 code time not worked
-ct 1min
-from jul 3
 ct 477
 from jul 4
 ct 442
