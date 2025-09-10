@@ -1,10 +1,4 @@
-
-ct  590
-from 27
-ct 582
-from 28
-ct 486
- from 30
+from 30
  ct 439
 
 from jul 1
