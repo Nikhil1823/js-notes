@@ -1,6 +1,4 @@
-rom 25 code time had issue ct(5hr 48)
-ct 378
-from 26
+
 ct  590
 from 27
 ct 582
