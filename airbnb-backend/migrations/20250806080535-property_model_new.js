@@ -1,6 +1,6 @@
 "use strict";
 const propertyModel = require("../models/propertyModel");
-/** @type {import('sequelize-cli').Migration} */
+
 module.exports = {
   async up(queryInterface, Sequelize) {
  
