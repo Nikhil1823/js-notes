@@ -315,3 +315,4 @@ Object.prototype.getName = () => {
   console.log("hello");
 }
   obj2.getName();
+
