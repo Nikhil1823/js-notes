@@ -62,9 +62,3 @@ from 23
  total 18736
  total 312 hr 16 min
  code days 35.5
- 
-from 24 
-ct 14 hr 19 min
-total 326 hr 35 min
-code days 36.5
-
